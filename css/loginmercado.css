@@ -1,0 +1,143 @@
+body{
+    background-image: url(1.png);
+    justify-content: center;
+    text-align: center;
+    margin:0;
+    background-size: cover;
+}
+
+#titulo{
+    display:flex;
+    justify-content: column;
+    flex-direction: column;
+
+}
+
+h1{
+    color: #222;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 4em;
+}
+
+h2{
+    color: #b37a11;
+    font-size: 2em;
+}
+
+#e{
+    color:#e99f16;
+}
+
+#tarjeta{
+    font-family: georgia;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+#login{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:20px;
+    width:40em;
+    height:30em;
+    background-color: rgba(176, 184, 187, 0.301);
+    border-radius: 1.3em;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.25);
+    backdrop-filter: blur(1px); /*difumina el fondo*/
+    transition: backdrop-filter 1s ease;
+
+}
+
+#login:hover{
+    backdrop-filter: blur(3px);
+}
+
+.boton{
+    font-family: helvetica;
+    padding: 1em 2em;
+    border-color: #ccc;
+    border-top-color: #fff;
+    border-left-color:#fff;
+    border-radius: 1.3em;
+    height: 3em;
+    width:15em;
+    font-size: 1.1em;
+    outline:none;
+    background-color: #cef0f5;
+    transition: box-shadow 0.3s ease, border-color 0.5s ease;
+}
+
+.boton::placeholder{
+    color: #797979;
+}
+
+.boton:focus::placeholder{
+    color: #bbbaba;
+}
+
+.boton:focus{
+    border-top-color:#9fc3ce;
+    border-color:#91bdc0;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+}
+
+button{
+    border: #797979;
+    color:#383838;
+    font-size: 1em;
+    font-family:georgia;
+    border-radius: 1.3em;
+    height: 4em;
+    width: 20em;
+    background-color: #e99f16;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.25);
+    transition: box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+}
+
+button:hover{
+    color: #ccc;
+    background-color: #b37a11;
+    box-shadow: 0 0 0 0;
+}
+
+button:focus{
+    background-color: #92382c;
+    box-shadow: 0 0px 0px rgba(0,0,0,0.2);
+}
+
+#idiomas{
+    width:100%;
+    height:5em;
+    margin-top: 10em;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:2em;
+    background-color: #9fc3ce57;
+    position: fixed;
+    bottom:0;
+    left:0;
+    text-align:center;
+    font-size: 1.2em;
+    backdrop-filter: blur(2px); /*difumina el fondo*/
+}
+
+.comun{
+    cursor: pointer;
+}
+
+.es{
+    color: #92382c;
+}
+
+.en{
+    color: #92382c;
+}
+
+.deu{
+    color: #92382c;
+}

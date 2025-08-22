@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+    background-color: rgb(223, 223, 223);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main{
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    flex: 1;
+}
+header {
+    background-color: #eba441;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 40px;
+    border: 1px solid #000;
+}
+
+header .logocarrito {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .logo{
+    font-family: "Roboto", sans-serif;
+    font-size: 70px;
+    font-weight: 400;
+    
+}
+
+header .encabezado a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #FFF;
+    font-family: "Roboto", sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+}
+
+header .imagenbarra {
+    width: 62px;
+    height: 62px;
+    background: url(carrito.png) no-repeat center;
+    background-size: contain;
+}
+aside {
+  border: 1px solid #000;
+  background: #b0cacc;
+  box-shadow: 0 4px 4px 0 rgba(212, 212, 212, 0.25) inset;
+  padding: 20px;
+  width: 200px;
+  flex: 0 0 200px;
+}
+aside input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+
+
+
+
+/* -webkit-text-stroke: 2px black; /*
+
+/* color celeste: rgb(182, 207, 237) */
+/* color naranja: rgb(182, 190, 92) */
+
+
+#catalogo{
+    display:flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.tarjeta{
+    height: 20em;
+    width: 20em;
+}
+
+
+
+
+/* FOOTER */
+footer {
+  font-display:fixed; 
+  background-color: #000000;
+  color: #ffffff;
+  max-height: 120px;
+  overflow: hidden;
+  font-family: "Markazi Text", serif;
+  margin-top: auto;
+}
+
+.footer-contenido {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-secciones {
+  margin: 5px 10px;
+  max-width: 200px;
+}
+
+.footer-secciones.logo h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.footer-secciones button.toggle-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.footer-secciones button.toggle-btn:focus {
+  outline: none;
+}
+
+.toggle-contenido {
+  display: none;        
+  list-style: none;     
+  padding: 0;
+  margin: 0;
+}
+
+.toggle-contenido li {
+  margin: 8px 0;        
+}
+
+.toggle-contenido a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.toggle-contenido p {
+  color: #fff;
+  text-decoration: none;
+font-size: 0.9em;
+  line-height: 1.4em;
+  max-width: 400px;   
+  margin: auto;
+}
+
+.toggle-contenido a:hover {
+      color: #fff;  
+  text-decoration: underline;
+}
+
+
+/*principal*/
+#principal{
+    display: flex;
+    gap: 4em;
+}
+
+#contenedor{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  margin-top: 2em;
+  gap:1.5em;
+}
+
+.tarjeta{
+  margin-bottom:0;
+  display: inline-block;
+  width: 30em;
+  height:40em;
+  margin: 0.6%;
+  margin-top: 2em;
+  border: 1px solid #f1f1f1;
+  border-radius:8px;
+  background: #dae6e7;
+  box-shadow: 0px 2px 10px rgba(92, 89, 89, 0.4);
+  text-align:center;
+  padding:1em;
+  transition: background-color 0.8s ease, box-shadow 0.4s ease-in, transform 0.3s ease;
+}
+
+
+.tarjeta:hover {
+  background-color: #e2e3e4;
+  box-shadow: 0 4px 20px rgba(150, 145, 145, 0.4);
+  transform: translateY(-5px);
+}
+
+/* Secciones dentro de la tarjeta */
+.tarjeta .foto {
+  background-color: #d0d8da;
+  height: 50%;
+}
+
+.tarjeta .text {
+  background-color: #5a5a5831;
+  color: #fff;
+  padding: 0.5em;
+  height: 25%;
+}
+
+.tarjeta .precio {
+  height: 3em;
+  line-height: 3em;
+  background-color: rgb(90, 36, 36);
+  color: #fff;
+  font-weight: bold;
+}
+
+#filtros{
+    height: 100em;
+    width: 10em;
+    background-color: #b2c2c4;
+    margin-top: 0;
+    transition: width 1s ease;
+}
+
+#filtros:hover{
+    width: 20em;
+}
+
+.foto{
+    background-color: #b0b7b8;
+}
+
+.text{
+
+    background-color: #5a5a58;
+}
+
+.precio{
+    height: 3em;
+    text-align: center;
+    background-color: rgb(90, 36, 36);
+}
+
+.tarjeta:hover{
+    background-color: #b1b9bb;
+    box-shadow: 0 4px 20px rgba(150, 145, 145, 0.4);
+}
+
+img{
+    height:100%;
+    width: 100%;
+}

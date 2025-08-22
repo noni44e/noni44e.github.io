@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
+    window.addEventListener('load', ()=>{
+        if (localStorage.getItem("registro") !== "true"){
+            alert("usted no se ha registrado, de aceptar para ir al login.")
+            window.location.href = "login.html";
+        }
+    });
+
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"
@@ -12,3 +19,4 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
