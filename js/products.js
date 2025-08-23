@@ -19,6 +19,7 @@ function mostrar(caja,producto){
       <div class="text">
           ${producto.description}
       </div>
+      <div class="vendidos">Vendidos: ${producto.soldCount} </div>
       <div class="precio">
           ${producto.currency} ${producto.cost}
       </div>

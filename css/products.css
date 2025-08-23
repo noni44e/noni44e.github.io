@@ -189,7 +189,7 @@ font-size: 0.9em;
   margin-bottom:0;
   display: inline-block;
   width: 30em;
-  height:44em;
+  height:40em;
   margin: 0.6%;
   margin-top: 2em;
   border: 1px solid #f1f1f1;
@@ -211,7 +211,7 @@ font-size: 0.9em;
 /* Secciones dentro de la tarjeta */
 .tarjeta .foto {
   background-color: #d0d8da;
-  height: 50%;
+  height: 45%;
 }
 
 .tarjeta .text {
