@@ -56,3 +56,41 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
     // Manejo de errores
     console.error('Hubo un problema con el fetch:', error);
   });
+
+  //Buscador
+// Lista de autos en el propio JS 
+const autos = [
+  { nombre: "Chevrolet Onix Joy", url: "https://www.autoblog.com.uy/2018/11/lanzamiento-chevrolet-onix-y-prisma-joy.html" },
+  { nombre: "Fiat Way", url: "https://www.autoblog.com.uy/2015/06/lanzamiento-fiat-uno-evo-way-my2016.html" },
+  { nombre: "Suzuki Celerio", url: "https://www.autoblog.com.uy/2015/04/lanzamiento-suzuki-celerio.html" },
+  { nombre: "Peugeot 208", url: "https://www.autoblog.com.uy/2012/10/lanzamiento-peugeot-208.html" },
+  { nombre: "Bugatti Chiron", url: "https://www.autoblog.com.uy/2019/09/490484-kmh-el-bugatti-chiron-ahora-es.html" }
+];
+
+document.getElementById("busqueda").addEventListener("input", function() {
+  const query = this.value.toLowerCase();
+  const resultadosDiv = document.getElementById("resultados");
+  resultadosDiv.innerHTML = "";
+
+  if (query.length > 1) {
+    const filtrados = autos.filter(auto => auto.nombre.toLowerCase().includes(query));
+
+    if (filtrados.length > 0) {
+      filtrados.forEach(auto => {
+        const link = document.createElement("a");
+        link.href = auto.url;
+        link.textContent = auto.nombre;
+        link.target = "_blank";
+        resultadosDiv.appendChild(link);
+        resultadosDiv.appendChild(document.createElement("br"));
+      });
+    } else {
+      // Si no hay coincidencias, muestra un enlace de búsqueda en Wikipedia
+      const wikiLink = document.createElement("a");
+      wikiLink.href = `https://es.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(this.value)}`;
+      wikiLink.textContent = `Buscar "${this.value}" en Wikipedia`;
+      wikiLink.target = "_blank";
+      resultadosDiv.appendChild(wikiLink);
+    }
+  }
+});
