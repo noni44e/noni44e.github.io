@@ -1,5 +1,5 @@
 body{
-    background-image: url(1.png);
+    background-image: url(login.png);
     justify-content: center;
     text-align: center;
     margin:0;
@@ -10,7 +10,6 @@ body{
     display:flex;
     justify-content: column;
     flex-direction: column;
-
 }
 
 h1{

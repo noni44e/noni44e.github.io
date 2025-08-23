@@ -15,15 +15,16 @@ function mostrar(caja,producto){
       <div class="imagenes foto">
           <img src="${producto.image}">
       </div>
+      <div class="nombre">${producto.name}</div>
       <div class="text">
-          ${producto.description};
+          ${producto.description}
       </div>
       <div class="precio">
           ${producto.currency} ${producto.cost}
       </div>
       <div class="comprar">
-          <button>comprar</button>
-          <button>información</button>
+          <div class="button izq">comprar</div>
+          <div class="button der">información</div>
       </div>
     </div>
     `
