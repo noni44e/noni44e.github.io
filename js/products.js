@@ -94,3 +94,36 @@ document.getElementById("busqueda").addEventListener("input", function() {
     }
   }
 });
+
+//Footer
+
+  // Seleccionamos todos los botones con la clase toggle-btn
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  // Solo para #enlace y #siguenos
+  if (btn.id === 'enlace' || btn.id === 'siguenos') {
+    btn.addEventListener('mouseover', () => {
+      const content = btn.nextElementSibling;
+      content.style.display = 'block';
+      content.classList.add('show');
+      // Scroll automático si el menú queda fuera de vista
+      setTimeout(() => {
+        content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    });
+    btn.addEventListener('mouseout', () => {
+      const content = btn.nextElementSibling;
+      content.style.display = 'none';
+      content.classList.remove('show');
+    });
+    // También ocultar cuando el mouse sale del contenido desplegado
+    const content = btn.nextElementSibling;
+    content.addEventListener('mouseleave', () => {
+      content.style.display = 'none';
+      content.classList.remove('show');
+    });
+    content.addEventListener('mouseenter', () => {
+      content.style.display = 'block';
+      content.classList.add('show');
+    });
+  }
+});
