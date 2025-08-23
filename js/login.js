@@ -63,7 +63,7 @@ form.addEventListener('submit', (e)=>{
         localStorage.setItem("password", pass);
         alert("datos guardados correctamente.");
         localStorage.setItem("registro", "true");//guardamos en un la memoria una variable registro con el valor true
-        window.location.href ="https://noni44e.github.io/";
+        window.location.href ="index.html";
     }
     
 });
