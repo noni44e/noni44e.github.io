@@ -23,8 +23,8 @@ function mostrar(caja,producto){
           ${producto.currency} ${producto.cost}
       </div>
       <div class="comprar">
-          <div class="button izq">comprar</div>
-          <div class="button der">información</div>
+          <div class="button izq">Comprar</div>
+          <div class="button der">Información</div>
       </div>
     </div>
     `
