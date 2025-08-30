@@ -320,3 +320,32 @@ img{
   color:white;
   border-color:white;
 }
+/* =================== */
+/* 💻 1366 x 768 (Notebook o Laptop estándar) */
+/* =================== */
+
+@media (max-width: 1366px) {
+  #contenedor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tarjeta {
+    width: 100%;
+    height: auto;
+  }
+
+  .comprar {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    width:100%;
+    justify-items: center;
+}
+
+  .button {
+    width: 80%;
+    margin: 0.8em 0;
+  }
+#filtros{
+  height: auto;
+}
+}
