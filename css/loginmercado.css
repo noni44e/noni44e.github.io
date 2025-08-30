@@ -141,7 +141,61 @@ button:focus{
     color: #92382c;
 }
 
-/*codigo restante de las otras resoluciones*/
+/* --- Media Query Pc --- */
+@media screen and (max-width:1366px){
+    h1{
+        font-size: 3.5em;
+    }
+
+    h2{
+        font-size: 1.8em;
+    }
+
+    #login{
+        width: 60vw;
+        height: 25em;
+    }
+
+    .boton{
+        width: 20em;
+        height:4em;
+        font-size: 1em;
+    }
+
+    button{
+        width: 18em;
+        font-size: 1em;
+    }
+}
+/* --- Media Query Tablet (pantallas medianas) --- */
+@media screen and (max-width:768px){
+    h1{
+        font-size: 3em;
+    }
+
+    h2{
+        font-size: 1.5em;
+    }
+
+    #login{
+        width: 80vw;
+        height: 30em;
+    }
+
+    .boton{
+        width: 16em;
+        height:5em;
+        font-size: 0.9em;
+    }
+
+    button{
+        width: 14em;
+        font-size: 0.9em;
+        border-radius: 1.3em;
+    }
+}
+
+/* --- Media Query Smartphone (pantallas pequeñas) --- */
 
 @media screen and (max-width:480px){
 h1{
