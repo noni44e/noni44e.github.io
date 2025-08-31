@@ -349,3 +349,157 @@ img{
   height: auto;
 }
 }
+/* =================== */
+/* 📱 Tableta en Modo Vertical (768 x 1024) */
+/* =================== */
+
+@media (max-width: 768px) {
+  .nombre {
+    font-size: 240%;
+  }
+  header {
+    flex-direction: grid;
+    padding: 2em;
+    text-align:left;
+}
+  header .logo {
+    font-size: 5rem;
+  }
+
+  header .encabezado a {
+    font-size: 2rem;
+  }
+
+  #busca {                                             
+    width: 100%;
+    margin-top: 0.2em;
+    margin-bottom: 1em;
+
+  }
+  #principal {
+    flex-direction: column;
+    gap: 0em;
+  }
+
+  #contenedor {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #filtros {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color:#ffffff00;
+  }
+
+  .tarjeta {
+    height: 40em;
+    width: 23em;
+    padding: 1em;
+    margin-top: 0em;
+    margin-right: 0.1em;
+  }
+
+  .comprar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    justify-items: center; /* Centra los botones horizontalmente en cada columna */
+     gap: 1em; /* Espacio entre botones */
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1rem;
+    margin: 0.5em 0;
+}
+
+/* =================== */
+/* 📱 Smartphone Pequeño (iPhone SE) */
+/* =================== */
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: grid;
+    padding: 0em;
+    text-align: center;
+  }
+
+  header .logo {
+    font-size: 2rem;
+    margin-left: 1.5%;
+  }
+
+  header .encabezado a {
+    font-size: 1.2rem;
+    display: block;
+    margin: 0.5em 0;
+  }
+
+  #filtros {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    background-color:#ffffff00;
+  }
+
+  #busca {                                                
+    width: 100%;
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
+  }
+
+  #contenedor {
+    margin-top: 0em;
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+  #principal {
+    flex-direction: column;
+    gap: 1em;
+  }
+  .tarjeta {
+    width: 95%;
+    padding: 2em;
+    margin-left: 0.7rem;
+    margin-top: 0em;
+  }
+
+  .text, .nombre {
+    font-size: 1em;
+  }
+
+  .nombre {
+    font-size: 2rem;
+  }
+
+  .comprar {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1rem;
+    margin: 0.5em 0;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .footer-contenido {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-secciones {
+    max-width: 100%;
+  }
+}
+}
