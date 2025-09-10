@@ -30,8 +30,10 @@ function mostrar(caja,producto){
     </div>
     `
 }
+let dato = localStorage.getItem("catID");
+let pagina = "https://japceibal.github.io/emercado-api/cats_products/"+dato+".json";
 
-fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
+fetch(pagina)
   .then(response => {
     if (!response.ok) {
       throw new Error('Error en la solicitud: ' + response.status);
