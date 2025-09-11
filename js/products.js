@@ -9,6 +9,7 @@ let tarjetas = document.getElementsByClassName('tarjeta');
 let imagenes = document.getElementsByClassName('imagenes');
 
 function mostrar(caja,producto){
+  let ide = producto.id;
   caja.innerHTML=
   `<div class="tarjeta col">
         
@@ -25,17 +26,16 @@ function mostrar(caja,producto){
       </div>
       <div class="comprar">
           <div class="button izq">Comprar</div>
-          <div class="button der">Información</div>
+          <div class="button der" data-id="${ide}">Información</div>
       </div>
     </div>
     `
 }
 
-
 let dato = localStorage.getItem("catID");
 let pagina = "https://japceibal.github.io/emercado-api/cats_products/"+dato+".json";
 
-fetch(pagina)
+fetch(pagina) 
   .then(response => {
     if (!response.ok) {
       throw new Error('Error en la solicitud: ' + response.status);
@@ -55,12 +55,24 @@ fetch(pagina)
     }
     let div = document.createElement("div");
     contenedor.appendChild(div);
+
     // renderProductos(data); // Llamas a una función que renderiza productos en el DOM
   })
   .catch(error => {
     // Manejo de errores
     console.error('Hubo un problema con el fetch:', error);
   });
+
+  //ahora al apretar click en el boton de informacion te salta a una pagina con el producto mas a detalle
+  document.querySelectorAll(".der").forEach(boton =>{
+    boton.addEventListener("click", ()=>{
+      let ide = boton.getAttribute("data-id");
+      localStorage.setItem("dato-ide", ide);
+      window.location.href="product-info.html";
+
+    });
+  });
+
 
   //Buscador
 // Lista de autos en el propio JS 
@@ -132,3 +144,5 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
     });
   }
 });
+
+//filtros para la página

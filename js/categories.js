@@ -40,6 +40,8 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
+
+
 function showCategoriesList(){
 
     let htmlContentToAppend = "";

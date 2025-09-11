@@ -65,9 +65,11 @@ header .imagenbarra {
   flex-direction: column;
   align-items: center;
 }
+/*
 #filtros:hover {
   width: 20em;
 }
+  */
 #busca {
   width: 90%;
   margin-top: 20px;
@@ -175,21 +177,21 @@ font-size: 0.9em;
 /*principal*/
 #principal{
     display: flex;
-    gap: 4em;
+    gap: 2.5em;
 }
 
 #contenedor{
   display:grid;
   grid-template-columns: repeat(3,1fr);
-  margin-top: 2em;
+  margin-top: 1em;
   gap:1.5em;
 }
 
 .tarjeta{
   margin-bottom:0;
   display: inline-block;
-  width: 30em;
-  height:40em;
+  width: 25em;
+  height:35em;
   margin: 0.6%;
   margin-top: 2em;
   border: 1px solid #f1f1f1;
@@ -236,16 +238,17 @@ font-size: 0.9em;
 }
 
 #filtros{
-    height: 100em;
-    width: 10em;
+    height: 100vw;
+    width: 15em;
     background-color: #cdd8da;
     margin-top: 0;
     transition: width 1s ease;
 }
-
+/*
 #filtros:hover{
     width: 20em;
 }
+*/
 
 .foto{
     background-color: #f5f9fa;
@@ -279,7 +282,7 @@ img{
   display:flex;
   text-align: center;
   height:4em;
-  width:30em;
+  width:20em;
 }
 
 .button{
@@ -290,11 +293,12 @@ img{
   color:rgb(243, 243, 243);
   height: 3em;
   width:7em;
-  margin-left: 2em;
-  margin-right: 6em;
+  margin-left: 1.5em;
+  margin-right: 2.5em;
   background-color: #83a6a8;
   transition: background-color 1s ease, color 0.4s ease;
 }
+
 .button.izq{
   color: black;
   background-color: #ffffff;
@@ -501,4 +505,16 @@ img{
     max-width: 100%;
   }
 }
+}
+
+/* BOTONES DEL FILTRO */
+.botonfiltro{
+  gap:1em;
+  margin-top:1em;
+  align-items:center;
+  text-align:center;
+  
+  background: #b0cacc;
+  height:2.5em;
+  width:4.5em;
 }
