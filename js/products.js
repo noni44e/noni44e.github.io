@@ -30,6 +30,8 @@ function mostrar(caja,producto){
     </div>
     `
 }
+
+
 let dato = localStorage.getItem("catID");
 let pagina = "https://japceibal.github.io/emercado-api/cats_products/"+dato+".json";
 
