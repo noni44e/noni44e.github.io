@@ -1,0 +1,1 @@
+let info = localStorage.getItem("data-ide");

@@ -64,14 +64,13 @@ fetch(pagina)
   });
 
   //ahora al apretar click en el boton de informacion te salta a una pagina con el producto mas a detalle
-  document.querySelectorAll(".der").forEach(boton =>{
-    boton.addEventListener("click", ()=>{
-      let ide = boton.getAttribute("data-id");
+  contenedor.addEventListener("click", (e)=>{
+    if(e.target.classList.contains("der")){
+      let ide = e.target.getAttribute("data-id");
       localStorage.setItem("dato-ide", ide);
       window.location.href="product-info.html";
-
-    });
-  });
+    }
+  })
 
 
   //Buscador

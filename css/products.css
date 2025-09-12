@@ -188,6 +188,7 @@ font-size: 0.9em;
 }
 
 .tarjeta{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin-bottom:0;
   display: inline-block;
   width: 25em;
@@ -212,7 +213,7 @@ font-size: 0.9em;
 
 /* Secciones dentro de la tarjeta */
 .tarjeta .foto {
-  background-color: #d0d8da;
+  background-color: rgb(255, 254, 254);
   height: 45%;
 }
 
@@ -291,7 +292,7 @@ img{
   cursor:default;
   padding:0.8em;
   color:rgb(243, 243, 243);
-  height: 3em;
+  height: 2.5em;
   width:7em;
   margin-left: 1.5em;
   margin-right: 2.5em;
