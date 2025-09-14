@@ -3,10 +3,15 @@
 .container,
 .site-header {
   font-family: 'Verdana', serif !important;
+  color:white;
 }
 
 .jumbotron .display-4 {
   font-weight: bold;
+}
+
+.azul{
+  background-color: #282c2c;
 }
 
 nav a {
