@@ -5,7 +5,7 @@ body{
 }
 
 p{
-    font-size:2em;
+    font-size:3em;
     color:black;
     font-family:'Trebuchet MS';
 }
@@ -16,8 +16,7 @@ p{
 }
 
 .azul{
-    background-color: #576b6d8c;
-    border-bottom: solid 2px rgb(212, 240, 240);
+font-size: 1rem;
 }
 
 #bloque{
@@ -38,7 +37,6 @@ p{
     box-shadow: 0 4px 20px rgba(150, 145, 145, 0.11);
     transition: box-shadow 0.3s ease;
     opacity: 0.95;
-    align-items: center;
 }
 
 #info:hover{
@@ -86,11 +84,11 @@ p{
 }
 
 .description{
-    width:60%;
-    height:40em;
+    width:100%;
+    height:16em;
     color: black;
     font-family:'Trebuchet MS';
-    font-size:1em;
+    font-size:1.5em;
 }
 
 
@@ -144,6 +142,7 @@ p{
     cursor: default;
     width:10em;
     height:1em;
+    color: red
 }
 
 .btn.masvendido{
@@ -163,4 +162,167 @@ p{
 
 .hidden{
     display:none;
+}
+
+
+/* Productos relacionados   */
+
+.relacionado {
+    background-color: #d9d3d3;
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.5rem;
+    display: block;
+    max-width: 18rem;
+    margin: 1rem;
+}
+
+.relacionado:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.relacionado img {
+    width: 80%;
+    max-width: 60%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.relacionado:hover img {
+    transform: scale(1);
+}
+
+.relacionado h3 {
+    margin-top: 0.3125rem;
+    color: rgb(0, 0, 0);
+    padding: 0.1875rem;
+    font-size: 2rem;
+}
+h2{
+    margin-top: 0%;
+    font-size: 2rem;
+    color: #333;
+    margin: 0rem;
+}
+.relacionado p {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+#relacionados-container h2 {
+    margin-left: 0.5em;
+    margin-bottom: 1em;
+}
+.otros-productos{
+    position: relative;
+    left: 18rem;
+    top: -2rem;
+    transition: none;
+}
+
+
+/* =================== */
+/* 💻 Escritorio grande */
+/* =================== */
+@media (max-width: 1366px) {
+  #principal {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    padding: 2em;
+  }
+  #imagenprincipal .imagen {
+    width: 50em;
+    height: auto;
+    border-radius: 2em;
+  }
+  #info {
+    width: 30em;
+    font-size: 1.5em;
+    padding: 1em;
+  }
+  .imag {
+    width: 8em;
+    height: 5em;
+    margin-left: 1em;
+  }
+  .otros-productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    left: 18rem;
+    top: -2rem;
+  }
+}
+
+/* =================== */
+/* 📱 Tablet vertical / iPad */
+/* =================== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  #principal {
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 1em;
+  }
+  #imagenprincipal .imagen {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  #info {
+    width: 95%;
+    font-size: 1.3em;
+    padding: 0.8em;
+  }
+  .imag {
+    width: 6em;
+    height: 4em;
+    margin-left: 0.5em;
+  }
+  .otros-productos {
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    gap: 1em;
+  }
+}
+
+/* =================== */
+/* 📱 Smartphone / iPhone SE */
+/* =================== */
+@media (max-width: 768px) {
+  #principal {
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5em;
+  }
+  #imagenprincipal .imagen {
+    width: 100%;
+    height: auto;
+  }
+  #info {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em;
+  }
+  .imag {
+    width: 5em;
+    height: 3.5em;
+    margin-left: 0.3em;
+  }
+  .otros-productos {
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    gap: 0.5em;
+  }
 }
