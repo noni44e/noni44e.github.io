@@ -1,121 +1,103 @@
-document.querySelectorAll('.toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const content = btn.nextElementSibling;
-    content.style.display = content.style.display === 'block' ? 'none' : 'block';
-  });
-});
 let contenedor = document.getElementById("contenedor");
-let tarjetas = document.getElementsByClassName('tarjeta');
-let imagenes = document.getElementsByClassName('imagenes');
+let productosGlobal = []; // Guardará los productos del fetch
 
-function mostrar(caja,producto){
+// Función para mostrar un producto en una caja
+function mostrar(caja, producto) {
   let ide = producto.id;
-  caja.innerHTML=
-  `<div class="tarjeta col">
-        
+  caja.innerHTML = `
+    <div class="tarjeta col">
       <div class="imagenes foto">
           <img src="${producto.image}">
       </div>
       <div class="nombre">${producto.name}</div>
-      <div class="text">
-          ${producto.description}
-      </div>
-      <div class="vendidos">Vendidos: ${producto.soldCount} </div>
-      <div class="precio">
-          ${producto.currency} ${producto.cost}
-      </div>
+      <div class="text">${producto.description}</div>
+      <div class="vendidos">Vendidos: ${producto.soldCount}</div>
+      <div class="precio">${producto.currency} ${producto.cost}</div>
       <div class="comprar">
           <div class="button izq">Comprar</div>
           <div class="button der" data-id="${ide}">Información</div>
       </div>
     </div>
-    `
+  `;
 }
 
-let dato = localStorage.getItem("catID");
-let pagina = "https://japceibal.github.io/emercado-api/cats_products/"+dato+".json";
-
-fetch(pagina) 
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error en la solicitud: ' + response.status);
-    }
-    return response.json(); // Convertir la respuesta en JSON
-  })
-  .then(data => {
-    // Aquí manejas los datos que recibiste (por ejemplo, mostrar los productos)
-    let productos = data.products;
-    console.log(data.products);
-    let largo = productos.length;
-    for (let i=0; i < largo; i++){
-      let div = document.createElement('div');
-      let produ = productos[i];
-      mostrar(div, produ);
-      contenedor.appendChild(div);
-    }
+// Función para renderizar un array de productos
+function renderizarProductos(lista) {
+  contenedor.innerHTML = ""; // Limpiar contenedor
+  lista.forEach(prod => {
     let div = document.createElement("div");
+    mostrar(div, prod);
     contenedor.appendChild(div);
-
-    // renderProductos(data); // Llamas a una función que renderiza productos en el DOM
-  })
-  .catch(error => {
-    // Manejo de errores
-    console.error('Hubo un problema con el fetch:', error);
   });
+}
 
-  //ahora al apretar click en el boton de informacion te salta a una pagina con el producto mas a detalle
-  contenedor.addEventListener("click", (e)=>{
-    if(e.target.classList.contains("der")){
-      let ide = e.target.getAttribute("data-id");
-      localStorage.setItem("dato-ide", ide);
-      window.location.href="product-info.html";
-    }
+// Fetch de la categoría desde localStorage
+let catID = localStorage.getItem("catID");
+let pagina = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
+
+fetch(pagina)
+  .then(response => response.json())
+  .then(data => {
+    productosGlobal = data.products;
+    renderizarProductos(productosGlobal);
   })
+  .catch(error => console.error("Hubo un problema con el fetch:", error));
 
-
-  //Buscador
-// Lista de autos en el propio JS 
-const autos = [
-  { nombre: "Chevrolet Onix Joy", url: "https://www.autoblog.com.uy/2018/11/lanzamiento-chevrolet-onix-y-prisma-joy.html" },
-  { nombre: "Fiat Way", url: "https://www.autoblog.com.uy/2015/06/lanzamiento-fiat-uno-evo-way-my2016.html" },
-  { nombre: "Suzuki Celerio", url: "https://www.autoblog.com.uy/2015/04/lanzamiento-suzuki-celerio.html" },
-  { nombre: "Peugeot 208", url: "https://www.autoblog.com.uy/2012/10/lanzamiento-peugeot-208.html" },
-  { nombre: "Bugatti Chiron", url: "https://www.autoblog.com.uy/2019/09/490484-kmh-el-bugatti-chiron-ahora-es.html" }
-];
-
-document.getElementById("busqueda").addEventListener("input", function() {
-  const query = this.value.toLowerCase();
-  const resultadosDiv = document.getElementById("resultados");
-  resultadosDiv.innerHTML = "";
-
-  if (query.length > 1) {
-    const filtrados = autos.filter(auto => auto.nombre.toLowerCase().includes(query));
-
-    if (filtrados.length > 0) {
-      filtrados.forEach(auto => {
-        const link = document.createElement("a");
-        link.href = auto.url;
-        link.textContent = auto.nombre;
-        link.target = "_blank";
-        resultadosDiv.appendChild(link);
-        resultadosDiv.appendChild(document.createElement("br"));
-      });
-    } else {
-      // Si no hay coincidencias, muestra un enlace de búsqueda en Wikipedia
-      const wikiLink = document.createElement("a");
-      wikiLink.href = `https://es.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(this.value)}`;
-      wikiLink.textContent = `Buscar "${this.value}" en Wikipedia`;
-      wikiLink.target = "_blank";
-      resultadosDiv.appendChild(wikiLink);
-    }
+// Click en botón "Información"
+contenedor.addEventListener("click", (e) => {
+  if (e.target.classList.contains("der")) {
+    let ide = e.target.getAttribute("data-id");
+    localStorage.setItem("dato-ide", ide);
+    localStorage.setItem("catID", catID); // guardamos la categoría
+    window.location.href = "product-info.html";
   }
 });
 
-//Footer
+// ======================== Buscador ========================
+document.getElementById("busqueda").addEventListener("input", function() {
+  const query = this.value.toLowerCase();
+  filtrarYOrdenar({ busqueda: query });
+});
 
-  // Seleccionamos todos los botones con la clase toggle-btn
+// ======================== Filtros por precio ========================
+document.getElementById("filtrar").addEventListener("click", () => {
+  const min = Number(document.getElementById("precioMin").value);
+  const max = Number(document.getElementById("precioMax").value);
+  filtrarYOrdenar({ precioMin: min, precioMax: max });
+});
+
+document.getElementById("limpiar").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.getElementById("precioMin").value = "";
+  document.getElementById("precioMax").value = "";
+  document.getElementById("busqueda").value = "";
+  renderizarProductos(productosGlobal);
+});
+
+// ======================== Ordenamiento ========================
+document.getElementById("sortAsc").addEventListener("click", () => filtrarYOrdenar({ orden: "asc" }));
+document.getElementById("sortDesc").addEventListener("click", () => filtrarYOrdenar({ orden: "desc" }));
+document.getElementById("sortRel").addEventListener("click", () => filtrarYOrdenar({ orden: "rel" }));
+
+// ======================== Función combinada filtrado + orden ========================
+function filtrarYOrdenar({ busqueda = "", precioMin = -Infinity, precioMax = Infinity, orden = null } = {}) {
+  let lista = productosGlobal.filter(producto => {
+    const nombre = producto.name.toLowerCase();
+    const descripcion = producto.description.toLowerCase();
+    const cumpleBusqueda = busqueda === "" || nombre.includes(busqueda) || descripcion.includes(busqueda);
+    const cumplePrecio = producto.cost >= precioMin && producto.cost <= precioMax;
+    return cumpleBusqueda && cumplePrecio;
+  });
+
+  if (orden === "asc") lista.sort((a, b) => a.cost - b.cost);
+  if (orden === "desc") lista.sort((a, b) => b.cost - a.cost);
+  if (orden === "rel") lista.sort((a, b) => b.soldCount - a.soldCount);
+
+  renderizarProductos(lista);
+}
+
+// ======================== Footer ========================
 document.querySelectorAll('.toggle-btn').forEach(btn => {
-  // Solo para #enlace y #siguenos
   if (btn.id === 'enlace' || btn.id === 'siguenos') {
     btn.addEventListener('mouseover', () => {
       const content = btn.nextElementSibling;
@@ -126,12 +108,13 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
         content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     });
+
     btn.addEventListener('mouseout', () => {
       const content = btn.nextElementSibling;
       content.style.display = 'none';
       content.classList.remove('show');
     });
-    // También ocultar cuando el mouse sale del contenido desplegado
+
     const content = btn.nextElementSibling;
     content.addEventListener('mouseleave', () => {
       content.style.display = 'none';
@@ -143,5 +126,3 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
     });
   }
 });
-
-//filtros para la página
