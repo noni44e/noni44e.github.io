@@ -1,6 +1,7 @@
 body{
     color:black;
-    background-color: rgba(223, 223, 223, 0.836);
+    background-color: #d9dedf;
+    background-size: cover;
 }
 
 p{
@@ -12,6 +13,11 @@ p{
 #principal{
     display:flex;
     gap:2em;
+}
+
+.azul{
+    background-color: #576b6d8c;
+    border-bottom: solid 2px rgb(212, 240, 240);
 }
 
 #bloque{
@@ -31,6 +37,7 @@ p{
     flex-direction: column;
     box-shadow: 0 4px 20px rgba(150, 145, 145, 0.11);
     transition: box-shadow 0.3s ease;
+    opacity: 0.95;
 }
 
 #info:hover{
@@ -59,10 +66,13 @@ p{
     height:5em;
     width:8em;
     margin-left:1em;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease, border-radius 0.5s ease;
+    border-radius: 5px;
+    
 }
 
 .imag:hover{
+    border-radius: 0px;
     transform:scale(1.05);
 }
 
@@ -71,6 +81,7 @@ p{
     align-items:center;
     margin-top:1em;
     margin-left:1em;
+
 }
 
 .description{
@@ -92,6 +103,7 @@ p{
     background-color: #e99f16;
     cursor:default;
     border:solid 3px rgb(238, 238, 238);
+    opacity:1;
     
     
 }

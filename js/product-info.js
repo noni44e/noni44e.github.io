@@ -8,7 +8,7 @@ function mostrar(dato, producto){
     <div class='arriba'>
       
       <div class='btn category'>Categoria:${producto.category}</div>
-      <div class='btn masvendido hidden'>Mas vendido</div>
+      
     </div>
     <div id='bloque'>
         
@@ -31,6 +31,7 @@ function mostrar(dato, producto){
             </div>
             <div id='vendidos'>
               <div class='btn vendidos'>${producto.soldCount} vendidos.</div>
+              <div class='btn masvendido hidden'>Mas vendido</div>
             </div>
         </div>
     </div>
