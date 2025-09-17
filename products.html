@@ -13,7 +13,7 @@
         <div class="logo">e-Mercado</div>
         <div class="imagenbarra"></div> <!-- carrito.png -->
         <div class="encabezado">
-        <a href="https://noni44e.github.io/">Inicio</a>
+        <a href="index.html">Inicio</a>
         <a href="https://mail.google.com/mail/u/0/">Contáctanos</a>
     </div>
     </header>
@@ -24,12 +24,31 @@
             <input id="busqueda" type="text" placeholder="buscar 🔍">
             <div id="resultados"></div>
         </div>
-        <div class="botonfiltro" id="mayor">+ a -</div>
-        <div id="menor" class="botonfiltro">- a +</div>
+        <div id="controles">
+            <!-- Botones de orden -->
+            <div id="orden">
+                <button id="sortAsc">⇑ $</button>
+                <button id="sortDesc">⇓ $</button>
+                <button id="sortRel">Rel</button>
+            </div>
+
+            <!-- Filtro por precio -->
+            <div id="precioFiltro">
+                <label for="precioMin">Precio</label>
+                <input type="number" id="precioMin" placeholder="mín">
+                <input type="number" id="precioMax" placeholder="máx">
+                <button id="filtrar">Filtrar</button>
+                <a href="#" id="limpiar">Limpiar</a>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Productos -->
     <div id="contenedor">
     </div>
 </div>
+
 <footer> 
 <div class="footer-contenido">
  <div class="footer-secciones logo">

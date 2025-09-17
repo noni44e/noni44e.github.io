@@ -1,145 +1,135 @@
 let info = localStorage.getItem("dato-ide");
 let contenedor = document.getElementById("principal");
-let pagina = "https://japceibal.github.io/emercado-api/products/"+info+".json"
-//le ingreso el contenedor principal y luego el producto que quiero mostrar. con esto luego voy a hacer un for para mostrar el producto
-function mostrar(dato, producto){
-    
-    dato.innerHTML=`
+let pagina = "https://japceibal.github.io/emercado-api/products/" + info + ".json";
+
+// ================== Mostrar producto principal ==================
+function mostrar(dato, producto) {
+  dato.innerHTML = `
     <div class='arriba'>
-      
       <div class='btn category'>Categoria:${producto.category}</div>
-      
+      <div class='btn masvendido hidden'>Mas vendido</div>
     </div>
     <div id='bloque'>
-        
         <div id='imagen'>
             <div id='imagenprincipal'>
-                <img id='imgvar' class='imagen' src='${producto.images[0]}'>
+                <img class='imagen' src='${producto.images[0]}'>
             </div>
-            <div id='imagenes' class='imagenes'>
-            </div>
+            <div id='imagenes' class='imagenes'></div>
         </div>
         <div id="info">
             <p>${producto.name}</p>
-            <div class='description'>${producto.description}
-            
-            </div>
-            
+            <div class='description'>${producto.description}</div>
             <div class='juntos'>
               <div class='btn precio'>${producto.currency}$${producto.cost}</div>
               <div class='btn' id='comprar'>Comprar</div>
             </div>
             <div id='vendidos'>
               <div class='btn vendidos'>${producto.soldCount} vendidos.</div>
-              <div class='btn masvendido hidden'>Mas vendido</div>
             </div>
-        </div>
+            </div>
     </div>
-    
-    `
-    dato.appendChild
-};
-//caja = div, cantidad es la cantidad de imagenes que hay, de producto voy a conseguir las imagenes.
-function agregarImagenes(caja, cantidad, producto){
-    for(let i=0; i < cantidad; i++){
-        let div = document.createElement('div');
-        div.id=i;
-        div.innerHTML=`<img class='imag' id='${i}' src='${producto.images[i]}'>`
-        caja.appendChild(div);
-    }
-};
-
-
-function masvendido(producto){
-  fetch('https://japceibal.github.io/emercado-api/cats/cat.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error en la solicitud: ' + response.status);
-    }
-    return response.json(); // Convertir la respuesta en JSON
-  })
-  .then(data => {
-    // Aquí manejas los datos que recibiste (por ejemplo, mostrar los productos)
-    let cantidad = data.length;
-    let i = 0;
-    while (i<cantidad && data[i].name != producto.category){
-      i++;
-    };
-    fetch("https://japceibal.github.io/emercado-api/cats_products/"+data[i].id+".json")
-    .then(response => {
-    if (!response.ok) {
-      throw new Error('Error en la solicitud: ' + response.status);
-    }
-    return response.json(); // Convertir la respuesta en JSON
-  })
-  .then(dato => {
-    // Aquí manejas los datos que recibiste (por ejemplo, mostrar los productos)
-    let vendidos = producto.soldCount;
-    let cant = dato.products.length;
-    let a = 0;
-    while (a < cant && (vendidos >= dato.products[a].soldCount)){
-      a++;
-    };
-    if (a == cant){
-      document.querySelector('.btn.masvendido').classList.remove('hidden');
-    } else {
-      document.querySelector('.btn.masvendido').classList.add('hidden');
-    }
-    // renderProductos(data); // Llamas a una función que renderiza productos en el DOM
-  })
-  .catch(error => {
-    // Manejo de errores
-    console.error('Hubo un problema con el fetch:', error);
-});
-    // renderProductos(data); // Llamas a una función que renderiza productos en el DOM
-  })
-  .catch(error => {
-    // Manejo de errores
-    console.error('Hubo un problema con el fetch:', error);
-});
+  `;
 }
 
+// ================== Agregar miniaturas ==================
+function agregarImagenes(caja, cantidad, producto) {
+  for (let i = 0; i < cantidad; i++) {
+    let div = document.createElement("div");
+    div.id = i;
+    div.innerHTML = `<img class='imag miniatura' data-id='${i}' src='${producto.images[i]}'>`;
+    caja.appendChild(div);
+  }
+
+  const mainImg = document.querySelector("#imagenprincipal .imagen");
+  const miniaturas = caja.querySelectorAll(".miniatura");
+
+  function cambiarImagen(src, thumb) {
+    mainImg.style.opacity = 0;
+    setTimeout(() => {
+      mainImg.src = src;
+      mainImg.style.opacity = 1;
+    }, 200);
+    miniaturas.forEach(img => img.classList.remove("active"));
+    thumb.classList.add("active");
+  }
+
+  miniaturas.forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      cambiarImagen(thumb.src, thumb);
+    });
+  });
+
+  if (miniaturas[0]) miniaturas[0].classList.add("active");
+}
+
+// ================== Mostrar productos relacionados ==================
+function mostrarRelacionados(relacionados) {
+  let contenedorRel = document.getElementById("relacionados-container");
+  contenedorRel.innerHTML = `<h2>Productos relacionados</h2><div id="relacionados" style="display:flex; gap:2em; flex-wrap:wrap;"></div>`;
+  
+  contenedorRel = contenedorRel.querySelector("#relacionados");
+
+  relacionados.forEach(rel => {
+    let url = `https://japceibal.github.io/emercado-api/products/${rel.id}.json`;
+    fetch(url)
+      .then(res => res.json())
+      .then(prod => {
+        let card = document.createElement("div");
+        card.classList.add("relacionado");
+        card.style = "cursor:pointer; width:15em; text-align:center;";
+
+        card.innerHTML = `
+          <img src="${prod.images[0]}" style="width:100%; border-radius:1em;">
+          <h3>${prod.name}</h3>
+          <p>${prod.currency} ${prod.cost}</p>
+        `;
+
+        card.addEventListener("click", () => {
+          localStorage.setItem("dato-ide", prod.id);
+          window.location.href = "product-info.html";
+        });
+
+        contenedorRel.appendChild(card);
+      });
+  });
+}
+
+// ================== Lógica de "más vendido" ==================
+function masvendido(producto) {
+  fetch("https://japceibal.github.io/emercado-api/cats/cat.json")
+    .then(res => res.json())
+    .then(data => {
+      let categoria = data.find(cat => cat.name === producto.category);
+      return fetch(`https://japceibal.github.io/emercado-api/cats_products/${categoria.id}.json`);
+    })
+    .then(res => res.json())
+    .then(dato => {
+      let vendidos = producto.soldCount;
+      let maxVendidos = Math.max(...dato.products.map(p => p.soldCount));
+      if (vendidos >= maxVendidos) {
+        document.querySelector(".btn.masvendido").classList.remove("hidden");
+      }
+    })
+    .catch(err => console.error("Hubo un problema con el fetch:", err));
+}
+
+// ================== Cargar producto principal ==================
 fetch(pagina)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error en la solicitud: ' + response.status);
-    }
-    return response.json(); // Convertir la respuesta en JSON
-  })
+  .then(res => res.json())
   .then(data => {
-    // Aquí manejas los datos que recibiste (por ejemplo, mostrar los productos)
-    let div = document.createElement('div');
+    let div = document.createElement("div");
     mostrar(div, data);
     contenedor.appendChild(div);
 
-    let imagenes = document.querySelector('#imagenes');
+    let imagenes = document.querySelector("#imagenes");
     let cantidad = data.images.length;
-    agregarImagenes(imagenes,cantidad,data);
+    agregarImagenes(imagenes, cantidad, data);
+
     masvendido(data);
-    //variables utiles que no se pueden definir antes de usar mostrar.
-    //código para cambiar la imagen principal cuando se le da click 
-    //a una de las imagenes que esta por debajo de la imagen principal.
-    document.querySelectorAll('#imagenes img').forEach(e =>{
-      e.addEventListener('click', ()=>{
-        let imagen = document.getElementById('imgvar');
-        imagen.src=e.src;
-      });
-    });
 
-
-    // renderProductos(data); // Llamas a una función que renderiza productos en el DOM
+    // 🔹 Ahora mostramos relacionados en el footer
+    if (data.relatedProducts && data.relatedProducts.length > 0) {
+      mostrarRelacionados(data.relatedProducts);
+    }
   })
-  .catch(error => {
-    // Manejo de errores
-    console.error('Hubo un problema con el fetch:', error);
-});
-
-
-//código para cambiar la imagen principal cuando se le da click 
-//a una de las imagenes que esta por debajo de la imagen principal.
-document.querySelectorAll('imagenes').forEach(btn =>{
-  btn.addEventListener('click', ()=>{
-    imagen.src='httmp.com';
-  });
-});
-
+  .catch(err => console.error("Hubo un problema con el fetch:", err));
