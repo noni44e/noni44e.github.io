@@ -1,521 +1,343 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 body{
-    background-color: rgba(223, 223, 223, 0.836);
-    display: flex;
+    color:black;
+    background-color: #d9dedf;
+    background-size: cover;
+}
+
+p{
+    font-size:3em;
+    color:black;
+    font-family:'Trebuchet MS';
+}
+
+#principal{
+    display:flex;
+    gap:2em;
+}
+
+.azul{
+font-size: 1rem;
+}
+
+#bloque{
+    display:flex;
+    margin:2em;
+    margin-left:0em;
+    gap:2.4em;
+}
+
+#info{
+    background: rgb(238, 238, 238);
+    width:30em;
+    height: 40em;
+    text-align: center;
+    padding-top:1em;
+    display:flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-main{
-    display: flex;
-    gap: 20px;
-    align-items: stretch;
-    flex: 1;
-}
-header {
-    background-color: #9bc9cc;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px 40px;
-    border: 1px solid #000;
+    box-shadow: 0 4px 20px rgba(150, 145, 145, 0.11);
+    transition: box-shadow 0.3s ease;
+    opacity: 0.95;
 }
 
-header .logocarrito {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+#info:hover{
+    box-shadow: 0 4px 20px rgba(150, 145, 145, 0.281);
 }
 
-header .logo{
-    font-family: "Roboto", sans-serif;
-    font-size: 70px;
-    font-weight: 400;
+.imagen{
+    min-height:30em;
+    min-width:50em;
+    border-radius:2em;
+    transition: transform 0.3s ease;
+}
+
+.imagen:hover{
+    transform: scale(1.03);
+}
+
+#imagenprincipal{
+    min-height:30em;
+    min-width:50em;
+    border-radius:2em;
+    transition: transform 0.3s ease;
+}
+
+.imag{
+    height:5em;
+    width:8em;
+    margin-left:1em;
+    transition: transform 0.5s ease, border-radius 0.5s ease;
+    border-radius: 5px;
     
 }
 
-header .encabezado a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #FFF;
-    font-family: "Roboto", sans-serif;
-    font-size: 48px;
-    font-weight: 400;
+.imag:hover{
+    border-radius: 0px;
+    transform:scale(1.05);
 }
 
-header .imagenbarra {
-  width: 62px;
-  height: 62px;
-  background: url(/img/logobarra101.png) no-repeat center;
-  background-size: contain;
-}
-
-#filtros {
-  height: 100%;
-  width: 10em;
-  background-color: #9bc9cc;
-  margin-top: 0;
-  transition: width 1s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-/*
-#filtros:hover {
-  width: 20em;
-}
-  */
-#busca {
-  width: 90%;
-  margin-top: 20px;
-}
-#busca input {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  border-radius: 5px;
-  transition: all 1s ease;
-}
-
-
-/* -webkit-text-stroke: 2px black; /*
-
-/* color celeste: rgb(182, 207, 237) */
-/* color naranja: rgb(182, 190, 92) */
-
-
-#catalogo{
+.imagenes{
     display:flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.tarjeta{
-    height: 20em;
-    width: 20em;
+    align-items:center;
+    margin-top:1em;
+    margin-left:1em;
+
 }
 
-
-
-
-/* FOOTER */
-footer {
-  font-display:fixed; 
-  background-color: #000000;
-  color: #ffffff;
-  max-height: 120px;
-  overflow: hidden;
-  font-family: "Markazi Text", serif;
-  margin-top: auto;
-}
-
-.footer-contenido {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.footer-secciones {
-  margin: 5px 10px;
-  max-width: 200px;
-}
-
-.footer-secciones.logo h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.footer-secciones button.toggle-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.2em;
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: 10px;
-}
-
-.footer-secciones button.toggle-btn:focus {
-  outline: none;
-}
-
-.toggle-contenido {
-  display: none;        
-  list-style: none;     
-  padding: 0;
-  margin: 0;
-}
-
-.toggle-contenido li {
-  margin: 8px 0;        
-}
-
-.toggle-contenido a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.toggle-contenido p {
-  color: #fff;
-  text-decoration: none;
-font-size: 0.9em;
-  line-height: 1.4em;
-  max-width: 400px;   
-  margin: auto;
-}
-
-.toggle-contenido a:hover {
-      color: #fff;  
-  text-decoration: underline;
-}
-
-
-/*principal*/
-#principal{
-    display: flex;
-    gap: 2.5em;
-}
-
-#contenedor{
-  display:grid;
-  grid-template-columns: repeat(3,1fr);
-  margin-top: 1em;
-  gap:1.5em;
-}
-
-.tarjeta{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  margin-bottom:0;
-  display: inline-block;
-  min-width: 25em;
-  min-height:35em;
-  margin: 0.6%;
-  margin-top: 2em;
-  border: 1px solid #f1f1f1;
-  border-radius:8px;
-  background-color: rgb(255, 254, 254);
-  box-shadow: 0px 0px 0px rgba(92, 89, 89, 0.4);
-  text-align:center;
-  padding:1em;
-  transition: background-color 0.8s ease, box-shadow 0.4s ease-in, transform 0.3s ease;
-}
-
-
-.tarjeta:hover {
-  background-color: #ffffff;
-  box-shadow: 0 4px 20px rgba(150, 145, 145, 0.4);
-  transform: scale(1.05);
-}
-
-/* Secciones dentro de la tarjeta */
-.tarjeta .foto {
-  background-color: rgb(255, 254, 254);
-  height: 45%;
-}
-
-.tarjeta .text {
-  font-size:1em;
-  background-color: #ffffff00;
-  color: #141414;
-  padding: 0.5em;
-  height: 20%;
-  margin-top:2em;
-  margin-bottom:0em;
-  margin-left: 2em;
-  margin-right: 2em;
-}
-
-.tarjeta .precio {
-  height: 3em;
-  line-height: 3em;
-  background-color: #e99f16;
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 0.6em;
-}
-
-#filtros{
-    height: 100vw;
-    width: 15em;
-    background-color: #cdd8da;
-    margin-top: 0;
-    transition: width 1s ease;
-}
-/*
-#filtros:hover{
-    width: 20em;
-}
-*/
-
-.foto{
-    background-color: #f5f9fa;
-}
-
-.text{
-  font-family: arial;
-  background-color: #dbdbda;
-}
-
-.precio{
-    height: 3em;
-    text-align: center;
-    background-color: rgb(90, 36, 36);
-}
-
-img{
-    height:100%;
-    width: 100%;
-}
-
-.nombre{
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size:2em;
-  width: 100%;
-  color:#141414;
-  margin-bottom: 0;
-}
-
-.comprar{
-  display:flex;
-  text-align: center;
-  height:4em;
-  width:20em;
-}
-
-.button{
-  border-radius: 0.4em;
-  font-size: 1.2em;
-  cursor:default;
-  padding:0.8em;
-  color:rgb(243, 243, 243);
-  height: 2.5em;
-  width:7em;
-  margin-left: 1.5em;
-  margin-right: 2.5em;
-  background-color: #83a6a8;
-  transition: background-color 1s ease, color 0.4s ease;
-}
-
-.button.izq{
-  color: black;
-  background-color: #ffffff;
-  border: 2px solid #b0cacc;
-  transition: border-color 0.3s ease;
-}
-
-.der{
-  width:10em;
-}
-
-.der:hover{
-  color: #141414;
-}
-
-.button:hover{
-  cursor:pointer;
-  background-color: #b0cacc;
-}
-
-.izq:hover{
-  color:white;
-  border-color:white;
-}
-/* =================== */
-/* 💻 1366 x 768 (Notebook o Laptop estándar) */
-/* =================== */
-
-@media (max-width: 1366px) {
-  #contenedor {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .tarjeta {
-    width: 100%;
-    height: auto;
-  }
-
-  .comprar {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
+.description{
     width:100%;
-    justify-items: center;
+    height:16em;
+    color: black;
+    font-family:'Trebuchet MS';
+    font-size:1.5em;
 }
 
-  .button {
-    width: 80%;
-    margin: 0.8em 0;
-  }
-#filtros{
-  height: auto;
-}
-}
-/* =================== */
-/* 📱 Tableta en Modo Vertical (768 x 1024) */
-/* =================== */
 
-@media (max-width: 768px) {
-  .nombre {
-    font-size: 240%;
-  }
-  header {
-    flex-direction: grid;
-    padding: 2em;
-    text-align:left;
-}
-  header .logo {
-    font-size: 5rem;
-  }
-
-  header .encabezado a {
-    font-size: 2rem;
-  }
-
-  #busca {                                             
-    width: 100%;
-    margin-top: 0.2em;
-    margin-bottom: 1em;
-
-  }
-  #principal {
-    flex-direction: column;
-    gap: 0em;
-  }
-
-  #contenedor {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  #filtros {
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color:#ffffff00;
-  }
-
-  .tarjeta {
-    height: 40em;
-    width: 23em;
-    padding: 1em;
-    margin-top: 0em;
-    margin-right: 0.1em;
-  }
-
-  .comprar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    justify-items: center; /* Centra los botones horizontalmente en cada columna */
-     gap: 1em; /* Espacio entre botones */
-  }
-
-  .button {
-    width: 100%;
-    font-size: 1rem;
-    margin: 0.5em 0;
+.btn.precio{
+    text-align:center;
+    align-items:center;
+    width:100%;
+    height:100%;
+    font-size:1.5em;
+    font-family:'Trebuchet MS';
+    background-color: #e99f16;
+    cursor:default;
+    border:solid 3px rgb(238, 238, 238);
+    opacity:1;
+    
+    
 }
 
-/* =================== */
-/* 📱 Smartphone Pequeño (iPhone SE) */
-/* =================== */
-
-@media (max-width: 480px) {
-  header {
-    flex-direction: grid;
-    padding: 0em;
-    text-align: center;
-  }
-
-  header .logo {
-    font-size: 2rem;
-    margin-left: 1.5%;
-  }
-
-  header .encabezado a {
-    font-size: 1.2rem;
-    display: block;
-    margin: 0.5em 0;
-  }
-
-  #filtros {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    background-color:#ffffff00;
-  }
-
-  #busca {                                                
-    width: 100%;
-    margin-top: 0.2em;
-    margin-bottom: 0.3em;
-  }
-
-  #contenedor {
-    margin-top: 0em;
-    grid-template-columns: 1fr;
-    gap: 1em;
-  }
-  #principal {
-    flex-direction: column;
-    gap: 1em;
-  }
-  .tarjeta {
-    width: 95%;
-    padding: 2em;
-    margin-left: 0.7rem;
-    margin-top: 0em;
-  }
-
-  .text, .nombre {
-    font-size: 1em;
-  }
-
-  .nombre {
-    font-size: 2rem;
-  }
-
-  .comprar {
+.juntos{
     display:grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-  }
+    grid-template-columns: repeat(2,1fr);
+}
 
-  .button {
-    width: 100%;
-    font-size: 1rem;
-    margin: 0.5em 0;
-  }
+#comprar{
+    background-color: #83a6a8;
+    font-size:1.5em;
+    font-family:'Trebuchet MS';
+    border:solid 3px #83a6a8;
+    border-color:rgb(238, 238, 238);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
 
-  footer {
-    font-size: 0.9rem;
+#comprar:hover{
+    background: rgb(238, 238, 238);
+    border-color: #83a6a8;
+    color:black;
+
+}
+
+#vendidos{
+    margin-top: 2em;
+    margin-right:9em;
+
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.btn.category{
+    text-align:center;
+    font-size:0.9em;
+    cursor: default;
+    width:10em;
+    height:1em;
+    color: red
+}
+
+.btn.masvendido{
+    width: 8em;
+    height:2em;
     text-align: center;
-  }
+    padding-top:0.2em;
+    background-color: #e99f16;
+}
 
-  .footer-contenido {
+.arriba{
+    margin-bottom:0;
+    display:grid;
+    gap:0;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.hidden{
+    display:none;
+}
+
+
+/* Productos relacionados   */
+
+.relacionado {
+    background-color: #d9d3d3;
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.5rem;
+    display: block;
+    max-width: 18rem;
+    margin: 1rem;
+}
+
+.relacionado:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.relacionado img {
+    width: 80%;
+    max-width: 60%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.relacionado:hover img {
+    transform: scale(1);
+}
+
+.relacionado h3 {
+    margin-top: 0.3125rem;
+    color: rgb(0, 0, 0);
+    padding: 0.1875rem;
+    font-size: 2rem;
+}
+h2{
+    margin-top: 0%;
+    font-size: 2rem;
+    color: #333;
+    margin: 0rem;
+}
+.relacionado p {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+#relacionados-container h2 {
+    margin-left: 0.5em;
+    margin-bottom: 1em;
+}
+.otros-productos{
+    position: relative;
+    left: 18rem;
+    top: -2rem;
+    transition: none;
+    cursor: move;
+    width: 40%;
+}
+
+/*{
+    display: flex
+;
+    gap: 2em;
+    flex-wrap: wrap;
+    width: 1140px;
+    transition: none;
+    cursor: move;
+} */
+
+
+
+
+
+/* =================== */
+/* 💻 Escritorio grande */
+/* =================== */
+@media (max-width: 1366px) {
+  #principal {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    padding: 2em;
+  }
+  #imagenprincipal .imagen {
+    width: 50em;
+    height: auto;
+    border-radius: 2em;
+  }
+  #info {
+    width: 30em;
+    font-size: 1.5em;
+    padding: 1em;
+  }
+  .imag {
+    width: 8em;
+    height: 5em;
+    margin-left: 1em;
+  }
+  .otros-productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    left: 18rem;
+    top: -2rem;
+  }
+}
+
+/* =================== */
+/* 📱 Tablet vertical / iPad */
+/* =================== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  #principal {
     flex-direction: column;
-    align-items: center;
+    gap: 1.5em;
+    padding: 1em;
   }
-
-  .footer-secciones {
+  #imagenprincipal .imagen {
+    width: 100%;
     max-width: 100%;
+    height: auto;
+  }
+  #info {
+    width: 95%;
+    font-size: 1.3em;
+    padding: 0.8em;
+  }
+  .imag {
+    width: 6em;
+    height: 4em;
+    margin-left: 0.5em;
+  }
+  .otros-productos {
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    gap: 1em;
   }
 }
-}
 
-/* BOTONES DEL FILTRO */
-.botonfiltro{
-  gap:1em;
-  margin-top:1em;
-  align-items:center;
-  text-align:center;
-  
-  background: #b0cacc;
-  height:2.5em;
-  width:4.5em;
+/* =================== */
+/* 📱 Smartphone / iPhone SE */
+/* =================== */
+@media (max-width: 768px) {
+  #principal {
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5em;
+  }
+  #imagenprincipal .imagen {
+    width: 100%;
+    height: auto;
+  }
+  #info {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em;
+  }
+  .imag {
+    width: 5em;
+    height: 3.5em;
+    margin-left: 0.3em;
+  }
+  .otros-productos {
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    gap: 0.5em;
+  }
 }
