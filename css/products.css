@@ -60,7 +60,7 @@ header .imagenbarra {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100em;
+  height: auto;
   width: 20em;
   background-color: #cdd8da;
   margin-top: 0;
