@@ -227,7 +227,22 @@ h2{
     left: 18rem;
     top: -2rem;
     transition: none;
+    cursor: move;
+    width: 40%;
 }
+
+/*{
+    display: flex
+;
+    gap: 2em;
+    flex-wrap: wrap;
+    width: 1140px;
+    transition: none;
+    cursor: move;
+} */
+
+
+
 
 
 /* =================== */
