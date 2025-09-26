@@ -16,7 +16,7 @@ p{
 }
 
 .azul{
-font-size: 1rem;
+    font-size: 1rem;
 }
 
 #bloque{
@@ -67,7 +67,6 @@ font-size: 1rem;
     margin-left:1em;
     transition: transform 0.5s ease, border-radius 0.5s ease;
     border-radius: 5px;
-    
 }
 
 .imag:hover{
@@ -80,7 +79,6 @@ font-size: 1rem;
     align-items:center;
     margin-top:1em;
     margin-left:1em;
-
 }
 
 .description{
@@ -90,7 +88,6 @@ font-size: 1rem;
     font-family:'Trebuchet MS';
     font-size:1.5em;
 }
-
 
 .btn.precio{
     text-align:center;
@@ -103,8 +100,6 @@ font-size: 1rem;
     cursor:default;
     border:solid 3px rgb(238, 238, 238);
     opacity:1;
-    
-    
 }
 
 .juntos{
@@ -125,15 +120,23 @@ font-size: 1rem;
     background: rgb(238, 238, 238);
     border-color: #83a6a8;
     color:black;
-
 }
 
 #vendidos{
-    margin-top: 2em;
-    margin-right:9em;
+    font-size: 1rem;
+    margin: 0;
+}
 
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
+.estrella-vendidos {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#promedio-estrellas {
+    font-size: 1.5em;
+    color: #f39c12;
+    margin: 0;
 }
 
 .btn.category{
@@ -164,9 +167,7 @@ font-size: 1rem;
     display:none;
 }
 
-
 /* Productos relacionados   */
-
 .relacionado {
     background-color: #d9d3d3;
     flex: 1;
@@ -207,21 +208,25 @@ font-size: 1rem;
     padding: 0.1875rem;
     font-size: 2rem;
 }
+
 h2{
     margin-top: 0%;
     font-size: 2rem;
     color: #333;
     margin: 0rem;
 }
+
 .relacionado p {
     margin-top: 1rem;
     font-weight: bold;
     color: #333;
 }
+
 #relacionados-container h2 {
     margin-left: 0.5em;
     margin-bottom: 1em;
 }
+
 .otros-productos{
     position: relative;
     left: 18rem;
@@ -231,113 +236,112 @@ h2{
     width: 40%;
 }
 
-/*{
-    display: flex
-;
-    gap: 2em;
-    flex-wrap: wrap;
-    width: 1140px;
-    transition: none;
-    cursor: move;
-} */
+#comentarios-container {
+    width: 85%;
+    padding-left: 19em;
+}
 
-
-
-
+.comentario {
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    background: #f9f9f9;
+    font-size: 0.3em;         
+    box-sizing: border-box;
+}
 
 /* =================== */
 /* 💻 Escritorio grande */
 /* =================== */
 @media (max-width: 1366px) {
-  #principal {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
-    padding: 2em;
-  }
-  #imagenprincipal .imagen {
-    width: 50em;
-    height: auto;
-    border-radius: 2em;
-  }
-  #info {
-    width: 30em;
-    font-size: 1.5em;
-    padding: 1em;
-  }
-  .imag {
-    width: 8em;
-    height: 5em;
-    margin-left: 1em;
-  }
-  .otros-productos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2em;
-    left: 18rem;
-    top: -2rem;
-  }
+    #principal {
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+        padding: 2em;
+    }
+    #imagenprincipal .imagen {
+        width: 50em;
+        height: auto;
+        border-radius: 2em;
+    }
+    #info {
+        width: 30em;
+        font-size: 1.5em;
+        padding: 1em;
+    }
+    .imag {
+        width: 8em;
+        height: 5em;
+        margin-left: 1em;
+    }
+    .otros-productos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+        left: 18rem;
+        top: -2rem;
+    }
 }
 
 /* =================== */
 /* 📱 Tablet vertical / iPad */
 /* =================== */
 @media (max-width: 1024px) and (min-width: 769px) {
-  #principal {
-    flex-direction: column;
-    gap: 1.5em;
-    padding: 1em;
-  }
-  #imagenprincipal .imagen {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  #info {
-    width: 95%;
-    font-size: 1.3em;
-    padding: 0.8em;
-  }
-  .imag {
-    width: 6em;
-    height: 4em;
-    margin-left: 0.5em;
-  }
-  .otros-productos {
-    flex-direction: column;
-    left: 0;
-    top: 0;
-    gap: 1em;
-  }
+    #principal {
+        flex-direction: column;
+        gap: 1.5em;
+        padding: 1em;
+    }
+    #imagenprincipal .imagen {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    #info {
+        width: 95%;
+        font-size: 1.3em;
+        padding: 0.8em;
+    }
+    .imag {
+        width: 6em;
+        height: 4em;
+        margin-left: 0.5em;
+    }
+    .otros-productos {
+        flex-direction: column;
+        left: 0;
+        top: 0;
+        gap: 1em;
+    }
 }
 
 /* =================== */
 /* 📱 Smartphone / iPhone SE */
 /* =================== */
 @media (max-width: 768px) {
-  #principal {
-    flex-direction: column;
-    gap: 1em;
-    padding: 0.5em;
-  }
-  #imagenprincipal .imagen {
-    width: 100%;
-    height: auto;
-  }
-  #info {
-    width: 100%;
-    font-size: 1em;
-    padding: 0.5em;
-  }
-  .imag {
-    width: 5em;
-    height: 3.5em;
-    margin-left: 0.3em;
-  }
-  .otros-productos {
-    flex-direction: column;
-    left: 0;
-    top: 0;
-    gap: 0.5em;
-  }
+    #principal {
+        flex-direction: column;
+        gap: 1em;
+        padding: 0.5em;
+    }
+    #imagenprincipal .imagen {
+        width: 100%;
+        height: auto;
+    }
+    #info {
+        width: 100%;
+        font-size: 1em;
+        padding: 0.5em;
+    }
+    .imag {
+        width: 5em;
+        height: 3.5em;
+        margin-left: 0.3em;
+    }
+    .otros-productos {
+        flex-direction: column;
+        left: 0;
+        top: 0;
+        gap: 0.5em;
+    }
 }
