@@ -152,46 +152,6 @@ function mostrarCalificaciones(comentarios) {
   comentarios.forEach(c => {
     let div = document.createElement("div");
     div.classList.add("comentario");
-    div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;";// ================== Mostrar calificaciones ================== -- new
-function mostrarCalificaciones(comentarios) {
-  let contenedorComentarios = document.getElementById("comentarios-container");
-
-  // Calcular promedio de estrellas
-  let promedio = 0;
-  if (comentarios.length > 0) {
-    promedio = comentarios.reduce((acc, c) => acc + c.score, 0) / comentarios.length;
-    promedio = Math.round(promedio * 10) / 10; 
-    
-  }
-
-  // Mostrar estrellas promedio == new
-  let estrellasProm = "";
-  for (let i = 1; i <= 5; i++) {
-    estrellasProm += i <= Math.round(promedio) ? "⭐" : "☆";
-  }
-
-  // 🔹 Mostrar promedio == new
-  let infoDiv = document.getElementById("info");
-  if (infoDiv) {
-    let promedioDiv = document.getElementById("promedio-estrellas");
-    if (!promedioDiv) {
-      promedioDiv = document.createElement("div");
-      promedioDiv.id = "promedio-estrellas";
-      infoDiv.appendChild(promedioDiv);
-    }
-    promedioDiv.innerHTML = `<strong>${promedio} / 5</strong> <span>${estrellasProm}</span>`;
-  }
-
-  contenedorComentarios.innerHTML = `
-    <h2>Calificaciones</h2>
-    <div id="lista-comentarios" style="display:flex; flex-direction:column; gap:1em;"></div>
-  `;
-
-  let lista = contenedorComentarios.querySelector("#lista-comentarios");
-
-  comentarios.forEach(c => {
-    let div = document.createElement("div");
-    div.classList.add("comentario");
     div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;";
 // ================== Cargar producto principal ==================
 fetch(pagina)
