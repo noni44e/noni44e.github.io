@@ -25,6 +25,7 @@ function mostrar(dato, producto) {
             </div>
             <div id='vendidos'>
               <div class='btn vendidos'>${producto.soldCount} vendidos.</div>
+              
             </div>
             </div>
     </div>
@@ -112,6 +113,7 @@ function masvendido(producto) {
     })
     .catch(err => console.error("Hubo un problema con el fetch:", err));
 }
+
 // ================== Mostrar calificaciones ================== -- new
 function mostrarCalificaciones(comentarios) {
   let contenedorComentarios = document.getElementById("comentarios-container");
@@ -153,6 +155,24 @@ function mostrarCalificaciones(comentarios) {
     let div = document.createElement("div");
     div.classList.add("comentario");
     div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;";
+
+    // estrellas dinámicas
+    let estrellas = "";
+    for (let i = 1; i <= 5; i++) {
+      estrellas += i <= c.score ? "⭐" : "☆";
+    }
+
+    div.innerHTML = `
+      <p><strong>${c.user}</strong> - <small>${c.dateTime}</small></p>
+      <p>${c.description}</p>
+      <p>${estrellas}</p>
+    `;
+
+    lista.appendChild(div);
+  });
+}
+
+
 // ================== Cargar producto principal ==================
 fetch(pagina)
   .then(res => res.json())
@@ -171,6 +191,15 @@ fetch(pagina)
     if (data.relatedProducts && data.relatedProducts.length > 0) {
       mostrarRelacionados(data.relatedProducts);
     }
+
+    // 🔹 Comentarios dinámicos -- new
+    fetch(`https://japceibal.github.io/emercado-api/products_comments/${data.id}.json`)
+      .then(res => res.json())
+      .then(comentarios => {
+        if (comentarios.length > 0) {
+          mostrarCalificaciones(comentarios);
+        }
+      })
+      .catch(err => console.error("Error cargando comentarios:", err));
   })
-  .catch(err => console.error("Hubo un problema con el fetch:", err)); 
- 
+  .catch(err => console.error("Hubo un problema con el fetch:", err));
