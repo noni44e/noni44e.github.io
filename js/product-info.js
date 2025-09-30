@@ -28,6 +28,7 @@ function mostrar(dato, producto) {
               
             </div>
             </div>
+            
     </div>
   `;
 }
@@ -82,7 +83,7 @@ function mostrarRelacionados(relacionados) {
         card.innerHTML = `
           <img src="${prod.images[0]}" style="width:100%; border-radius:1em;">
           <h3>${prod.name}</h3>
-          <p>${prod.currency} ${prod.cost}</p>
+          <p id="prelacionados">${prod.currency} ${prod.cost}</p>
         `;
 
         card.addEventListener("click", () => {
@@ -173,6 +174,15 @@ function mostrarCalificaciones(comentarios) {
 }
 
 
+document.getElementById('btnenviar').addEventListener('submit',function(e){
+  e.preventDefault();
+  let text = document.getElementById('inputtext').value.trim();
+  let cal = document.getElementById('calificacion').value;
+  localStorage.setItem('texto',text);
+  localStorage.setItem('cali',cal);
+});
+
+
 // ================== Cargar producto principal ==================
 fetch(pagina)
   .then(res => res.json())
@@ -186,7 +196,7 @@ fetch(pagina)
     agregarImagenes(imagenes, cantidad, data);
 
     masvendido(data);
-
+    
     // 🔹 Ahora mostramos relacionados en el footer
     if (data.relatedProducts && data.relatedProducts.length > 0) {
       mostrarRelacionados(data.relatedProducts);

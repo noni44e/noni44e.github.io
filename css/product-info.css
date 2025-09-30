@@ -10,6 +10,10 @@ p{
     font-family:'Trebuchet MS';
 }
 
+#prelacionados{
+    font-size: 1em;
+}
+
 #principal{
     display:flex;
     gap:2em;
@@ -134,8 +138,8 @@ p{
 }
 
 #promedio-estrellas {
-    font-size: 1.5em;
-    color: #f39c12;
+    font-size: 1.2em;
+    color: #000000;
     margin: 0;
 }
 
@@ -145,7 +149,7 @@ p{
     cursor: default;
     width:10em;
     height:1em;
-    color: red
+    color: rgb(0, 0, 0)
 }
 
 .btn.masvendido{
@@ -169,7 +173,7 @@ p{
 
 /* Productos relacionados   */
 .relacionado {
-    background-color: #d9d3d3;
+    background-color: #ececec;
     flex: 1;
     text-align: center;
     padding: 0.5rem;
@@ -206,7 +210,7 @@ p{
     margin-top: 0.3125rem;
     color: rgb(0, 0, 0);
     padding: 0.1875rem;
-    font-size: 2rem;
+    font-size: 1.3rem;
 }
 
 h2{
@@ -248,6 +252,87 @@ h2{
     font-size: 0.3em;         
     box-sizing: border-box;
 }
+
+#contenedor-comentar{
+    padding-left: 20vw;
+    padding-right:20vw;
+    display: flex;
+    justify-content: center;
+    padding-bottom:2em; 
+}
+
+#comentar{
+    background-color: #f9f9f9;
+    height: 8em;
+    width: 100%;
+    display: flex;
+    padding: 1em;
+    align-items: center;
+    gap:2em;
+}
+
+form{
+    display:flex;
+    gap:1em;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
+
+input{
+    background-color: #f9f9f9;
+    border:none;
+    border-bottom: 2px solid #83a6a8;
+    transition: border 1s ease;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: 2px solid #e99f16;
+}
+
+#calificacion{
+    border:none;
+    border-bottom: 2px solid #83a6a8;
+    background-color: transparent;
+    padding: 0.5em;
+    transition: all 0.3s ease;
+}
+
+#calificacion:focus{
+    outline: none;
+    border-bottom: 2px solid #e99f16;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+#inputtext{
+    display: flex;
+    margin-left: 10%;
+    gap:3em;
+    width: 80%;
+    height:80%;
+}
+
+#btnenviar{
+    background-color: #83a6a8;
+    font-size:1.5em;
+    font-family:'Trebuchet MS';
+    border:solid 3px #83a6a8;
+    border-color:transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+#btnenviar:hover{
+    background: rgb(238, 238, 238);
+    border-color: #83a6a8;
+    color:black;
+}
+
+#btnenviar:focus{
+    background-color: #83a6a8;
+}
+
 
 /* =================== */
 /* 💻 Escritorio grande */
@@ -345,3 +430,4 @@ h2{
         gap: 0.5em;
     }
 }
+
