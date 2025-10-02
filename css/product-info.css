@@ -1,132 +1,140 @@
-body{
-    color:black;
+/* ====== ESTILOS BASE (Desktop First) ====== */
+body {
+    color: black;
     background-color: #d9dedf;
     background-size: cover;
 }
 
-p{
-    font-size:3em;
-    color:black;
-    font-family:'Trebuchet MS';
+p {
+    font-size: 3em;
+    color: black;
+    font-family: 'Trebuchet MS';
 }
 
-#prelacionados{
+#prelacionados {
     font-size: 1em;
 }
 
-#principal{
-    display:flex;
-    gap:2em;
+#principal {
+    display: flex;
+    gap: 2em;
+    padding: 2em;
+    flex-direction: row;
 }
 
-.azul{
+.azul {
     font-size: 1rem;
 }
 
-#bloque{
-    display:flex;
-    margin:2em;
-    margin-left:0em;
-    gap:2.4em;
+#bloque {
+    display: flex;
+    margin: 2em 0 2em 0;
+    gap: 2.4em;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
-#info{
+#info {
     background: rgb(238, 238, 238);
-    width:30em;
+    width: 30em;
     height: 40em;
     text-align: center;
-    padding-top:1em;
-    display:flex;
+    padding: 1em;
+    display: flex;
     flex-direction: column;
     box-shadow: 0 4px 20px rgba(150, 145, 145, 0.11);
     transition: box-shadow 0.3s ease;
     opacity: 0.95;
 }
 
-#info:hover{
+#info:hover {
     box-shadow: 0 4px 20px rgba(150, 145, 145, 0.281);
 }
 
-.imagen{
-    min-height:30em;
-    min-width:50em;
-    border-radius:2em;
+.imagen {
+    max-width: 50em;
+    width: auto;
+    height: auto;
+    min-height: 30em;
+    min-width: 50em;
+    border-radius: 2em;
     transition: transform 0.3s ease;
 }
 
-.imagen:hover{
+.imagen:hover {
     transform: scale(1.03);
 }
 
-#imagenprincipal{
-    min-height:30em;
-    min-width:50em;
-    border-radius:2em;
+#imagenprincipal {
+    min-height: 30em;
+    min-width: 50em;
+    border-radius: 2em;
     transition: transform 0.3s ease;
 }
 
-.imag{
-    height:5em;
-    width:8em;
-    margin-left:1em;
-    transition: transform 0.5s ease, border-radius 0.5s ease;
+.imag {
+    width: 8em;
+    height: auto;
+    margin-left: 1em;
     border-radius: 5px;
+    transition: transform 0.5s ease, border-radius 0.5s ease;
 }
 
-.imag:hover{
+.imag:hover {
     border-radius: 0px;
-    transform:scale(1.05);
+    transform: scale(1.05);
 }
 
-.imagenes{
-    display:flex;
-    align-items:center;
-    margin-top:1em;
-    margin-left:1em;
+.imagenes {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+    margin-left: 1em;
 }
 
-.description{
-    width:100%;
-    height:16em;
+.description {
+    width: 100%;
+    height: 16em;
     color: black;
-    font-family:'Trebuchet MS';
-    font-size:1.5em;
+    font-family: 'Trebuchet MS';
+    font-size: 1.5em;
 }
 
-.btn.precio{
-    text-align:center;
-    align-items:center;
-    width:100%;
-    height:100%;
-    font-size:1.5em;
-    font-family:'Trebuchet MS';
+.btn.precio {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    font-family: 'Trebuchet MS';
     background-color: #e99f16;
-    cursor:default;
-    border:solid 3px rgb(238, 238, 238);
-    opacity:1;
+    cursor: default;
+    border: solid 3px rgb(238, 238, 238);
+    opacity: 1;
 }
 
-.juntos{
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
+.juntos {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
 }
 
-#comprar{
+#comprar {
     background-color: #83a6a8;
-    font-size:1.5em;
-    font-family:'Trebuchet MS';
-    border:solid 3px #83a6a8;
-    border-color:rgb(238, 238, 238);
+    font-size: 1.5em;
+    font-family: 'Trebuchet MS';
+    border: solid 3px #83a6a8;
+    border-color: rgb(238, 238, 238);
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-#comprar:hover{
+#comprar:hover {
     background: rgb(238, 238, 238);
     border-color: #83a6a8;
-    color:black;
+    color: black;
 }
 
-#vendidos{
+#vendidos {
     font-size: 1rem;
     margin: 0;
 }
@@ -143,35 +151,35 @@ p{
     margin: 0;
 }
 
-.btn.category{
-    text-align:center;
-    font-size:0.9em;
+.btn.category {
+    text-align: center;
+    font-size: 0.9em;
     cursor: default;
-    width:10em;
-    height:1em;
+    width: 10em;
+    height: 1em;
     color: rgb(0, 0, 0)
 }
 
-.btn.masvendido{
+.btn.masvendido {
     width: 8em;
-    height:2em;
+    height: 2em;
     text-align: center;
-    padding-top:0.2em;
+    padding-top: 0.2em;
     background-color: #e99f16;
 }
 
-.arriba{
-    margin-bottom:0;
-    display:grid;
-    gap:0;
-    grid-template-columns: repeat(2,1fr);
+.arriba {
+    margin-bottom: 0;
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.hidden{
-    display:none;
+.hidden {
+    display: none;
 }
 
-/* Productos relacionados   */
+/* Productos relacionados */
 .relacionado {
     background-color: #ececec;
     flex: 1;
@@ -213,7 +221,7 @@ p{
     font-size: 1.3rem;
 }
 
-h2{
+h2 {
     margin-top: 0%;
     font-size: 2rem;
     color: #333;
@@ -231,7 +239,7 @@ h2{
     margin-bottom: 1em;
 }
 
-.otros-productos{
+.otros-productos {
     position: relative;
     left: 18rem;
     top: -2rem;
@@ -249,185 +257,245 @@ h2{
     border: 1px solid #ccc;
     border-radius: 0.5em;
     background: #f9f9f9;
-    font-size: 0.3em;         
+    font-size: 0.3em;
     box-sizing: border-box;
 }
 
-#contenedor-comentar{
+#contenedor-comentar {
     padding-left: 20vw;
-    padding-right:20vw;
+    padding-right: 20vw;
     display: flex;
     justify-content: center;
-    padding-bottom:2em; 
+    padding-bottom: 2em;
 }
 
-#comentar{
+#comentar {
     background-color: #f9f9f9;
     height: 8em;
     width: 100%;
     display: flex;
     padding: 1em;
     align-items: center;
-    gap:2em;
+    gap: 2em;
 }
 
-form{
-    display:flex;
-    gap:1em;
+form {
+    display: flex;
+    gap: 1em;
     align-items: center;
     width: 80%;
     height: 100%;
 }
 
-input{
+input {
     background-color: #f9f9f9;
-    border:none;
+    border: none;
     border-bottom: 2px solid #83a6a8;
     transition: border 1s ease;
 }
 
-input:focus{
+input:focus {
     outline: none;
     border-bottom: 2px solid #e99f16;
 }
 
-#calificacion{
-    border:none;
+#calificacion {
+    border: none;
     border-bottom: 2px solid #83a6a8;
     background-color: transparent;
     padding: 0.5em;
     transition: all 0.3s ease;
 }
 
-#calificacion:focus{
+#calificacion:focus {
     outline: none;
     border-bottom: 2px solid #e99f16;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transform: scale(1.02);
 }
 
-#inputtext{
+#inputtext {
     display: flex;
     margin-left: 10%;
-    gap:3em;
+    gap: 3em;
     width: 80%;
-    height:80%;
+    height: 80%;
 }
 
-#btnenviar{
+#btnenviar {
     background-color: #83a6a8;
-    font-size:1.5em;
-    font-family:'Trebuchet MS';
-    border:solid 3px #83a6a8;
-    border-color:transparent;
+    font-size: 1.5em;
+    font-family: 'Trebuchet MS';
+    border: solid 3px #83a6a8;
+    border-color: transparent;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-#btnenviar:hover{
+#btnenviar:hover {
     background: rgb(238, 238, 238);
     border-color: #83a6a8;
-    color:black;
+    color: black;
 }
 
-#btnenviar:focus{
+#btnenviar:focus {
     background-color: #83a6a8;
 }
 
+/* ====== MEDIA QUERIES ====== */
 
-/* =================== */
-/* 💻 Escritorio grande */
-/* =================== */
-@media (max-width: 1366px) {
-    #principal {
-        display: flex;
-        flex-direction: row;
-        gap: 2em;
-        padding: 2em;
-    }
-    #imagenprincipal .imagen {
-        width: 50em;
-        height: auto;
-        border-radius: 2em;
-    }
-    #info {
-        width: 30em;
-        font-size: 1.5em;
-        padding: 1em;
-    }
-    .imag {
-        width: 8em;
-        height: 5em;
-        margin-left: 1em;
-    }
-    .otros-productos {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2em;
-        left: 18rem;
-        top: -2rem;
-    }
-}
-
-/* =================== */
-/* 📱 Tablet vertical / iPad */
-/* =================== */
-@media (max-width: 1024px) and (min-width: 769px) {
+/* Smartphones: hasta 600px */
+@media (max-width: 600px) {
     #principal {
         flex-direction: column;
-        gap: 1.5em;
-        padding: 1em;
-    }
-    #imagenprincipal .imagen {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-    }
-    #info {
-        width: 95%;
-        font-size: 1.3em;
-        padding: 0.8em;
-    }
-    .imag {
-        width: 6em;
-        height: 4em;
-        margin-left: 0.5em;
-    }
-    .otros-productos {
-        flex-direction: column;
-        left: 0;
-        top: 0;
+        padding: 0.5em;
         gap: 1em;
     }
-}
-
-/* =================== */
-/* 📱 Smartphone / iPhone SE */
-/* =================== */
-@media (max-width: 768px) {
-    #principal {
-        flex-direction: column;
-        gap: 1em;
-        padding: 0.5em;
-    }
-    #imagenprincipal .imagen {
-        width: 100%;
-        height: auto;
+    .imagen, #imagenprincipal {
+        width: 100% !important;
+        min-width: unset;
+        min-height: unset;
+        height: auto !important;
+        border-radius: 1em;
     }
     #info {
-        width: 100%;
-        font-size: 1em;
-        padding: 0.5em;
+        width: 100% !important;
+        height: 30em !important;
+        padding: 0.5em !important;
+        box-sizing: border-box;
     }
     .imag {
-        width: 5em;
-        height: 3.5em;
-        margin-left: 0.3em;
+        width: 4em !important;
+        height: auto !important;
+        margin-left: 0.3em !important;
     }
-    .otros-productos {
+    #bloque {
         flex-direction: column;
-        left: 0;
-        top: 0;
+        align-items: center;
+        gap: 1em !important;
+        margin: 1em 0;
+    }
+    .juntos {
+        flex-direction: column !important;
         gap: 0.5em;
     }
+    #contenedor-comentar {
+        padding: 1em !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #comentar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1em;
+        height: auto;
+    }
+    form {
+        flex-direction: column !important;
+        gap: 1em !important;
+        width: 100% !important;
+        height: auto;
+    }
+    #inputtext {
+        width: 100% !important;
+        margin-left: 0;
+        gap: 1em;
+    }
+    #btnenviar {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    #comentarios-container {
+        width: 100% !important;
+        padding: 0 1em !important;
+    }
+    .comentario {
+        width: 100% !important;
+        font-size: 1em;
+    }
+    .otros-productos {
+        left: 0;
+        top: 0;
+        width: 100%;
+        position: static;
+    }
+    p {
+        font-size: 1em;
+    }
 }
 
+/* Tablet: entre 601px y 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+    #principal {
+        flex-direction: column;
+        padding: 1em;
+        gap: 1.5em;
+    }
+    .imagen, #imagenprincipal {
+        width: 100% !important;
+        min-width: unset;
+        min-height: unset;
+        height: auto !important;
+        border-radius: 1.5em;
+    }
+    #info {
+        width: 90% !important;
+        height: 23em !important;
+        padding: 1em !important;
+    }
+    .imag {
+        width: 5em !important;
+        height: auto !important;
+        margin-left: 0.5em !important;
+    }
+    #bloque {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5em !important;
+        margin: 1em 0;
+    }
+    .juntos {
+        flex-direction: row;
+        gap: 1em;
+    }
+    #contenedor-comentar {
+        padding: 1em;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #comentar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1em;
+        height: auto;
+    }
+    form {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    #inputtext {
+        width: 100%;
+        margin-left: 0;
+        gap: 1em;
+    }
+    #btnenviar {
+        width: 100%;
+    }
+    #comentarios-container {
+        width: 100%;
+        padding: 0 1em;
+    }
+    .comentario {
+        width: 100%;
+        font-size: 1em;
+    }
+    .otros-productos {
+        left: 0;
+        top: 0;
+        width: 100%;
+        position: static;
+    }
+    p {
+        font-size: 1.5em;
+    }
+}
