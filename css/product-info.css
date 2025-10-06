@@ -343,14 +343,10 @@ input:focus {
     background-color: #83a6a8;
 }
 
-<<<<<<< HEAD
 .clase{
     font-size: 0.3em;
     margin-top:3em;
 }
-=======
-/* ====== MEDIA QUERIES ====== */
->>>>>>> 2e5bc68b122b5e955ecc1ca44bdd91b38e96d6a7
 
 /* Smartphones: hasta 600px */
 @media (max-width: 600px) {
