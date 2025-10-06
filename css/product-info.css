@@ -251,6 +251,8 @@ h2{
     background: #f9f9f9;
     font-size: 0.3em;         
     box-sizing: border-box;
+    width: 100%;
+    
 }
 
 #contenedor-comentar{
@@ -333,6 +335,10 @@ input:focus{
     background-color: #83a6a8;
 }
 
+.clase{
+    font-size: 0.3em;
+    margin-top:3em;
+}
 
 /* =================== */
 /* 💻 Escritorio grande */
