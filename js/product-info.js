@@ -1,7 +1,7 @@
 let info = localStorage.getItem("dato-ide");
 let contenedor = document.getElementById("principal");
 let pagina = "https://japceibal.github.io/emercado-api/products/" + info + ".json";
-
+let nombredeusuario = localStorage.getItem('usuario');
 // ================== Mostrar producto principal ==================
 function mostrar(dato, producto) {
   dato.innerHTML = `
@@ -173,15 +173,95 @@ function mostrarCalificaciones(comentarios) {
   });
 }
 
+function estrellas(cantidad){
+  let dibujar= '';
+  for(let i = 0; i < cantidad;i++){
+    dibujar += '⭐';
+  }
+  let nuevacantidad = 5 - cantidad;
+  for(let i = 0; i < nuevacantidad;i++){
+    dibujar+= '☆';
+  }
+  return dibujar;
+}
 
-document.getElementById('btnenviar').addEventListener('submit',function(e){
-  e.preventDefault();
-  let text = document.getElementById('inputtext').value.trim();
-  let cal = document.getElementById('calificacion').value;
-  localStorage.setItem('texto',text);
-  localStorage.setItem('cali',cal);
+function hacercomentario(data){
+  //hacer comentario
+  document.getElementById('formulario').addEventListener('submit',function(e){
+    
+    let tiempo = new Date();
+    let fecha = tiempo.toLocaleDateString();
+    let hora = tiempo.toLocaleTimeString();
+    let idfecha = data.id+'fecha';
+    let idhora = data.id+'hora';
+    let lista = document.getElementById("comentarios-container");
+    e.preventDefault();
+    let text = document.getElementById('inputtext').value.trim();
+    console.log(text);
+    let cal = document.getElementById('calificacion').value;
+    let estrellastexto = estrellas(parseInt(cal));
+    let ide = "texto"+ data.id;
+    let cali = "cal"+data.id;
+    localStorage.setItem(idfecha, fecha);
+    localStorage.setItem(idhora, hora);
+    localStorage.setItem(ide, text);
+    localStorage.setItem(cali, cal);
+      
+    if (localStorage.getItem(ide) === null){
+    
+      let div = document.createElement("div");
+      div.classList.add("comentario");
+      div.classList.add("clase");
+      div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;";
+      div.id = "comentario_"+ data.id;
+      div.innerHTML = `
+        <p><strong>${nombredeusuario}</strong> - <small>${fecha}</small> <small>${hora}</small></p>
+        <p>${text}</p>
+        <p>${estrellastexto}</p>
+
+      `;
+      lista.appendChild(div);
+    } else{
+      let cajaid = "comentario_"+ data.id;
+
+      let caja = document.getElementById(cajaid);
+      caja.innerHTML = `
+      <p><strong>${nombredeusuario}</strong> - <small>${fecha}</small> <small>${hora}</small></p>
+      <p>${text}</p>
+      <p>${estrellastexto}</p>
+      
+    `;
+
+    }
+    document.getElementById('inputtext').value = '';
 });
+}
 
+function cargarcomentario(data){
+  let ide = "texto"+data.id;
+  let idfecha = data.id+'fecha';
+  let idhora = data.id+'hora';
+  if(localStorage.getItem(ide) !== null){
+    let lista = document.getElementById("comentarios-container");
+    let hora = localStorage.getItem(idhora);
+    let fecha = localStorage.getItem(idfecha);
+    let div = document.createElement("div");
+    div.classList.add("comentario");
+    div.classList.add("clase");
+    div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;";
+    let contenido = localStorage.getItem(ide);
+    div.id = "comentario_"+data.id;
+    let cal = document.getElementById('calificacion').value;
+    let estrellastexto = estrellas(parseInt(cal));
+    
+    div.innerHTML = `
+      <p><strong>${nombredeusuario}</strong> - <small>${fecha}</small> <small>${hora}</small></p>
+      <p>${contenido}</p>
+      <p>${estrellastexto}</p>
+    `;
+    lista.appendChild(div);
+  }
+};
 
 // ================== Cargar producto principal ==================
 fetch(pagina)
@@ -209,6 +289,8 @@ fetch(pagina)
         if (comentarios.length > 0) {
           mostrarCalificaciones(comentarios);
         }
+        cargarcomentario(data);
+        hacercomentario(data);
       })
       .catch(err => console.error("Error cargando comentarios:", err));
   })
