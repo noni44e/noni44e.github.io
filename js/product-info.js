@@ -192,6 +192,8 @@ function hacercomentario(data){
     let tiempo = new Date();
     let fecha = tiempo.toLocaleDateString();
     let hora = tiempo.toLocaleTimeString();
+    let idfecha = data.id+'fecha';
+    let idhora = data.id+'hora';
     let lista = document.getElementById("comentarios-container");
     e.preventDefault();
     let text = document.getElementById('inputtext').value.trim();
@@ -200,12 +202,13 @@ function hacercomentario(data){
     let estrellastexto = estrellas(parseInt(cal));
     let ide = "texto"+ data.id;
     let cali = "cal"+data.id;
-
+    localStorage.setItem(idfecha, fecha);
+    localStorage.setItem(idhora, hora);
+    localStorage.setItem(ide, text);
+    localStorage.setItem(cali, cal);
+      
     if (localStorage.getItem(ide) === null){
-      
-      localStorage.setItem(ide, text);
-      localStorage.setItem(cali, cal);
-      
+    
       let div = document.createElement("div");
       div.classList.add("comentario");
       div.classList.add("clase");
@@ -219,9 +222,6 @@ function hacercomentario(data){
       `;
       lista.appendChild(div);
     } else{
-      
-      localStorage.setItem(ide, text);
-      localStorage.setItem(cali, cal);
       let cajaid = "comentario_"+ data.id;
 
       let caja = document.getElementById(cajaid);
@@ -239,9 +239,12 @@ function hacercomentario(data){
 
 function cargarcomentario(data){
   let ide = "texto"+data.id;
+  let idfecha = data.id+'fecha';
+  let idhora = data.id+'hora';
   if(localStorage.getItem(ide) !== null){
     let lista = document.getElementById("comentarios-container");
-  
+    let hora = localStorage.getItem(idhora);
+    let fecha = localStorage.getItem(idfecha);
     let div = document.createElement("div");
     div.classList.add("comentario");
     div.classList.add("clase");
@@ -250,9 +253,7 @@ function cargarcomentario(data){
     div.id = "comentario_"+data.id;
     let cal = document.getElementById('calificacion').value;
     let estrellastexto = estrellas(parseInt(cal));
-    let tiempo = new Date();
-    let fecha = tiempo.toLocaleDateString();
-    let hora = tiempo.toLocaleTimeString();
+    
     div.innerHTML = `
       <p><strong>${nombredeusuario}</strong> - <small>${fecha}</small> <small>${hora}</small></p>
       <p>${contenido}</p>
