@@ -504,3 +504,15 @@ input:focus {
         font-size: 1.5em;
     }
 }
+
+
+/* Modo oscuro y claro */
+[data-bs-theme="dark"] {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+[data-bs-theme="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
