@@ -545,17 +545,3 @@ input:focus {
 [data-bs-theme="dark"] label {
   color: #fff !important;
 }
-
-[data-bs-theme="light"] {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-[data-bs-theme="light"] p {
-  color: #000000;
-}
-
-[data-bs-theme="light"] div {
-  background-color: #f0f0f0; /* o blanco, según tu diseño */
-  color: #000000;
-}
