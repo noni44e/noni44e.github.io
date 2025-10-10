@@ -151,13 +151,13 @@ p {
     margin: 0;
 }
 
-.btn.category {
+.category {
     text-align: center;
     font-size: 0.9em;
     cursor: default;
     width: 10em;
     height: 1em;
-    color: rgb(0, 0, 0)
+    color: rgb(255, 0, 0)
 }
 
 .btn.masvendido {

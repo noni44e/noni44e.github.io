@@ -6,7 +6,7 @@ let nombredeusuario = localStorage.getItem('usuario');
 function mostrar(dato, producto) {
   dato.innerHTML = `
     <div class='arriba'>
-      <div class='btn category'>Categoria:${producto.category}</div>
+      <div class='category'>Categoria:${producto.category}</div>
       <div class='btn masvendido hidden'>Mas vendido</div>
     </div>
     <div id='bloque'>
