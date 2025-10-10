@@ -507,12 +507,55 @@ input:focus {
 
 
 /* Modo oscuro y claro */
-[data-bs-theme="dark"] {
+/*[data-bs-theme="dark"] {
   background-color: #121212;
   color: #e0e0e0;
+
 }
 
 [data-bs-theme="light"] {
   background-color: #ffffff;
+  color: #000000;
+}
+  */
+  [data-bs-theme="dark"] {
+  background-color: #181818;
+  color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] #comentar.comentar{
+  background-color: #000000;
+}
+[data-bs-theme="dark"] div {
+  background-color: #181818 !important; /* fondo negro para todos los div */
+  color: #fff !important;               /* texto blanco para todos los div */
+  border-color: #333 !important;        /* bordes oscuros si aplica */
+}
+
+[data-bs-theme="dark"] body {
+  background-color: #000000 !important;
+  color: #fff !important;
+}
+
+[data-bs-theme="dark"] p,
+[data-bs-theme="dark"] h2,
+[data-bs-theme="dark"] h3,
+[data-bs-theme="dark"] h1,
+[data-bs-theme="dark"] span,
+[data-bs-theme="dark"] label {
+  color: #fff !important;
+}
+
+[data-bs-theme="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+[data-bs-theme="light"] p {
+  color: #000000;
+}
+
+[data-bs-theme="light"] div {
+  background-color: #f0f0f0; /* o blanco, según tu diseño */
   color: #000000;
 }

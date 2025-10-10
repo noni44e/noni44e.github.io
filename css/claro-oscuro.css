@@ -1,0 +1,24 @@
+[data-bs-theme="dark"] body,
+[data-bs-theme="dark"] div,
+[data-bs-theme="dark"] section,
+[data-bs-theme="dark"] header,
+[data-bs-theme="dark"] footer,
+[data-bs-theme="dark"] nav,
+[data-bs-theme="dark"] main {
+  background-color: #181818 !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+[data-bs-theme="dark"] p,
+[data-bs-theme="dark"] h1,
+[data-bs-theme="dark"] h2,
+[data-bs-theme="dark"] h3,
+[data-bs-theme="dark"] h4,
+[data-bs-theme="dark"] h5,
+[data-bs-theme="dark"] h6,
+[data-bs-theme="dark"] span,
+[data-bs-theme="dark"] label,
+[data-bs-theme="dark"] a {
+  color: #fff !important;
+}

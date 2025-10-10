@@ -212,7 +212,7 @@ function hacercomentario(data){
       let div = document.createElement("div");
       div.classList.add("comentario");
       div.classList.add("clase");
-      div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;";
+      /* div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;"; */
       div.id = "comentario_"+ data.id;
       div.innerHTML = `
         <p><strong>${nombredeusuario}</strong> - <small>${fecha}</small> <small>${hora}</small></p>

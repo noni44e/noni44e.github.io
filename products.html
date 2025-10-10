@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prototipo</title>
-    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/products.css" defer>
+    <link rel="stylesheet" href="css/claro-oscuro.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
     
 </head>
-<body>
+<body data-bs-theme="light">
     
     <header>  
         <div class="logo">e-Mercado</div>
@@ -15,6 +18,12 @@
         <div class="encabezado">
         <a href="index.html">Inicio</a>
         <a href="https://mail.google.com/mail/u/0/">Contáctanos</a>
+        <!-- 🔹 Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg p-1">
+    <div class="container">
+      <button onclick="temaOscuro()" class="btn" title="Cambiar tema">
+        <i class="dl-icon"></i>
+      </button>
     </div>
     </header>
     
@@ -84,6 +93,7 @@
     </footer>
     
 <script src="js/products.js" defer></script>
+<script src="js/claro-oscuro.js"></script> 
 </body>
 
 </html>
