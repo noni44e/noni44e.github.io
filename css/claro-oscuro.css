@@ -4,7 +4,9 @@
 [data-bs-theme="dark"] header,
 [data-bs-theme="dark"] footer,
 [data-bs-theme="dark"] nav,
-[data-bs-theme="dark"] main {
+[data-bs-theme="dark"] main, 
+[data-bs-theme="dark"] #inputtext,
+[data-bs-theme="dark"] #calificacion {
   background-color: #181818 !important;
   color: #fff !important;
   border-color: #333 !important;
@@ -22,3 +24,4 @@
 [data-bs-theme="dark"] a {
   color: #fff !important;
 }
+

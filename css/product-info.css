@@ -107,7 +107,7 @@ p {
     height: 100%;
     font-size: 1.5em;
     font-family: 'Trebuchet MS';
-    background-color: #e99f16;
+    background-color: #e99f16 !important;
     cursor: default;
     border: solid 3px rgb(238, 238, 238);
     opacity: 1;
@@ -120,7 +120,7 @@ p {
 }
 
 #comprar {
-    background-color: #83a6a8;
+    background-color: #83a6a8 !important;
     font-size: 1.5em;
     font-family: 'Trebuchet MS';
     border: solid 3px #83a6a8;
@@ -129,7 +129,7 @@ p {
 }
 
 #comprar:hover {
-    background: rgb(238, 238, 238);
+    background: rgb(255, 255, 255);
     border-color: #83a6a8;
     color: black;
 }
@@ -137,6 +137,7 @@ p {
 #vendidos {
     font-size: 1rem;
     margin: 0;
+    color: #000000;
 }
 
 .estrella-vendidos {
@@ -157,7 +158,7 @@ p {
     cursor: default;
     width: 10em;
     height: 1em;
-    color: rgb(255, 0, 0)
+    color: rgb(0, 0, 0)
 }
 
 .btn.masvendido {
@@ -503,45 +504,4 @@ input:focus {
     p {
         font-size: 1.5em;
     }
-}
-
-
-/* Modo oscuro y claro */
-/*[data-bs-theme="dark"] {
-  background-color: #121212;
-  color: #e0e0e0;
-
-}
-
-[data-bs-theme="light"] {
-  background-color: #ffffff;
-  color: #000000;
-}
-  */
-  [data-bs-theme="dark"] {
-  background-color: #181818;
-  color: #e0e0e0;
-}
-
-[data-bs-theme="dark"] #comentar.comentar{
-  background-color: #000000;
-}
-[data-bs-theme="dark"] div {
-  background-color: #181818 !important; /* fondo negro para todos los div */
-  color: #fff !important;               /* texto blanco para todos los div */
-  border-color: #333 !important;        /* bordes oscuros si aplica */
-}
-
-[data-bs-theme="dark"] body {
-  background-color: #000000 !important;
-  color: #fff !important;
-}
-
-[data-bs-theme="dark"] p,
-[data-bs-theme="dark"] h2,
-[data-bs-theme="dark"] h3,
-[data-bs-theme="dark"] h1,
-[data-bs-theme="dark"] span,
-[data-bs-theme="dark"] label {
-  color: #fff !important;
 }

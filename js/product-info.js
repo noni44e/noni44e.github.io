@@ -24,7 +24,7 @@ function mostrar(dato, producto) {
               <div class='btn' id='comprar'>Comprar</div>
             </div>
             <div id='vendidos'>
-              <div class='btn vendidos'>${producto.soldCount} vendidos.</div>
+              <div class='vendidos'>${producto.soldCount} vendidos.</div>
               
             </div>
             </div>
