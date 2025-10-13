@@ -188,25 +188,21 @@ function estrellas(cantidad){
 function hacercomentario(data){
   //hacer comentario
   document.getElementById('formulario').addEventListener('submit',function(e){
-    
+    e.preventDefault();
     let tiempo = new Date();
     let fecha = tiempo.toLocaleDateString();
     let hora = tiempo.toLocaleTimeString();
     let idfecha = data.id+'fecha';
     let idhora = data.id+'hora';
     let lista = document.getElementById("comentarios-container");
-    e.preventDefault();
+    
     let text = document.getElementById('inputtext').value.trim();
     console.log(text);
     let cal = document.getElementById('calificacion').value;
     let estrellastexto = estrellas(parseInt(cal));
     let ide = "texto"+ data.id;
     let cali = "cal"+data.id;
-    localStorage.setItem(idfecha, fecha);
-    localStorage.setItem(idhora, hora);
-    localStorage.setItem(ide, text);
-    localStorage.setItem(cali, cal);
-      
+    
     if (localStorage.getItem(ide) === null){
     
       let div = document.createElement("div");
@@ -233,6 +229,11 @@ function hacercomentario(data){
     `;
 
     }
+    localStorage.setItem(idfecha, fecha);
+    localStorage.setItem(idhora, hora);
+    localStorage.setItem(ide, text);
+    localStorage.setItem(cali, cal);
+      
     document.getElementById('inputtext').value = '';
 });
 }
