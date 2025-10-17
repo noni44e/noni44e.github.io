@@ -8,27 +8,13 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/myprofile.css">
+  
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
+  <nav class="azul navbar navbar-expand-lg navbar-dark  p-1">
+    <div class="container azul">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,30 +30,48 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+            <a id="nombre" class="nav-item hamburguesa" href="my-profile.html"></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  <div class="container2">
+    <div class="contizq">
+      <div class="informacion">Perfil</div>
+      <div class="informacion">Información Personal</div>
+      <div class="informacion">Gestión de cuenta</div>
+    </div>
+    <div class="contder">
+
+      <p>Perfil Único</p>
+      <div class="tarjeta">
+        <div class="imgId">
+          <div class="imagen"><img src="/img/perfilpre.jpg"></div>
+          <div class="botonesImg">
+            <div class="cambiar letra">Cambiar</div>
+            <div class="borrar letra">Eliminar</div>
+          </div>
+        </div>
+        <div><input> texto </div>
+        <div></div>
+
+      </div>
+
+      <p>Información Personal</p>
+      <div class="tarjeta">
+        
+      </div>
+
+      <p>Gestión de Cuenta</p>
+      <div class="tarjeta">
+        
       </div>
     </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
+  </div>
+</body>
+  <script src="js/agregarnombre.js"></script>
   <script defer src="js/bootstrap.bundle.min.js"></script>
   <script defer src="js/init.js"></script>
   <script defer src="js/my-profile.js"></script>
-</body>
-
 </html>
