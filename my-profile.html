@@ -29,10 +29,17 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-            <a id="nombre" class="nav-item hamburguesa" href="my-profile.html"></a>
-          </li>
-        </ul>
+          
+          <!-- Menu desplegable -->
+        <li class="nav-item dropdown">
+            <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+          </ul>
+       </li>
+        
+      </ul>
       </div>
     </div>
   </nav>
@@ -44,29 +51,47 @@
     </div>
     <div class="contder">
 
-      <p>Perfil Único</p>
-      <div class="tarjeta">
-        <div class="imgId">
-          <div class="imagen"><img src="/img/perfilpre.jpg"></div>
-          <div class="botonesImg">
-            <div class="cambiar letra">Cambiar</div>
-            <div class="borrar letra">Eliminar</div>
-          </div>
-        </div>
-        <div><input> texto </div>
-        <div></div>
-
-      </div>
+     <p>Perfil Único</p>
+<div class="tarjeta">
+  <div class="imgId">
+    <div class="imagen">
+      <img id="perfilImg" src="/img/perfilpre.jpg" alt="Perfil">
+    </div>
+    <div class="botonesImg">
+      <input type="file" id="cambiarImg" accept="image/*" style="display:none;">
+      <div class="cambiar letra" id="btnCambiar">Cambiar</div>
+      <div class="borrar letra" id="btnBorrar">Eliminar</div>
+    </div>
+  </div>
+  <div><input> texto </div>
+  <div></div>
+</div>
 
       <p>Información Personal</p>
-      <div class="tarjeta">
-        
-      </div>
+<div class="tarjeta" id="infoPersonal">
+  <div class="fila">
+    <label>Nombre: <input type="text" id="inputNombre" placeholder="Tu nombre"></label>
+    <label>Apellido: <input type="text" id="inputApellido" placeholder="Tu apellido"></label>
+  </div>
+  <div class="fila">
+    <label>Email: <input type="email" id="inputEmail" placeholder="ejemplo@email.com"></label>
+    <button id="guardarInfo" class="cambiar letra">Guardar</button>
+  </div>
+</div>
 
       <p>Gestión de Cuenta</p>
-      <div class="tarjeta">
-        
-      </div>
+<div class="tarjeta gestion-cuenta">
+  <div class="fila">
+    <label>Nueva contraseña:
+      <input type="password" id="passNueva" placeholder="********">
+    </label>
+    <button id="guardarPass" class="cambiar letra">Guardar</button>
+  </div>
+  <div class="fila">
+    <button id="eliminarCuenta" class="borrar letra">Eliminar cuenta</button>
+  </div>
+</div>
+
     </div>
   </div>
 </body>
