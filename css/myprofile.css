@@ -84,6 +84,7 @@ p{
 
 .imagen:hover{
     background-color: #443f3fa8;
+    cursor: pointer;
 }
 
 .imagen img{
@@ -99,11 +100,12 @@ p{
 }
 
 .cambiar{
+
     margin-left: 4%;
     margin-top: 2%;
     height: 10%;
     width: 30%;
-    background-color: #8baaac;
+    
 
 }
 
@@ -112,13 +114,223 @@ p{
     margin-right:5%;
     height: 10%;
     width: 30%;
-    background-color: #8baaac;
-
 
 }
 
 .letra{
-    display: flex;
-    justify-content: center;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(1fr);
     border-radius: 3px;
+    justify-content: center;
+    background-color: #8baaac;
+    color:#1a3233;
+    transition: color 0.3s ease, background-color 0.3s ease;
+
 }
+
+.letra:hover{
+    cursor:pointer;
+    background-color: #62b5b9;
+    color:rgb(66, 66, 66);
+
+}
+
+#sec{
+    height: 100%;
+    width: 40%;
+    margin-right: 4%;
+
+}
+
+#sector3{
+    width: 30%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+
+}
+
+.botones{
+    justify-content: center;
+    height: 15%;
+    width: 100%;
+    margin-top:11%;
+    background-color: #1a181262;
+    border-radius: 6px;
+    border-color:#83a6a8;
+    color:rgb(201, 201, 201);
+    transition: background-color 0.3s ease, color 0.5s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+
+.botones:hover{
+    background-color: #6b737421;
+}
+
+/*color:rgba(66, 130, 190, 0.493);*/
+.botones:focus{
+    color:#70c6ca;
+    border-color: #e99f16;
+}
+
+.botones:focus::placeholder{
+    color:#70c6ca;
+}
+
+input{
+    padding-left:1em;
+}
+
+
+.guardar{
+    margin-top:82%;
+    margin-right:2em;
+    color:grey;
+    transition: background-color 0.3s ease, color 0.4s ease;
+    border-color: #e99f16;
+}
+
+.guardar:hover{
+    background-color: #e99f162a;
+    color:#e99f1686
+}
+
+.guardar:focus{
+    color: #e99f16;
+}
+
+
+#nombrepersonal{
+    height: 20%;
+    width: 69%;
+
+    margin-left:5%;
+}
+#apellido{
+    height: 20%;
+    width: 69%;
+
+    margin-left:5%;
+}
+#email{
+    height: 20%;
+    width: 69%;
+
+    margin-left:5%;
+}
+#telefono{
+    height: 20%;
+    width: 69%;
+    margin-left:5%;
+}
+
+.infoper{
+    height: 100%;
+    width: 40%;
+    display:flex;
+    flex-direction: column;
+}
+
+.infoper input{
+    font-weight: bold;
+    margin-top:0;
+}
+
+label{
+    font-weight: bold;
+    margin-top: 2em;
+    margin-left: 5%;
+    color:#9fcdcf;
+}
+
+.cajadiv{
+    margin-left:-5em;
+    height: 100%;
+    border-left: 3px solid #597172;
+}
+
+#guardarIP{
+    margin-left:2em;
+}
+
+#cerrar{
+
+    color: #70c6ca;
+    border-left: 2px solid #70c6ca;
+    border-right: 2px solid #547779;
+    
+}
+
+.eliminar{
+    color: #e99f16;
+    border-right: 2px solid #e99f16;
+    
+}
+
+.gestion{
+    color: #e99f16;
+    font-weight: bold;
+    height: 100%;
+    width: 50%;
+    border-right: 2px solid #e99f16;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+#gestioncuenta{
+    height: 8em;
+}
+
+#eliminar{
+    transition: background-color 0.4s ease;
+}
+
+#eliminar:hover{
+    background-color: #35332d;
+}
+
+#cerrar{
+    transition: background-color 0.4s ease;
+}
+
+#cerrar:hover{
+    background-color: #2d3335;
+}
+
+.alerta{
+    position:fixed;
+    top: 10%;
+    right: 35%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 30%;
+    padding-left:0.7em;
+
+}
+
+#alerta{
+    color: rgb(255, 155, 5);
+    border:1px solid rgb(255, 155, 5);
+    background-color: rgba(255, 155, 5, 0.192);
+}
+
+#exito{
+    color: #70c6ca;
+    border:1px solid #70c6ca;
+    background-color: #70c5ca71;
+}
+
+.invisible{
+    opacity:0;
+}
+
+.visible{
+    opacity:1;
+}
+

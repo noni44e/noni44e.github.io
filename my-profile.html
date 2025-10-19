@@ -36,6 +36,8 @@
       </div>
     </div>
   </nav>
+  <div id="alerta" class="alerta invisible">Ups! Hubo un error. Tiene que ingresar su contraseña actual y una nueva para cambiar de contraseña.</div>
+  <div id="exito" class="alerta invisible">Cambio guardado correctamente.</div>
   <div class="container2">
     <div class="contizq">
       <div class="informacion">Perfil</div>
@@ -47,25 +49,48 @@
       <p>Perfil Único</p>
       <div class="tarjeta">
         <div class="imgId">
-          <div class="imagen"><img src="/img/perfilpre.jpg"></div>
+          <div id="imgperfil" class="imagen"><img id="imgprincipal" src=""></div>
           <div class="botonesImg">
-            <div class="cambiar letra">Cambiar</div>
-            <div class="borrar letra">Eliminar</div>
+            <input type="file" id="agregarimg" accept="image/*" style="display:none;">
+            <div id="cambiar" class="cambiar letra">Cambiar</div>
+           <div id="borrar" class="borrar letra">Eliminar</div>
           </div>
         </div>
-        <div><input> texto </div>
-        <div></div>
+        <div id="sec">
+            <input type="text" class="botones" id="nameId" readonly>
+            <input type="password" id="pass" class="botones" placeholder="Contraseña">
+            <input type="password" id="newpass" class="botones" placeholder="Nueva contraseña">
+        </div>
+        <div id="sector3"> 
+          <button id="guardar" class="botones guardar">Guardar</button>
+        </div>
 
       </div>
 
       <p>Información Personal</p>
       <div class="tarjeta">
-        
+        <div class="infoper">
+          <label for="nombre">Name</label>
+          <input type="text" class="botones" id="nombrepersonal" name="nombre">
+          <label for="apellido">Apellido</label>
+          <input type="text" class="botones" id="apellido" name="apellido">
+        </div>
+        <div class="infoper">
+          <label for="email">Email</label>
+          <input type="text" class="botones" id="email" name="email">
+          <label for="telefono">Teléfono</label>
+          <input type="text" class="botones" id="telefono" name="telefono">
+        </div>
+        <div class="cajadiv"></div>
+        <div id="sector3"> 
+          <button id="guardarIP" class="botones guardar">Guardar</button>
+        </div>
       </div>
 
       <p>Gestión de Cuenta</p>
-      <div class="tarjeta">
-        
+      <div id="gestioncuenta" class="tarjeta">
+        <div id="cerrar" class="gestion">Cerrar sesión</div>
+        <div id="eliminar" class="gestion">Eliminar cuenta</div>
       </div>
     </div>
   </div>
