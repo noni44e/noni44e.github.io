@@ -1,3 +1,13 @@
+// Menu desplegable 
+const logoutBtn = document.getElementById('logoutBtn');
+
+logoutBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  localStorage.removeItem('usuario'); // borrar usuario guardado en localStorage
+  alert('Sesión cerrada'); 
+  window.location.href = 'login.html'; // redirige al inicio
+}); 
+
 let url = "/img/perfilpre.jpg";
 
 document.addEventListener('DOMContentLoaded', ()=>{
