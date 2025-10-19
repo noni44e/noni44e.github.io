@@ -39,6 +39,17 @@ header .logo{
     font-weight: 400;
     
 }
+.btn{
+  position: absolute;
+  top: 1.5rem;    /* distancia desde arriba */
+  left: 57rem;  /* distancia desde la derecha */
+  width: 5rem;
+  height: 5rem;
+  font-size: 2.2rem;
+  color: #f8f8f8;
+  background: none;
+  border: none; 
+}
 
 header .encabezado a {
     margin: 0 15px;
@@ -355,7 +366,17 @@ img{
   header .encabezado a {
     font-size: 2rem;
   }
-
+  .btn{
+  position: absolute;
+  top: -0.60rem;    /* distancia desde arriba */
+  left: 14.5rem;  /* distancia desde la derecha */
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  color: #f8f8f8;
+  background: none;
+  border: none; 
+}
   #busca {                                             
     width: 100%;
     margin-top: 0.2em;
@@ -402,6 +423,10 @@ img{
     margin: 0.5em 0;
 }
 
+.button.der {
+  width: 1em;
+  height: auto;
+}
 /* =================== */
 /* 📱 Smartphone Pequeño (iPhone SE) */
 /* =================== */
@@ -423,6 +448,17 @@ img{
     display: block;
     margin: 0.5em 0;
   }
+  .btn{
+  position: absolute;
+  top: -0.60rem;
+  left: 14.5rem;  
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  color: #f8f8f8;
+  background: none;
+  border: none; 
+}
 
   #filtros {
     width: 100%;

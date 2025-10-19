@@ -128,8 +128,9 @@ document.getElementById('agregarimg').addEventListener('change', (event)=>{
     }
 });
 
-document.getElementById('borrar').addEventListener('click', (e)=>{
+document.getElementById('borrar').addEventListener('click',(e)=>{
     e.preventDefault();
     document.getElementById('imgprincipal').src = url;
     localStorage.setItem('imgPerfil', url);
 });
+

@@ -29,10 +29,17 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-            <a id="nombre" class="nav-item hamburguesa" href="my-profile.html"></a>
-          </li>
-        </ul>
+          
+          <!-- Menu desplegable -->
+        <li class="nav-item dropdown">
+            <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+          </ul>
+       </li>
+        
+      </ul>
       </div>
     </div>
   </nav>
@@ -92,6 +99,7 @@
         <div id="cerrar" class="gestion">Cerrar sesión</div>
         <div id="eliminar" class="gestion">Eliminar cuenta</div>
       </div>
+
     </div>
   </div>
 </body>
