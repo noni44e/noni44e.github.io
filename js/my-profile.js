@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const imagenGuardada = localStorage.getItem('imgPerfil');
     if (imagenGuardada){
         document.getElementById('imgprincipal').src = imagenGuardada;
+    } else {
+        document.getElementById('imgprincipal').src = url;
     }
 
     
@@ -53,10 +55,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let btnemail = document.getElementById('email');
     let btntel = document.getElementById('telefono');
 
-let cambiarpass = document.getElementById('guardar');
-let passw = localStorage.getItem('password');
-let alerta = document.getElementById('alerta');
-let exito = document.getElementById('exito');
+    let cambiarpass = document.getElementById('guardar');
+    let passw = localStorage.getItem('password');
+    let alerta = document.getElementById('alerta');
+    let exito = document.getElementById('exito');
 
 //evento para cambiar contraseña
 cambiarpass.addEventListener('click', (e)=>{
