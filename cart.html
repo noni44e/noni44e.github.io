@@ -29,17 +29,20 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li id="nombre" class="nav-item">
-          </li>
+          <li class="nav-item dropdown">
+            <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+          </ul>
+       </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      
     </div>
   </main>
   <footer class="text-muted">
@@ -61,6 +64,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/agregarnombre.js"></script>
+  <script defer src="js/my-profile.js"></script>
 </body>
 
 </html>
