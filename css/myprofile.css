@@ -1,6 +1,6 @@
 
 body{
-    background-color: rgb(5, 5, 5);
+    background-color: rgb(223, 223, 223);
     margin:0; 
 }
 
@@ -13,7 +13,7 @@ body{
 
 .contizq{
     padding-top:6em;
-    background-color: rgb(5, 5, 5);
+    background-color: #70c6ca;
     width: 20vw;
     height: 100vw;
     border-right: 3px solid #83a6a8;
@@ -22,7 +22,7 @@ body{
 }
 /*colores de prueba: border-right: 3px solid rgb(46, 41, 34); */
 .informacion{
-    color:white;
+    color:rgb(221, 235, 235);
     padding: 4em;
     font-size: 1.5em;
     cursor: pointer;
@@ -46,7 +46,7 @@ body{
 }
 
 p{
-    color:azure;
+    color:rgb(0, 0, 0);
     font-weight: bold;
     font-size: 2em;
     margin-top: 2em;
@@ -61,7 +61,7 @@ p{
 .tarjeta{
     height: 20vw;
     width: 60vw;
-    background-color: #141111;
+    background-color: rgb(221, 235, 235);
     margin-left: 2em;
     border-radius: 3px;
     display: flex;
@@ -157,7 +157,7 @@ p{
     height: 15%;
     width: 100%;
     margin-top:11%;
-    background-color: #1a181262;
+    background-color: rgb(236, 243, 243);
     border-radius: 6px;
     border-color:#83a6a8;
     color:rgb(201, 201, 201);
@@ -167,7 +167,7 @@ p{
 }
 
 .botones:hover{
-    background-color: #6b737421;
+    background-color: #ffffffc5;
 }
 
 /*color:rgba(66, 130, 190, 0.493);*/
@@ -249,7 +249,7 @@ label{
 .cajadiv{
     margin-left:-5em;
     height: 100%;
-    border-left: 3px solid #597172;
+    border-left: 3px solid #b6cdce;
 }
 
 #guardarIP{
@@ -347,7 +347,7 @@ label{
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #141111; 
+  background-color: #e7e7e7; 
   border: 1px solid #83a6a8;
   border-radius: 5px;
   min-width: 150px;
