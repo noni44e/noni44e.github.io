@@ -27,3 +27,25 @@
 
 
 /*CAMBIOS PARA MY PROFILE*/
+[data-bs-theme="dark"] #sector3,
+[data-bs-theme="dark"] #sec,
+[data-bs-theme="dark"] .infoper,
+[data-bs-theme="dark"] .cajadiv,
+[data-bs-theme="dark"] #eliminar.gestion,
+[data-bs-theme="dark"] #cerrar.gestion,
+[data-bs-theme="dark"] .dropdown-item{
+
+background-color: rgb(35, 35, 35) !important
+}
+[data-bs-theme="dark"] .imgld  {
+    background-color: rgb(35, 35, 35) !important;
+    color: rgb(35, 35, 35) !important;
+}
+[data-bs-theme="dark"] .contizq,
+[data-bs-theme="dark"] .informacion,
+[data-bs-theme="dark"] #cambiar.cambiar.letra,
+[data-bs-theme="dark"] #borrar.borrar.letra,
+[data-bs-theme="dark"] #imgperfil.imagen {
+    background-color: rgb(35, 35, 35) !important;
+    color: rgb(35, 35, 35) ;
+}

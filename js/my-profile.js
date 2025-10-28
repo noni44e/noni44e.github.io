@@ -6,7 +6,15 @@ logoutBtn.addEventListener('click', (e) => {
   localStorage.removeItem('usuario'); // borrar usuario guardado en localStorage
   alert('Sesión cerrada'); 
   window.location.href = 'login.html'; // redirige al inicio
-}); 
+});
+// Botón Mi carrito
+const carritoBtn = document.getElementById('carritoBtn');
+if (carritoBtn) {
+  carritoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = 'cart.html';
+  });
+} 
 
 let url = "/img/perfilpre.jpg";
 
