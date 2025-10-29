@@ -41,10 +41,6 @@ body{
     
 }
 
-.azul{
-    background-color: #00565a;
-}
-
 p{
     color:rgb(0, 0, 0);
     font-weight: bold;
@@ -334,48 +330,4 @@ label{
 
 .visible{
     opacity:1;
-}
-
-
-/* Menu desplegable */
-
-.nav-item.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #e7e7e7; 
-  border: 1px solid #83a6a8;
-  border-radius: 5px;
-  min-width: 150px;
-  z-index: 1000;
-  padding: 0;
-}
-
-.dropdown-item {
-  padding: 0.5em 1em;
-  color: white;
-  text-decoration: none;
-  display: block;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-item:hover {
-  background-color: #8baaac;
-  color: black;
-  cursor: pointer;
-}
-
-.hamburguesa {
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.hamburguesa.dropdown-toggle::after {
-    display: none;
 }

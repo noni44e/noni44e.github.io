@@ -17,56 +17,9 @@ main{
     align-items: stretch;
     flex: 1;
 }
-header {
-    background-color: #9bc9cc;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px 40px;
-    border: 1px solid #000;
+#emercado{
+  width: 10.2em !important;
 }
-
-header .logocarrito {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-header .logo{
-    font-family: "Roboto", sans-serif;
-    font-size: 70px;
-    font-weight: 400;
-    
-}
-.btn{
-  position: absolute;
-  top: 1.5rem;    /* distancia desde arriba */
-  left: 57rem;  /* distancia desde la derecha */
-  width: 5rem;
-  height: 5rem;
-  font-size: 2.2rem;
-  color: #f8f8f8;
-  background: none;
-  border: none; 
-}
-
-header .encabezado a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #FFF;
-    font-family: "Roboto", sans-serif;
-    font-size: 48px;
-    font-weight: 400;
-}
-
-header .imagenbarra {
-  width: 62px;
-  height: 62px;
-  background: url(/img/logobarra101.png) no-repeat center;
-  background-size: contain;
-}
-
 #filtros {
   display: flex;
   flex-direction: column;
@@ -354,29 +307,7 @@ img{
   .nombre {
     font-size: 240%;
   }
-  header {
-    flex-direction: grid;
-    padding: 2em;
-    text-align:left;
-}
-  header .logo {
-    font-size: 3rem;
-  }
-
-  header .encabezado a {
-    font-size: 2rem;
-  }
-  .btn{
-  position: absolute;
-  top: -0.60rem;    /* distancia desde arriba */
-  left: 14.5rem;  /* distancia desde la derecha */
-  width: 4rem;
-  height: 4rem;
-  font-size: 1.5rem;
-  color: #f8f8f8;
-  background: none;
-  border: none; 
-}
+  
   #busca {                                             
     width: 100%;
     margin-top: 0.2em;
@@ -432,33 +363,7 @@ img{
 /* =================== */
 
 @media (max-width: 480px) {
-  header {
-    flex-direction: grid;
-    padding: 0em;
-    text-align: center;
-  }
-
-  header .logo {
-    font-size: 2rem;
-    margin-left: 1.5%;
-  }
-
-  header .encabezado a {
-    font-size: 1.2rem;
-    display: block;
-    margin: 0.5em 0;
-  }
-  .btn{
-  position: absolute;
-  top: -0.60rem;
-  left: 14.5rem;  
-  width: 4rem;
-  height: 4rem;
-  font-size: 1.5rem;
-  color: #f8f8f8;
-  background: none;
-  border: none; 
-}
+ 
 
   #filtros {
     width: 100%;

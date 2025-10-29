@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/myprofile.css">
   <link rel="stylesheet" href="css/claro-oscuro.css">
 
@@ -16,25 +17,23 @@
 
 <body data-bs-theme="light">
   <nav class="azul navbar navbar-expand-lg navbar-dark  p-1">
-    <div class="container azul">
-      <!-- Logo a la izquierda -->
-    <a id="emercado" class="navbar-brand" href="index.html">
-      <img src="img/emercado.png" alt="Logo" width="100" height="60" class="d-inline-block align-text-top">
+    <div class="container-fluid azul px-0">
+    <a id="emercado" class="navbar-brand me-5" href="index.html">
+      <img src="img/emercado.png" alt="Logo" width="200" height="60" class="d-inline-block align-text-to">
     </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav w-100 justify-content-end">
   <li class="nav-item">
     <a class="nav-link" href="categories.html">Categorías</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="sell.html">Vender</a>
   </li>
-
-  <!-- Contenedor flex para botón y dropdown juntos -->
+        <!-- Botón modo claro/oscuro -->
   <li class="nav-item d-flex align-items-center">
     <button onclick="temaOscuro()" class="btn btn-sm text-light me-2" id="btnTema" title="Cambiar tema">
       <i class="bi bi-sun dl-icon" id="iconoTema"></i>
@@ -53,11 +52,11 @@
   </li>
 </ul>
 </li>
-        
       </ul>
-      </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
   <div id="alerta" class="alerta invisible">Ups! Hubo un error. Tiene que ingresar su contraseña actual y una nueva para cambiar de contraseña.</div>
   <div id="exito" class="alerta invisible">Cambio guardado correctamente.</div>
   <div class="container2">

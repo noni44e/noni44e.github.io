@@ -144,3 +144,12 @@ background-color: rgb(35, 35, 35) !important
     color: #c1d6d7 !important;
     border-color: #c1d6d7 !important;
 }
+.navbar-brand {
+  margin-left: 1000 !important;
+  padding-left: 0 !important;
+}
+
+.navbar .container-fluid {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
