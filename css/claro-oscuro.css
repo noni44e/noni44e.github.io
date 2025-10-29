@@ -20,6 +20,13 @@ nav .dropdown-menu .dropdown-item {
 [data-bs-theme="dark"] #filtros,
 [data-bs-theme="dark"] #navbar,
 [data-bs-theme="dark"] #controles,
+[data-bs-theme="dark"] #autos,
+[data-bs-theme="dark"] #juguetes,
+[data-bs-theme="dark"] #muebles,
+[data-bs-theme="dark"] .album,
+[data-bs-theme="dark"] .btn-light,
+[data-bs-theme="dark"] .col,
+[data-bs-theme="dark"] div.list-group-item,
 [data-bs-theme="dark"] .comentario,
 [data-bs-theme="dark"] .relacionado {
   background-color: #232323 !important;
@@ -48,7 +55,7 @@ nav .dropdown-menu .dropdown-item {
 [data-bs-theme="dark"] span,
 [data-bs-theme="dark"] label,
 [data-bs-theme="dark"] a {
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 /*CAMBIOS PARA MY PROFILE*/

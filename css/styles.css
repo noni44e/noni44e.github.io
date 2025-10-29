@@ -9,15 +9,6 @@
 .jumbotron .display-4 {
   font-weight: bold;
 }
-
-.azul{
-  background-color: #282c2c;
-}
-
-nav a {
-  text-decoration: none;
-}
-
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -80,7 +71,12 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
-
+p{
+  color: black;
+}
+h1, h2, h3{
+  color: black;
+}
 .site-header a {
   color: white;
   transition: ease-in-out color .15s;

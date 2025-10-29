@@ -17,9 +17,7 @@ main{
     align-items: stretch;
     flex: 1;
 }
-#emercado{
-  width: 10.2em !important;
-}
+
 #filtros {
   display: flex;
   flex-direction: column;
