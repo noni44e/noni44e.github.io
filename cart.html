@@ -5,41 +5,55 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/myprofile.css">
+  <link rel="stylesheet" href="css/claro-oscuro.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-            <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+  <nav class="azul navbar navbar-expand-lg navbar-dark p-1">
+  <div class="container azul">
+    <!-- Logo a la izquierda -->
+    <a id="emercado" class="navbar-brand" href="index.html">
+      <img src="img/emercado.png" alt="Logo" width="100" height="60" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav w-100 justify-content-between">
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+        <!-- Botón modo claro/oscuro -->
+        <li class="nav-item d-flex align-items-center ms-2">
+          <button onclick="temaOscuro()" class="btn btn-sm text-light" id="btnTema" title="Cambiar tema">
+            <i class="bi bi-sun dl-icon" id="iconoTema"></i>
+          </button>
+        </li>
+        <!-- Menú desplegable -->
+        <li class="nav-item dropdown">
+          <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-1"></i> Usuario
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="my-profile.html"><i class="bi bi-person me-2"></i> Mi perfil</a></li>
+            <li><a class="dropdown-item" href="cart.html" id="carritoBtn"><i class="bi bi-cart-fill me-2"></i> Mi carrito</a></li>
+            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión</a></li>
           </ul>
-       </li>
-        </ul>
-      </div>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
   <main>
     <div class="container">
       
@@ -66,6 +80,7 @@
   <script src="js/cart.js"></script>
   <script src="js/agregarnombre.js"></script>
   <script defer src="js/my-profile.js"></script>
+  <script src="js/claro-oscuro.js"></script>
 </body>
 
 </html>

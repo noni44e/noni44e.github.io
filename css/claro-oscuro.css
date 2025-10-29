@@ -1,3 +1,11 @@
+nav .dropdown-menu {
+  background-color: #000 !important;
+}
+
+nav .dropdown-menu .dropdown-item {
+  color: #fff !important;
+}
+
 [data-bs-theme="dark"] body,
 [data-bs-theme="dark"] div,
 [data-bs-theme="dark"] section,
@@ -24,7 +32,6 @@
 [data-bs-theme="dark"] a {
   color: #fff !important;
 }
-
 
 /*CAMBIOS PARA MY PROFILE*/
 [data-bs-theme="dark"] #sector3,
