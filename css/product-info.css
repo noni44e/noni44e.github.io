@@ -157,7 +157,7 @@ p {
     cursor: default;
     width: 10em;
     height: 1em;
-    color: rgb(0, 0, 0)
+    color: rgb(216, 3, 3)
 }
 
 .btn.masvendido {
@@ -192,6 +192,7 @@ p {
     display: block;
     max-width: 18rem;
     margin: 1rem;
+    border: 1px solid rgb(204, 204, 204);
 }
 
 .relacionado:hover {

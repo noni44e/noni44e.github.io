@@ -7,18 +7,35 @@ nav .dropdown-menu .dropdown-item {
 }
 
 [data-bs-theme="dark"] body,
-[data-bs-theme="dark"] div,
 [data-bs-theme="dark"] section,
 [data-bs-theme="dark"] header,
 [data-bs-theme="dark"] footer,
-[data-bs-theme="dark"] nav,
 [data-bs-theme="dark"] main, 
 [data-bs-theme="dark"] #inputtext,
-[data-bs-theme="dark"] #calificacion {
+[data-bs-theme="dark"] #calificacion,
+[data-bs-theme="dark"] #comentar,
+[data-bs-theme="dark"] #info,
+[data-bs-theme="dark"] #contenedor,
+[data-bs-theme="dark"] #principal,
+[data-bs-theme="dark"] #filtros,
+[data-bs-theme="dark"] #navbar,
+[data-bs-theme="dark"] #controles,
+[data-bs-theme="dark"] .comentario,
+[data-bs-theme="dark"] .relacionado {
   background-color: #232323 !important;
   color: #fff !important;
   border-color: #333 !important;
 }
+[data-bs-theme="dark"] .contder,
+[data-bs-theme="dark"] .tarjeta,
+[data-bs-theme="dark"] .infoper,
+[data-bs-theme="dark"] #sector3,
+[data-bs-theme="dark"] #sec,
+[data-bs-theme="dark"] .cajadiv {
+  background-color: #232323 !important;
+  color: #fff !important;
+}
+
 
 
 [data-bs-theme="dark"] p,
@@ -53,7 +70,9 @@ background-color: rgb(35, 35, 35) !important
 [data-bs-theme="dark"] .informacion,
 [data-bs-theme="dark"] #cambiar.cambiar.letra,
 [data-bs-theme="dark"] #borrar.borrar.letra,
-[data-bs-theme="dark"] #imgperfil.imagen {
+[data-bs-theme="dark"] #imgperfil.imagen,
+[data-bs-theme="dark"] .azul,
+[data-bs-theme="dark"] .container2 {
     background-color: rgb(35, 35, 35) !important;
     color: rgb(35, 35, 35) ;
 }
@@ -89,4 +108,39 @@ background-color: rgb(35, 35, 35) !important
     background-color: #ffffffc5;
     color: #000;
   }
+}
+/* Modo oscuro solo para el botón #cambiar con clase .letra */
+[data-bs-theme="dark"] #cambiar.letra {
+    background-color: #1a3233 !important; /* Fondo oscuro */
+    color: #8baaac !important;           /* Texto claro */
+    border-radius: 3px;                  /* Mantener forma */
+    font-weight: bold;                   /* Mantener peso */
+    display: grid;
+    justify-content: center;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover opcional */
+[data-bs-theme="dark"] #cambiar.letra:hover {
+    background-color: #2d4445 !important;
+    color: #c1d6d7 !important;
+}
+
+/* Modo oscuro específico para botones .letra */
+[data-bs-theme="dark"] .letra {
+    background-color: #1a3233 !important;
+    color: #8baaac !important;
+    border: 2px solid #8baaac !important;
+    border-radius: 3px;
+    font-weight: bold;
+    display: grid;
+    justify-content: center;
+    transition: color 0.3s ease, background-color 0.3s ease, border 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover: cambia color y sube un poquito */
+[data-bs-theme="dark"] .letra:hover {
+    background-color: #2d4445 !important;
+    color: #c1d6d7 !important;
+    border-color: #c1d6d7 !important;
 }
