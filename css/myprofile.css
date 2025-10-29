@@ -13,7 +13,7 @@ body{
 
 .contizq{
     padding-top:6em;
-    background-color: #70c6ca;
+    background-color: #83a6a8;
     width: 20vw;
     height: 100vw;
     border-right: 3px solid #83a6a8;
@@ -42,7 +42,7 @@ body{
 }
 
 .azul{
-    background-color: #70c6ca;
+    background-color: #00565a;
 }
 
 p{
@@ -66,6 +66,7 @@ p{
     border-radius: 3px;
     display: flex;
 }
+
 
 .imgId{
     height: 100%;

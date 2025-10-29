@@ -27,30 +27,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          
-            <!-- Botón modo claro/oscuro -->
-<li class="nav-item d-flex align-items-center ms-2">
-  <button onclick="temaOscuro()" class="btn btn-sm text-light" id="btnTema" title="Cambiar tema">
-    <i class="bi bi-sun dl-icon" id="iconoTema"></i>
-  </button>
-</li>
-          <!-- Menú desplegable -->
-<li class="nav-item dropdown">
-  <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle me-1"></i> Usuario<<<<</a>
-  <ul class="dropdown-menu dropdown-menu-end"><li>
-      <a class="dropdown-item" href="my-profile.html">
-        <i class="bi bi-person me-2"></i> Mi perfil</a></li>
-        <li><a class="dropdown-item" href="cart.html" id="carritoBtn"><i class="bi bi-cart-fill me-2"></i> Mi carrito</a></li>
-    <li><a class="dropdown-item" href="#" id="logoutBtn">
-        <i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión
+  <li class="nav-item">
+    <a class="nav-link" href="categories.html">Categorías</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="sell.html">Vender</a>
+  </li>
+
+  <!-- Contenedor flex para botón y dropdown juntos -->
+  <li class="nav-item d-flex align-items-center">
+    <button onclick="temaOscuro()" class="btn btn-sm text-light me-2" id="btnTema" title="Cambiar tema">
+      <i class="bi bi-sun dl-icon" id="iconoTema"></i>
+    </button>
+
+    <div class="dropdown">
+      <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle me-1"></i> Usuario
       </a>
-    </li>
-  </ul>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="my-profile.html"><i class="bi bi-person me-2"></i> Mi perfil</a></li>
+        <li><a class="dropdown-item" href="cart.html" id="carritoBtn"><i class="bi bi-cart-fill me-2"></i> Mi carrito</a></li>
+        <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </li>
+</ul>
 </li>
         
       </ul>

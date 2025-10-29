@@ -15,10 +15,11 @@ nav .dropdown-menu .dropdown-item {
 [data-bs-theme="dark"] main, 
 [data-bs-theme="dark"] #inputtext,
 [data-bs-theme="dark"] #calificacion {
-  background-color: #181818 !important;
+  background-color: #232323 !important;
   color: #fff !important;
   border-color: #333 !important;
 }
+
 
 [data-bs-theme="dark"] p,
 [data-bs-theme="dark"] h1,
@@ -55,4 +56,37 @@ background-color: rgb(35, 35, 35) !important
 [data-bs-theme="dark"] #imgperfil.imagen {
     background-color: rgb(35, 35, 35) !important;
     color: rgb(35, 35, 35) ;
+}
+[data-bs-theme="dark"] {
+  .contder {
+    background-image: url('/img/rayos.jpg');
+    background-size: cover;
+    height: 100vw;
+  }
+
+  .botones:hover {
+    background-color: #2d3335;
+    color: #fff;
+  }
+
+  .informacion {
+    color: #fff !important;
+  }
+
+  .informacion:hover {
+    color: #e99f16 !important;
+  }
+}
+
+/* ===== Modo Claro para mantenes la estetica y no aplique la imagen===== */
+[data-bs-theme="light"] {
+  .contder {
+    background-image: none;
+    background-color: rgb(223, 223, 223);
+  }
+
+  .botones:hover {
+    background-color: #ffffffc5;
+    color: #000;
+  }
 }
