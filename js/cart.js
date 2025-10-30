@@ -67,64 +67,80 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ==== Validación y alerta ====
+// ==== validacion y alerta
+
 document.addEventListener("DOMContentLoaded", function () {
   const btnComprar = document.querySelector(".btn-buy");
-  const alerta = document.getElementById("alerta-compra");
+  const inputs = document.querySelectorAll(".form-control");
 
-  // Tomamos solo los inputs del formulario de compra, no los del carrito
-  const form = document.querySelector(".purchase-form"); // <-- agregale esta clase al form
-  const inputs = form ? form.querySelectorAll(".form-control") : [];
-
-  if (!btnComprar || !alerta || inputs.length === 0) return; // Evita errores si no existen
-
-  // ✅ Validación en tiempo real
-  inputs.forEach(input => {
-    input.addEventListener("input", () => {
-      if (input.value.trim() === "") {
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
-      } else {
-        input.classList.remove("is-invalid");
-        input.classList.add("is-valid");
-      }
-    });
-  });
-
-  // ✅ Al hacer clic en "Comprar"
-  btnComprar.addEventListener("click", () => {
+  btnComprar.addEventListener("click", (e) => {
+    e.preventDefault();
     let valido = true;
 
+    // Validar los campos
     inputs.forEach(input => {
       if (input.value.trim() === "") {
         input.classList.add("is-invalid");
         valido = false;
       } else {
+        input.classList.remove("is-invalid");
         input.classList.add("is-valid");
       }
     });
 
-    alerta.style.display = "block";
+    // Eliminar alerta anterior si existe
+    const alertaExistente = document.querySelector(".alerta");
+    if (alertaExistente) alertaExistente.remove();
 
-    if (valido) {
-      alerta.textContent = "✅ ¡Compra realizada con éxito! Tu pedido será enviado pronto.";
-      alerta.className = "alert alert-success";
-      inputs.forEach(input => {
-        input.value = "";
-        input.classList.remove("is-valid");
-      });
-    } else {
-      alerta.textContent = "⚠️ Por favor, completa todos los campos correctamente.";
-      alerta.className = "alert alert-danger";
-    }
+    // Crear contenedor de alerta
+    const alerta = document.createElement("div");
+    alerta.classList.add("alerta");
+    alerta.style.textAlign = "center";
+    alerta.style.marginTop = "10px";
+    alerta.style.padding = "10px";
+    alerta.style.borderRadius = "5px";
 
-    // Ocultar alerta después de unos segundos
+    // Spinner (círculo de carga)
+    const spinner = document.createElement("div");
+    spinner.classList.add("spinner-border");
+    spinner.style.width = "1.5rem";
+    spinner.style.height = "1.5rem";
+    spinner.style.borderWidth = "3px";
+    spinner.style.color = "#0d6efd";
+
+    // Desactivar botón y mostrar spinner
+    btnComprar.disabled = true;
+    const textoOriginal = btnComprar.textContent;
+    btnComprar.innerHTML = ""; 
+    btnComprar.appendChild(spinner);
+
+    // Simular proceso (ej: validación / pago)
     setTimeout(() => {
-      alerta.style.display = "none";
-    }, 4000);
+      btnComprar.disabled = false;
+      btnComprar.textContent = textoOriginal;
+
+      if (valido) {
+        alerta.textContent = "✅ ¡Compra realizada con éxito! Tu pedido será enviado pronto.";
+        alerta.style.backgroundColor = "#d4edda";
+        alerta.style.color = "#155724";
+        inputs.forEach(input => {
+          input.value = "";
+          input.classList.remove("is-valid");
+        });
+      } else {
+        alerta.textContent = "⚠️ Por favor, completa todos los campos correctamente.";
+        alerta.style.backgroundColor = "#f8d7da";
+        alerta.style.color = "#721c24";
+      }
+
+      // Insertar alerta
+      btnComprar.insertAdjacentElement("afterend", alerta);
+
+      // Quitar alerta después de unos segundos
+      setTimeout(() => alerta.remove(), 4000);
+    }, 2000); // ← 2 segundos de "procesamiento"
   });
 });
-
 
 /* P R U E B A*/
 
