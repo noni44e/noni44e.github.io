@@ -296,3 +296,39 @@ fetch(pagina)
       .catch(err => console.error("Error cargando comentarios:", err));
   })
   .catch(err => console.error("Hubo un problema con el fetch:", err));
+
+  // Espera a que el DOM y el producto estén listos
+  fetch(pagina)
+  .then(res => res.json())
+  .then(data => {
+    // Agregar evento al botón "Comprar"
+    setTimeout(() => { // Espera a que el botón exista en el DOM
+      const btnComprar = document.getElementById("comprar");
+      if (btnComprar) {
+        btnComprar.addEventListener("click", () => {
+          agregarAlCarrito({
+            id: data.id,
+            nombre: data.name,
+            costo: data.cost,
+            moneda: data.currency,
+            imagen: data.images[0],
+            cantidad: 1
+          });
+          alert("Producto agregado al carrito 🛒");
+          window.location.href = "cart.html";
+        });
+      }
+    }, 100);
+  });
+
+// Función para agregar al carrito
+function agregarAlCarrito(producto) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const index = carrito.findIndex(p => p.id === producto.id);
+  if (index !== -1) {
+    carrito[index].cantidad += producto.cantidad;
+  } else {
+    carrito.push(producto);
+  }
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
