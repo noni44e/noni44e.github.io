@@ -1,8 +1,10 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const productos = document.querySelectorAll(".product-card");
   const inputSubtotal = document.querySelector(".summary-box input[readonly]");
   const btnsQty = document.querySelectorAll(".btn-qty");
-
+  
+  
   // ====== Función: calcular el subtotal de todos los productos ======
   function actualizarSubtotal() {
     let subtotal = 0;
@@ -65,14 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ==== validacion y alerta
-
+// ==== Validación y alerta ====
 document.addEventListener("DOMContentLoaded", function () {
   const btnComprar = document.querySelector(".btn-buy");
-  const inputs = document.querySelectorAll(".form-control");
   const alerta = document.getElementById("alerta-compra");
 
-  // Valida en tiempo real
+  // Tomamos solo los inputs del formulario de compra, no los del carrito
+  const form = document.querySelector(".purchase-form"); // <-- agregale esta clase al form
+  const inputs = form ? form.querySelectorAll(".form-control") : [];
+
+  if (!btnComprar || !alerta || inputs.length === 0) return; // Evita errores si no existen
+
+  // ✅ Validación en tiempo real
   inputs.forEach(input => {
     input.addEventListener("input", () => {
       if (input.value.trim() === "") {
@@ -85,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Al hacer clic en "Comprar"
+  // ✅ Al hacer clic en "Comprar"
   btnComprar.addEventListener("click", () => {
     let valido = true;
 
@@ -102,12 +108,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (valido) {
       alerta.textContent = "✅ ¡Compra realizada con éxito! Tu pedido será enviado pronto.";
-      alerta.className = "success";
-      inputs.forEach(input => input.value = "");
-      inputs.forEach(input => input.classList.remove("is-valid"));
+      alerta.className = "alert alert-success";
+      inputs.forEach(input => {
+        input.value = "";
+        input.classList.remove("is-valid");
+      });
     } else {
       alerta.textContent = "⚠️ Por favor, completa todos los campos correctamente.";
-      alerta.className = "error";
+      alerta.className = "alert alert-danger";
     }
 
     // Ocultar alerta después de unos segundos
@@ -116,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 4000);
   });
 });
+
 
 /* P R U E B A*/
 
@@ -251,8 +260,20 @@ function actualizarSubtotal() {
         const index = e.target.getAttribute("data-index");
         const action = e.target.getAttribute("data-action");
 
-        if (action === "sumar") carrito[index].cantidad++;
-        if (action === "restar" && carrito[index].cantidad > 1) carrito[index].cantidad--;
+        if (action === "sumar") {
+          carrito[index].cantidad++;
+          let cant = localStorage.getItem('cancar');
+          cant++;
+          localStorage.setItem('cancar', cant);
+          
+        }
+        if (action === "restar" && carrito[index].cantidad > 1) {
+          carrito[index].cantidad--;
+          let cant = localStorage.getItem('cancar');
+          cant--;
+          localStorage.setItem('cancar', cant);
+          
+        }
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
         mostrarCarrito();
@@ -290,6 +311,7 @@ function actualizarSubtotal() {
 
   // Mostrar carrito inicial
   mostrarCarrito();
+
 
 });
 
