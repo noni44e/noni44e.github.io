@@ -28,6 +28,7 @@ nav .dropdown-menu .dropdown-item {
 [data-bs-theme="dark"] .col,
 [data-bs-theme="dark"] div.list-group-item,
 [data-bs-theme="dark"] .comentario,
+[data-bs-theme="dark"] .col-md-7,
 [data-bs-theme="dark"] .relacionado {
   background-color: #232323 !important;
   color: #fff !important;
@@ -159,4 +160,72 @@ background-color: rgb(35, 35, 35) !important
 .navbar .container-fluid {
   padding-left: 0 !important;
   margin-left: 0 !important;
+}
+
+
+
+/* === Modo oscuro sell=== */
+
+/* 🌞 Modo claro (por defecto) */
+[data-bs-theme="light"] {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* 🌙 Modo oscuro */
+[data-bs-theme="dark"] {
+  background-color: #232323;
+  color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .navbar {
+  background-color: #2323 !important;
+}
+
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .modal-content,
+[data-bs-theme="dark"] .list-group-item {
+  background-color: #1f1f1f !important;
+  color: #ddd !important;
+  border-color: #333 !important;
+}
+
+[data-bs-theme="dark"] select,
+[data-bs-theme="dark"] textarea,
+[data-bs-theme="dark"] input {
+  background-color: #2a2a2a !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
+
+[data-bs-theme="dark"] .btn-primary {
+  background-color: #0069d9 !important;
+  border-color: #005cbf !important;
+}
+
+[data-bs-theme="dark"] footer {
+  background-color: #181818;
+  color: #bbb;
+}
+
+[data-bs-theme="dark"] a {
+  color: #9ecbff;
+}
+[data-bs-theme="light"] h1,
+[data-bs-theme="light"] h2,
+[data-bs-theme="light"] h3,
+[data-bs-theme="light"] h4,
+[data-bs-theme="light"] h5,
+[data-bs-theme="light"] h6,
+[data-bs-theme="light"] label {
+  color: #212529 !important; /* letras oscuras */
+}
+
+[data-bs-theme="dark"] .summary-box {
+  background-color: #333333 !important;
+}
+[data-bs-theme="dark"] .product-card {
+  background-color: #333333 !important;
+  border: none !important;
 }

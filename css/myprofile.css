@@ -331,3 +331,13 @@ label{
 .visible{
     opacity:1;
 }
+#carritocantidad {
+    margin-top: 1em;
+    margin-left: 1.8em; 
+} 
+.bi-coin{
+    padding-left: 0.5em;
+}
+.bi-box{
+    padding-left: 0.5em;
+}

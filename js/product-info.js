@@ -2,6 +2,7 @@ let info = localStorage.getItem("dato-ide");
 let contenedor = document.getElementById("principal");
 let pagina = "https://japceibal.github.io/emercado-api/products/" + info + ".json";
 let nombredeusuario = localStorage.getItem('usuario');
+
 // ================== Mostrar producto principal ==================
 function mostrar(dato, producto) {
   dato.innerHTML = `
