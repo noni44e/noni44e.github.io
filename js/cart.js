@@ -1,10 +1,17 @@
-
 document.addEventListener("DOMContentLoaded", () => {
+
   const productos = document.querySelectorAll(".product-card");
   const inputSubtotal = document.querySelector(".summary-box input[readonly]");
   const btnsQty = document.querySelectorAll(".btn-qty");
-  
-  
+  const btncar = document.getElementById('carritocantidad');
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  let cantcar = carrito.length;
+  console.log(cantcar);
+  let contador = 0;
+  for(let i=0; i<cantcar; i++){
+    contador += carrito[i].cantidad;
+  };
+  btncar.innerText = contador;
   // ====== Función: calcular el subtotal de todos los productos ======
   function actualizarSubtotal() {
     let subtotal = 0;
@@ -47,12 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (e.target.textContent.trim() === "+") {
         cantidad++;
+
       } else if (e.target.textContent.trim() === "-") {
         cantidad = Math.max(1, cantidad - 1); // Evita valores menores que 1
       }
 
       inputCantidad.value = cantidad;
       actualizarProducto(producto);
+      let contador = 0;
+      for(let i=0; i<cantcar; i++){
+        contador += carrito[i].cantidad;
+      };
+      btncar.innerText = contador;
     });
   });
 
@@ -77,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     let valido = true;
 
+    // Validar los campos
     inputs.forEach(input => {
       if (input.value.trim() === "") {
         input.classList.add("is-invalid");
@@ -87,11 +101,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // eliminar alerta anterior si existe
+    // Eliminar alerta anterior si existe
     const alertaExistente = document.querySelector(".alerta");
     if (alertaExistente) alertaExistente.remove();
 
-    // crear nueva alerta
+    // Crear contenedor de alerta
     const alerta = document.createElement("div");
     alerta.classList.add("alerta");
     alerta.style.textAlign = "center";
@@ -99,27 +113,47 @@ document.addEventListener("DOMContentLoaded", function () {
     alerta.style.padding = "10px";
     alerta.style.borderRadius = "5px";
 
-    if (valido) {
-      alerta.textContent = "✅ ¡Compra realizada con éxito! Tu pedido será enviado pronto.";
-      alerta.style.backgroundColor = "#d4edda";
-      alerta.style.color = "#155724";
-      inputs.forEach(input => {
-        input.value = "";
-        input.classList.remove("is-valid");
-      });
-    } else {
-      alerta.textContent = "⚠️ Por favor, completa todos los campos correctamente.";
-      alerta.style.backgroundColor = "#f8d7da";
-      alerta.style.color = "#721c24";
-    }
+    // Spinner (círculo de carga)
+    const spinner = document.createElement("div");
+    spinner.classList.add("spinner-border");
+    spinner.style.width = "1.5rem";
+    spinner.style.height = "1.5rem";
+    spinner.style.borderWidth = "3px";
+    spinner.style.color = "#0d6efd";
 
-    // insertar debajo del botón
-    btnComprar.insertAdjacentElement("afterend", alerta);
+    // Desactivar botón y mostrar spinner
+    btnComprar.disabled = true;
+    const textoOriginal = btnComprar.textContent;
+    btnComprar.innerHTML = ""; 
+    btnComprar.appendChild(spinner);
 
-    setTimeout(() => alerta.remove(), 4000);
+    // Simular proceso (ej: validación / pago)
+    setTimeout(() => {
+      btnComprar.disabled = false;
+      btnComprar.textContent = textoOriginal;
+
+      if (valido) {
+        alerta.textContent = "✅ ¡Compra realizada con éxito! Tu pedido será enviado pronto.";
+        alerta.style.backgroundColor = "#d4edda";
+        alerta.style.color = "#155724";
+        inputs.forEach(input => {
+          input.value = "";
+          input.classList.remove("is-valid");
+        });
+      } else {
+        alerta.textContent = "⚠️ Por favor, completa todos los campos correctamente.";
+        alerta.style.backgroundColor = "#f8d7da";
+        alerta.style.color = "#721c24";
+      }
+
+      // Insertar alerta
+      btnComprar.insertAdjacentElement("afterend", alerta);
+
+      // Quitar alerta después de unos segundos
+      setTimeout(() => alerta.remove(), 4000);
+    }, 2000); // ← 2 segundos de "procesamiento"
   });
 });
-
 
 /* P R U E B A*/
 
@@ -272,6 +306,12 @@ function actualizarSubtotal() {
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
         mostrarCarrito();
+        let contador = 0;
+        let cantcar = carrito.length;
+        for(let i=0; i<cantcar; i++){
+          contador += carrito[i].cantidad;
+        };
+        document.getElementById('carritocantidad').innerText = contador;
       });
     });
   }
@@ -288,6 +328,12 @@ function actualizarSubtotal() {
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
         mostrarCarrito();
+        let contador = 0;
+        let cantcar = carrito.length;
+        for(let i=0; i<cantcar; i++){
+          contador += carrito[i].cantidad;
+        };
+        document.getElementById('carritocantidad').innerText = contador;
       });
     });
   }
