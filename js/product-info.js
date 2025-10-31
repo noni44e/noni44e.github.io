@@ -2,6 +2,17 @@ let info = localStorage.getItem("dato-ide");
 let contenedor = document.getElementById("principal");
 let pagina = "https://japceibal.github.io/emercado-api/products/" + info + ".json";
 let nombredeusuario = localStorage.getItem('usuario');
+//cargar la cantidad de productos que tiene el carrito//
+const btncar = document.getElementById('carritocantidad');
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let cantcar = carrito.length;
+console.log(cantcar);
+let contador = 0;
+for(let i=0; i<cantcar; i++){
+  contador += carrito[i].cantidad;
+};
+btncar.innerText = contador;
+//=================================================================
 // ================== Mostrar producto principal ==================
 function mostrar(dato, producto) {
   dato.innerHTML = `
