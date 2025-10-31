@@ -16,6 +16,16 @@ if (carritoBtn) {
   });
 } 
 
+const btncar = document.getElementById('carritocantidad');
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let cantcar = carrito.length;
+console.log(cantcar);
+let contador = 0;
+for(let i=0; i<cantcar; i++){
+contador += carrito[i].cantidad;
+};
+btncar.innerText = contador;
+
 let url = "/img/perfilpre.jpg";
 
 document.addEventListener('DOMContentLoaded', ()=>{
