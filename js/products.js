@@ -1,6 +1,14 @@
 let contenedor = document.getElementById("contenedor");
 let productosGlobal = []; // Guardará los productos del fetch
-
+  const btncar = document.getElementById('carritocantidad');
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  let cantcar = carrito.length;
+  console.log(cantcar);
+  let contador = 0;
+  for(let i=0; i<cantcar; i++){
+    contador += carrito[i].cantidad;
+  };
+  btncar.innerText = contador;
 // Función para mostrar un producto en una caja
 function mostrar(caja, producto) {
   let ide = producto.id;

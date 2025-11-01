@@ -5,7 +5,17 @@ let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
-
+//cargar la cantidad de productos que tiene el carrito//
+const btncar = document.getElementById('carritocantidad');
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let cantcar = carrito.length;
+console.log(cantcar);
+let contador = 0;
+for(let i=0; i<cantcar; i++){
+  contador += carrito[i].cantidad;
+};
+btncar.innerText = contador;
+//=================================================================
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
