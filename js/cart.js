@@ -6,22 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btncar = document.getElementById('carritocantidad');
   const btncar2 = document.getElementById('carritoperfil');
-  const btncar3 = document.getElementById('btncarrito');
+  const btncar3 = document.getElementById('car');
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   let conta = 0;
   for(let i=0; i<carrito.length; i++){
     conta += carrito[i].cantidad;
   };
-  btncar2.innerText = conta;
+  btncar.innerText = conta;
+  btncar3.innerText = conta;
 
-  let cantcar = carrito.length;
-  console.log(cantcar);
-  let contador = 0;
-  for(let i=0; i<cantcar; i++){
-    contador += carrito[i].cantidad;
-  };
-  btncar.innerText = contador;
-  btncar3.innerText = contador;
   // ====== Función: calcular el subtotal de todos los productos ======
   function actualizarSubtotal() {
     let subtotal = 0;
@@ -76,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         contador += carrito[i].cantidad;
       };
       btncar.innerText = contador;
+      btncar3.innerText = contador;
     });
   });
 
@@ -322,6 +316,7 @@ function actualizarSubtotal() {
           contador += carrito[i].cantidad;
         };
         document.getElementById('carritocantidad').innerText = contador;
+        document.getElementById('car').innerText = contador;
       });
     });
   }
