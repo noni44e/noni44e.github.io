@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnsQty = document.querySelectorAll(".btn-qty");
 
   const btncar = document.getElementById('carritocantidad');
-  const btncar2 = document.getElementById('carritoperfil');
   const btncar3 = document.getElementById('car');
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   let conta = 0;
@@ -339,6 +338,7 @@ function actualizarSubtotal() {
           contador += carrito[i].cantidad;
         };
         document.getElementById('carritocantidad').innerText = contador;
+        document.getElementById('car').innerText = contador;
       });
     });
   }
