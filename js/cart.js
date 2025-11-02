@@ -3,19 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const productos = document.querySelectorAll(".product-card");
   const inputSubtotal = document.querySelector(".summary-box input[readonly]");
   const btnsQty = document.querySelectorAll(".btn-qty");
-<<<<<<< Updated upstream
+
   const btncar = document.getElementById('carritocantidad');
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-=======
   const btncar2 = document.getElementById('carritoperfil');
-  const btncar = document.getElementById('carritocantidad');
+  const btncar3 = document.getElementById('btncarrito');
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   let conta = 0;
   for(let i=0; i<carrito.length; i++){
     conta += carrito[i].cantidad;
   };
   btncar2.innerText = conta;
->>>>>>> Stashed changes
+
   let cantcar = carrito.length;
   console.log(cantcar);
   let contador = 0;
@@ -23,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contador += carrito[i].cantidad;
   };
   btncar.innerText = contador;
+  btncar3.innerText = contador;
   // ====== Función: calcular el subtotal de todos los productos ======
   function actualizarSubtotal() {
     let subtotal = 0;
