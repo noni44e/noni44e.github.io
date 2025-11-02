@@ -28,6 +28,7 @@ nav .dropdown-menu .dropdown-item {
 [data-bs-theme="dark"] .col,
 [data-bs-theme="dark"] div.list-group-item,
 [data-bs-theme="dark"] .comentario,
+[data-bs-theme="dark"] .col-md-7,
 [data-bs-theme="dark"] .relacionado {
   background-color: #232323 !important;
   color: #fff !important;
@@ -192,8 +193,12 @@ background-color: rgb(35, 35, 35) !important
 
 [data-bs-theme="dark"] select,
 [data-bs-theme="dark"] textarea,
+[data-bs-theme="dark"] .text,
+[data-bs-theme="dark"] .nombre,
+[data-bs-theme="dark"] .description,
+[data-bs-theme="dark"] .vendidos,
+[data-bs-theme="dark"] strong,
 [data-bs-theme="dark"] input {
-  background-color: #2a2a2a !important;
   color: #fff !important;
   border-color: #444 !important;
 }
@@ -219,4 +224,12 @@ background-color: rgb(35, 35, 35) !important
 [data-bs-theme="light"] h6,
 [data-bs-theme="light"] label {
   color: #212529 !important; /* letras oscuras */
+}
+
+[data-bs-theme="dark"] .summary-box {
+  background-color: #333333 !important;
+}
+[data-bs-theme="dark"] .product-card {
+  background-color: #333333 !important;
+  border: none !important;
 }
