@@ -505,5 +505,10 @@ input:focus {
         font-size: 1.5em;
     }
 }
-
+.bi-coin{
+  padding-left: 0.5em;
+}
+.bi-box{
+  padding-left: 0.5em;
+}
 

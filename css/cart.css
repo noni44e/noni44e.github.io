@@ -63,3 +63,20 @@ body {
 h6, h5{
     color: black;
 }
+
+/*.product-card {
+  padding-left: 1.8em !important;
+  padding-right: 1.8em !important;
+}    Estilos de las tarjetas de Cart pero si se aplica pierde la responsividad de boostrap, lo dejo como anotacion para verlo despues.
+.product-img {
+  height: 9em !important;    más alta 
+  width: auto !important;     mantiene proporción 
+  object-fit: contain;        asegura que no se deforme 
+} */
+
+.bi-coin{
+  padding-left: 0.5em;
+}
+.bi-box{
+  padding-left: 0.5em;
+}
