@@ -193,8 +193,12 @@ background-color: rgb(35, 35, 35) !important
 
 [data-bs-theme="dark"] select,
 [data-bs-theme="dark"] textarea,
+[data-bs-theme="dark"] .text,
+[data-bs-theme="dark"] .nombre,
+[data-bs-theme="dark"] .description,
+[data-bs-theme="dark"] .vendidos,
+[data-bs-theme="dark"] strong,
 [data-bs-theme="dark"] input {
-  background-color: #2a2a2a !important;
   color: #fff !important;
   border-color: #444 !important;
 }
