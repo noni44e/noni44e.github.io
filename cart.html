@@ -79,28 +79,157 @@
       </div>
 
       <!-- Columna derecha -->
-      <div class="col-md-5">
-        <div class="summary-box">
-          <h5 class="text-center mb-3">Datos requeridos</h5>
+<div class="col-md-5">
+  <div class="summary-box">
+    <h5 class="text-center mb-3">Datos requeridos</h5>
+    <div id="datos">
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-3 justify-content-center flex-column d-flex align-items-center justify-content-center" id="cartTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="envio-tab" data-bs-toggle="tab" data-bs-target="#envio" type="button" role="tab">Tipo de envío</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="direccion-tab" data-bs-toggle="tab" data-bs-target="#direccion" type="button" role="tab">Dirección</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pago-tab" data-bs-toggle="tab" data-bs-target="#pago" type="button" role="tab">Pago</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="costos-tab" data-bs-toggle="tab" data-bs-target="#costos" type="button" role="tab">Costos</button>
+      </li>
+    </ul>
+    </div>
+    <div class="tab-content" id="cartTabsContent">
 
-          <h6>Datos de envío</h6>
-          <input type="text" class="form-control mb-2" placeholder="Nombre completo">
-          <input type="text" class="form-control mb-3" placeholder="Dirección de envío">
-
-          <h6>Método de pago</h6>
-          <input type="text" class="form-control mb-2" placeholder="Número de tarjeta">
-          <div class="d-flex gap-2">
-            <input type="text" class="form-control" placeholder="MM/AA">
-            <input type="text" class="form-control" placeholder="CVV">
-          </div>
-
-          <h6 class="mt-3">Subtotal a pagar</h6>
-          <input type="text" class="form-control mb-3" placeholder="15499 USD" readonly>
-
-          <button class="btn btn-buy">Comprar</button>
+      <!-- TAB: Tipo de envío -->
+      <div class="tab-pane fade show active" id="envio" role="tabpanel">
+        <h6>Selecciona el tipo de envío:</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="premium" value="0.15">
+          <label class="form-check-label" for="premium">Premium (2 a 5 días) - 15%</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="express" value="0.07">
+          <label class="form-check-label" for="express">Express (5 a 8 días) - 7%</label>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="standard" value="0.05">
+          <label class="form-check-label" for="standard">Standard (12 a 15 días) - 5%</label>
         </div>
       </div>
+
+      <!-- TAB: Dirección -->
+      <div class="tab-pane fade" id="direccion" role="tabpanel">
+        <h6>Dirección de envío</h6>
+        <input type="text" class="form-control mb-2" placeholder="Departamento" id="departamento">
+        <input type="text" class="form-control mb-2" placeholder="Localidad" id="localidad">
+        <input type="text" class="form-control mb-2" placeholder="Calle" id="calle">
+        <div class="d-flex gap-2">
+          <input type="text" class="form-control" placeholder="Número" id="numero">
+          <input type="text" class="form-control" placeholder="Esquina" id="esquina">
+        </div>
+      </div>
+
+      <!-- TAB: Forma de pago -->
+      <div class="tab-pane fade" id="pago" role="tabpanel">
+        <h6>Forma de pago</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="pago" id="tarjeta" data-bs-toggle="modal" data-bs-target="#modalTarjeta">
+          <label class="form-check-label" for="tarjeta">Tarjeta de crédito</label>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="radio" name="pago" id="transferencia" data-bs-toggle="modal" data-bs-target="#modalTransferencia">
+          <label class="form-check-label" for="transferencia">Transferencia bancaria</label>
+        </div>
+      </div>
+
+      <!-- TAB: Costos -->
+      <div class="tab-pane fade" id="costos" role="tabpanel">
+        <h6>Resumen de costos</h6>
+        <div class="mb-2">
+          <label>Subtotal</label>
+          <input type="text" class="form-control" id="subtotal" readonly value="0 USD">
+        </div>
+        <div class="mb-2">
+          <label>Costo de envío</label>
+          <input type="text" class="form-control" id="envioCosto" readonly value="0 USD">
+        </div>
+        <div class="mb-3">
+          <label>Total</label>
+          <input type="text" class="form-control" id="total" readonly value="0 USD">
+        </div>
+        <button id="btnFinalizar" class="btn btn-success w-100">Finalizar compra</button>
+      </div>
+
     </div>
+  </div>
+</div>
+<!-- Modal Tarjeta -->
+<div class="modal fade" id="modalTarjeta" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pago con tarjeta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="position-relative mb-2">
+  <input type="text" class="form-control" placeholder="Número de tarjeta" id="numeroTarjeta">
+  <i class="bi bi-credit-card-2-front tarjeta-icon" id="iconVisa"></i>
+  <i class="bi bi-credit-card-2-back tarjeta-icon" id="iconMastercard"></i>
+</div>
+        <input type="text" class="form-control mb-2" placeholder="Titular">
+        <div class="d-flex gap-2">
+          <input type="text" class="form-control" placeholder="MM/AA">
+          <input type="text" class="form-control" placeholder="CVV">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Transferencia -->
+<div class="modal fade" id="modalTransferencia" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pago por transferencia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control mb-2" placeholder="Banco">
+        <input type="text" class="form-control mb-2" placeholder="Número de cuenta">
+        <input type="text" class="form-control mb-2" placeholder="Titular">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirmación -->
+<div class="modal fade" id="modalResumen" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">Compra finalizada</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+        <p class="mt-3">¡Tu compra fue realizada con éxito!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   </main>
   
   <!-- FOOTER -->

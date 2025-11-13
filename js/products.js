@@ -22,7 +22,7 @@ function mostrar(caja, producto) {
       <div class="vendidos">Vendidos: ${producto.soldCount}</div>
       <div class="precio">${producto.currency} ${producto.cost}</div>
       <div class="comprar">
-          <div class="button izq">Comprar</div>
+          <div class="button izq" id="${ide}">Comprar</div>
           <div class="button der" data-id="${ide}">Información</div>
       </div>
     </div>
@@ -134,3 +134,22 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
     });
   }
 });
+
+//BTN COMPRAR:
+function btn(){
+  let btncompra = document.querySelectorAll('izq');
+  btncompra.forEach(btn =>{
+  btn.addEventListener('click', ()=> {
+    agregarAlCarrito({
+      id: data.id,
+      nombre: data.name,
+      costo: data.cost,
+      moneda: data.currency,
+      imagen: data.images[0],
+      cantidad: 1
+    });
+    window.location.href = "cart.html";
+   })
+});
+}
+

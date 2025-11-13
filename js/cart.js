@@ -158,48 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/* P R U E B A*/
-
-document.addEventListener("DOMContentLoaded", () => {
-  const contenedor = document.querySelector(".col-md-7");
-  const inputSubtotal = document.querySelector(".summary-box input[readonly]");
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  
-  function mostrarCarrito() {
-    contenedor.innerHTML = "";
-    carrito.forEach((p, index) => {
-      contenedor.innerHTML += `
-        <div class="product-card d-flex align-items-center">
-          <img src="${p.imagen}" class="product-img me-3" alt="${p.nombre}">
-          <div class="product-info">
-            <h6 class="mb-1">${p.nombre}</h6>
-            <p class="mb-1">Costo: <strong>${p.costo} ${p.moneda}</strong></p>
-            <div class="d-flex align-items-center">
-              <button id="${p.nombre}-" class="btn btn-outline-secondary btn-qty" data-index="${index}" data-action="restar">-</button>
-              <input id="${p.nombre}" type="text" class="form-control text-center mx-2" style="width: 50px;" value="${p.cantidad}">
-              <button id="${p.nombre}+" class="btn btn-outline-secondary btn-qty" data-index="${index}" data-action="sumar">+</button>
-            </div>
-            <p class="mt-2 mb-0">Total: <strong>${(p.costo * p.cantidad).toFixed(2)} ${p.moneda}</strong></p>
-          </div>
-        </div>`;
-    });
-    actualizarSubtotal();
-  }
-
-  function actualizarSubtotal() {
-    let subtotal = carrito.reduce((acc, p) => acc + (p.costo * p.cantidad), 0);
-    inputSubtotal.value = subtotal.toFixed(2) + " USD";
-  }
-
-  mostrarCarrito();
-});
-
-
-
-
-
-
-
 
 /* P R U E B A*/
 /* === CARRITO DESDE LOCALSTORAGE === */
@@ -351,6 +309,13 @@ function actualizarSubtotal() {
         carrito.splice(index, 1);
         localStorage.setItem("carrito", JSON.stringify(carrito));
         mostrarCarrito();
+        let contador = 0;
+        let cantcar = carrito.length;
+        for(let i=0; i<cantcar; i++){
+          contador += carrito[i].cantidad;
+        };
+        document.getElementById('carritocantidad').innerText = contador;
+        document.getElementById('car').innerText = contador;
       });
     });
   }
@@ -361,3 +326,202 @@ function actualizarSubtotal() {
 
 });
 
+// Datos requeridos
+const radiosEnvio = document.querySelectorAll('input[name="tipoEnvio"]');
+const subtotalInput = document.getElementById('subtotal');
+const envioInput = document.getElementById('envioCosto');
+const totalInput = document.getElementById('total');
+
+let subtotal = 120; // ejemplo, deberías reemplazar con el total real del carrito
+subtotalInput.value = subtotal + ' USD';
+
+radiosEnvio.forEach(radio => {
+  radio.addEventListener('change', () => {
+    const porcentaje = parseFloat(radio.value);
+    const costoEnvio = subtotal * porcentaje;
+    envioInput.value = costoEnvio.toFixed(2) + ' USD';
+    totalInput.value = (subtotal + costoEnvio).toFixed(2) + ' USD';
+  });
+});
+// ====== VALIDACIÓN Y FINALIZAR COMPRA ======
+document.addEventListener("DOMContentLoaded", function () {
+  const btnFinalizar = document.querySelector("#costos button.btn-success"); // tu botón verde
+  const inputsDireccion = document.querySelectorAll("#direccion .form-control");
+  const radiosEnvio = document.querySelectorAll('input[name="tipoEnvio"]');
+  const radiosPago = document.querySelectorAll('input[name="pago"]');
+
+  btnFinalizar.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Verificar tipo de envío seleccionado
+    const envioSeleccionado = Array.from(radiosEnvio).some(radio => radio.checked);
+
+    // Verificar forma de pago seleccionada
+    const pagoSeleccionado = Array.from(radiosPago).some(radio => radio.checked);
+
+    // Verificar dirección completa
+    let direccionValida = true;
+    inputsDireccion.forEach(input => {
+      if (input.value.trim() === "") {
+        input.classList.add("is-invalid");
+        direccionValida = false;
+      } else {
+        input.classList.remove("is-invalid");
+        input.classList.add("is-valid");
+      }
+    });
+
+    // Validación final
+    if (!envioSeleccionado || !pagoSeleccionado || !direccionValida) {
+      mostrarAlerta("⚠️ Completa todos los datos requeridos antes de finalizar la compra.", false);
+      return;
+    }
+
+    // Si pasa la validación → simular carga con spinner
+    const textoOriginal = btnFinalizar.textContent;
+    btnFinalizar.disabled = true;
+    btnFinalizar.innerHTML = `
+      <div class="spinner-border spinner-border-sm text-light" role="status"></div> Procesando...
+    `;
+
+    setTimeout(() => {
+      btnFinalizar.disabled = false;
+      btnFinalizar.textContent = textoOriginal;
+      // Mostrar modal de confirmación
+      const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
+      modal.show();
+
+      // Limpiar formularios
+      inputsDireccion.forEach(i => i.value = "");
+      radiosEnvio.forEach(r => r.checked = false);
+      radiosPago.forEach(r => r.checked = false);
+      document.getElementById("subtotal").value = "0 USD";
+      document.getElementById("envioCosto").value = "0 USD";
+      document.getElementById("total").value = "0 USD";
+    }, 2000);
+  });
+
+  // ==== Función para mostrar alerta temporal ====
+  function mostrarAlerta(mensaje, exito) {
+    const alertaExistente = document.querySelector(".alerta");
+    if (alertaExistente) alertaExistente.remove();
+
+    const alerta = document.createElement("div");
+    alerta.classList.add("alerta", "mt-2", "text-center", "p-2", "rounded");
+    alerta.style.transition = "opacity 0.3s ease";
+
+    if (exito) {
+      alerta.style.backgroundColor = "#d4edda";
+      alerta.style.color = "#155724";
+      alerta.textContent = mensaje;
+    } else {
+      alerta.style.backgroundColor = "#f8d7da";
+      alerta.style.color = "#721c24";
+      alerta.textContent = mensaje;
+    }
+
+    btnFinalizar.insertAdjacentElement("afterend", alerta);
+
+    setTimeout(() => alerta.remove(), 4000);
+  }
+});
+
+// ====== VALIDACIÓN Y FINALIZAR COMPRA ======
+document.addEventListener("DOMContentLoaded", function () {
+  const btnFinalizar = document.querySelector("#costos button.btn-success"); // tu botón verde
+  const inputsDireccion = document.querySelectorAll("#direccion .form-control");
+  const radiosEnvio = document.querySelectorAll('input[name="tipoEnvio"]');
+  const radiosPago = document.querySelectorAll('input[name="pago"]');
+
+  btnFinalizar.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Verificar tipo de envío seleccionado
+    const envioSeleccionado = Array.from(radiosEnvio).some(radio => radio.checked);
+
+    // Verificar forma de pago seleccionada
+    const pagoSeleccionado = Array.from(radiosPago).some(radio => radio.checked);
+
+    // Verificar dirección completa
+    let direccionValida = true;
+    inputsDireccion.forEach(input => {
+      if (input.value.trim() === "") {
+        input.classList.add("is-invalid");
+        direccionValida = false;
+      } else {
+        input.classList.remove("is-invalid");
+        input.classList.add("is-valid");
+      }
+    });
+
+    // Validación final
+    if (!envioSeleccionado || !pagoSeleccionado || !direccionValida) {
+      mostrarAlerta("⚠️ Completa todos los datos requeridos antes de finalizar la compra.", false);
+      return;
+    }
+
+    // Si pasa la validación → simular carga con spinner
+    const textoOriginal = btnFinalizar.textContent;
+    btnFinalizar.disabled = true;
+    btnFinalizar.innerHTML = `
+      <div class="spinner-border spinner-border-sm text-light" role="status"></div> Procesando...
+    `;
+
+    setTimeout(() => {
+      btnFinalizar.disabled = false;
+      btnFinalizar.textContent = textoOriginal;
+      // Mostrar modal de confirmación
+      const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
+      modal.show();
+
+      // Limpiar formularios
+      inputsDireccion.forEach(i => i.value = "");
+      radiosEnvio.forEach(r => r.checked = false);
+      radiosPago.forEach(r => r.checked = false);
+      document.getElementById("subtotal").value = "0 USD";
+      document.getElementById("envioCosto").value = "0 USD";
+      document.getElementById("total").value = "0 USD";
+    }, 2000);
+  });
+
+  // ==== Función para mostrar alerta temporal ====
+  function mostrarAlerta(mensaje, exito) {
+    const alertaExistente = document.querySelector(".alerta");
+    if (alertaExistente) alertaExistente.remove();
+
+    const alerta = document.createElement("div");
+    alerta.classList.add("alerta", "mt-2", "text-center", "p-2", "rounded");
+    alerta.style.transition = "opacity 0.3s ease";
+
+    if (exito) {
+      alerta.style.backgroundColor = "#d4edda";
+      alerta.style.color = "#155724";
+      alerta.textContent = mensaje;
+    } else {
+      alerta.style.backgroundColor = "#f8d7da";
+      alerta.style.color = "#721c24";
+      alerta.textContent = mensaje;
+    }
+
+    btnFinalizar.insertAdjacentElement("afterend", alerta);
+
+    setTimeout(() => alerta.remove(), 4000);
+  }
+});
+const numeroTarjeta = document.getElementById('numeroTarjeta');
+const iconVisa = document.getElementById('iconVisa');
+const iconMastercard = document.getElementById('iconMastercard');
+
+numeroTarjeta.addEventListener('input', () => {
+  const valor = numeroTarjeta.value;
+  if (/^4/.test(valor)) {
+    iconVisa.style.display = 'block';
+    iconMastercard.style.display = 'none';
+  } else if (/^5[1-5]/.test(valor)) {
+    iconVisa.style.display = 'none';
+    iconMastercard.style.display = 'block';
+  } else {
+    iconVisa.style.display = 'none';
+    iconMastercard.style.display = 'none';
+  }
+});

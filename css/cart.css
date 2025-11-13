@@ -80,3 +80,132 @@ h6, h5{
 .bi-box{
   padding-left: 0.5em;
 }
+
+/*caja de la derecha*/
+.summary-box{
+
+}
+
+#datos{
+  margin-left:0;
+
+}
+
+#cartTabs {
+
+  display:flex;
+  justify-content: center;
+}
+
+/* DATOS REQUERIDOS */
+.summary-box {
+  background-color: var(--bs-body-bg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Título */
+.summary-box h5 {
+  font-weight: 600;
+  color: var(--bs-body-color);
+  margin-bottom: 1.2rem;
+}
+
+/* Tabs: estilo moderno */
+.nav-tabs {
+  border: none;
+  justify-content: space-around;
+}
+
+.nav-tabs .nav-link {
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--bs-body-color);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--bs-primary);
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--bs-primary);
+  color: #fff !important;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenido de pestañas */
+.tab-content {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1rem;
+}
+
+/* Etiquetas y campos */
+.summary-box label,
+.summary-box h6 {
+  color: var(--bs-body-color);
+  font-weight: 500;
+}
+
+.summary-box input.form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--bs-body-color);
+}
+
+.summary-box input.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+  background-color: var(--bs-body-bg);
+}
+
+/* Botón Finalizar */
+.btn-success {
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* Modo oscuro */
+[data-bs-theme="dark"] .summary-box {
+  background-color: #1f1f1f;
+  border-color: #333;
+}
+
+#cartTabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem; /* espacio entre botones */
+  width: auto;
+  padding: 0;
+}
+
+/* Evita que los items ocupen todo el ancho y que el texto se rompa */
+.nav-tabs .nav-item {
+  display: inline-flex;
+}
+
+.nav-tabs .nav-link {
+  white-space: nowrap;
+  padding: 0.5rem 0.75rem;
+}
+
+.nav-item {
+  padding: 0 !important;  
+grid-template-columns: column;  grid;
+}
+.tarjeta-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem; 
+  display: none; /* Oculto por defecto */
+  color: #000; /* Cambia color si quieres */
+}
+
