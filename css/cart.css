@@ -60,9 +60,16 @@ body {
 .back-link:hover {
   text-decoration: underline;
 }
-h6, h5{
+h6{
     color: black;
 }
+h5 {
+  color: black;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 
 /*.product-card {
   padding-left: 1.8em !important;

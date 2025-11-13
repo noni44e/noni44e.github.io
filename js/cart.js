@@ -158,8 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-/* P R U E B A*/
 /* === CARRITO DESDE LOCALSTORAGE === */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -378,111 +376,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Si pasa la validación → simular carga con spinner
-    const textoOriginal = btnFinalizar.textContent;
-    btnFinalizar.disabled = true;
-    btnFinalizar.innerHTML = `
-      <div class="spinner-border spinner-border-sm text-light" role="status"></div> Procesando...
-    `;
+const textoOriginal = btnFinalizar.textContent;
+btnFinalizar.disabled = true;
+btnFinalizar.innerHTML = `
+  <div class="spinner-border spinner-border-sm text-light" role="status"></div> Procesando...
+`;
 
-    setTimeout(() => {
-      btnFinalizar.disabled = false;
-      btnFinalizar.textContent = textoOriginal;
-      // Mostrar modal de confirmación
-      const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
-      modal.show();
+setTimeout(() => {
+  btnFinalizar.disabled = false;
+  btnFinalizar.textContent = textoOriginal;
 
-      // Limpiar formularios
-      inputsDireccion.forEach(i => i.value = "");
-      radiosEnvio.forEach(r => r.checked = false);
-      radiosPago.forEach(r => r.checked = false);
-      document.getElementById("subtotal").value = "0 USD";
-      document.getElementById("envioCosto").value = "0 USD";
-      document.getElementById("total").value = "0 USD";
-    }, 2000);
+  // Mostrar modal de confirmación
+  const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
+  modal.show();
+
+  // Limpiar formularios
+  inputsDireccion.forEach(i => i.value = "");
+  radiosEnvio.forEach(r => r.checked = false);
+  radiosPago.forEach(r => r.checked = false);
+  document.getElementById("subtotal").value = "0 USD";
+  document.getElementById("envioCosto").value = "0 USD";
+  document.getElementById("total").value = "0 USD";
+
+  // 🟢 SOLO cuando se cierra el modal, vacía el carrito
+  const modalResumen = document.getElementById("modalResumen");
+  modalResumen.addEventListener("hidden.bs.modal", () => {
+    localStorage.removeItem("carrito"); // borra el carrito SOLO después de la compra
+    document.body.classList.remove("modal-open");
+    document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
+    document.getElementById("carrito").innerHTML = "<p class='text-center mt-3'>Tu carrito está vacío 🛒</p>";
   });
-
-  // ==== Función para mostrar alerta temporal ====
-  function mostrarAlerta(mensaje, exito) {
-    const alertaExistente = document.querySelector(".alerta");
-    if (alertaExistente) alertaExistente.remove();
-
-    const alerta = document.createElement("div");
-    alerta.classList.add("alerta", "mt-2", "text-center", "p-2", "rounded");
-    alerta.style.transition = "opacity 0.3s ease";
-
-    if (exito) {
-      alerta.style.backgroundColor = "#d4edda";
-      alerta.style.color = "#155724";
-      alerta.textContent = mensaje;
-    } else {
-      alerta.style.backgroundColor = "#f8d7da";
-      alerta.style.color = "#721c24";
-      alerta.textContent = mensaje;
-    }
-
-    btnFinalizar.insertAdjacentElement("afterend", alerta);
-
-    setTimeout(() => alerta.remove(), 4000);
-  }
+}, 2000);
 });
 
-// ====== VALIDACIÓN Y FINALIZAR COMPRA ======
-document.addEventListener("DOMContentLoaded", function () {
-  const btnFinalizar = document.querySelector("#costos button.btn-success"); // tu botón verde
-  const inputsDireccion = document.querySelectorAll("#direccion .form-control");
-  const radiosEnvio = document.querySelectorAll('input[name="tipoEnvio"]');
-  const radiosPago = document.querySelectorAll('input[name="pago"]');
-
-  btnFinalizar.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    // Verificar tipo de envío seleccionado
-    const envioSeleccionado = Array.from(radiosEnvio).some(radio => radio.checked);
-
-    // Verificar forma de pago seleccionada
-    const pagoSeleccionado = Array.from(radiosPago).some(radio => radio.checked);
-
-    // Verificar dirección completa
-    let direccionValida = true;
-    inputsDireccion.forEach(input => {
-      if (input.value.trim() === "") {
-        input.classList.add("is-invalid");
-        direccionValida = false;
-      } else {
-        input.classList.remove("is-invalid");
-        input.classList.add("is-valid");
-      }
-    });
-
-    // Validación final
-    if (!envioSeleccionado || !pagoSeleccionado || !direccionValida) {
-      mostrarAlerta("⚠️ Completa todos los datos requeridos antes de finalizar la compra.", false);
-      return;
-    }
-
-    // Si pasa la validación → simular carga con spinner
-    const textoOriginal = btnFinalizar.textContent;
-    btnFinalizar.disabled = true;
-    btnFinalizar.innerHTML = `
-      <div class="spinner-border spinner-border-sm text-light" role="status"></div> Procesando...
-    `;
-
-    setTimeout(() => {
-      btnFinalizar.disabled = false;
-      btnFinalizar.textContent = textoOriginal;
-      // Mostrar modal de confirmación
-      const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
-      modal.show();
-
-      // Limpiar formularios
-      inputsDireccion.forEach(i => i.value = "");
-      radiosEnvio.forEach(r => r.checked = false);
-      radiosPago.forEach(r => r.checked = false);
-      document.getElementById("subtotal").value = "0 USD";
-      document.getElementById("envioCosto").value = "0 USD";
-      document.getElementById("total").value = "0 USD";
-    }, 2000);
-  });
 
   // ==== Función para mostrar alerta temporal ====
   function mostrarAlerta(mensaje, exito) {
@@ -530,4 +456,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-

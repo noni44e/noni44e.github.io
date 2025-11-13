@@ -222,6 +222,8 @@ background-color: rgb(35, 35, 35) !important
 [data-bs-theme="light"] h4,
 [data-bs-theme="light"] h5,
 [data-bs-theme="light"] h6,
+[data-bs-theme="light"] #cartTabs,
+[data-bs-theme="light"] #costos,
 [data-bs-theme="light"] label {
   color: #212529 !important; /* letras oscuras */
 }

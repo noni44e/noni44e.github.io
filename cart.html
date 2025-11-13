@@ -86,16 +86,16 @@
     <!-- Tabs -->
     <ul class="nav nav-tabs mb-3 justify-content-center flex-column d-flex align-items-center justify-content-center" id="cartTabs" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="envio-tab" data-bs-toggle="tab" data-bs-target="#envio" type="button" role="tab">Tipo de envío</button>
+        <button class="nav-link active" id="envio-tab" data-bs-toggle="tab" data-bs-target="#envio" type="button" role="tab">Tipo de envío  <i class="bi bi-truck"></i></button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="direccion-tab" data-bs-toggle="tab" data-bs-target="#direccion" type="button" role="tab">Dirección</button>
+        <button class="nav-link" id="direccion-tab" data-bs-toggle="tab" data-bs-target="#direccion" type="button" role="tab">Dirección  <i class="bi bi-geo-alt"></i></button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pago-tab" data-bs-toggle="tab" data-bs-target="#pago" type="button" role="tab">Pago</button>
+        <button class="nav-link" id="pago-tab" data-bs-toggle="tab" data-bs-target="#pago" type="button" role="tab">Pago  <i class="bi bi-credit-card"></i></button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="costos-tab" data-bs-toggle="tab" data-bs-target="#costos" type="button" role="tab">Costos</button>
+        <button class="nav-link" id="costos-tab" data-bs-toggle="tab" data-bs-target="#costos" type="button" role="tab">Costos  <i class="bi bi-cash-stack"></i></button>
       </li>
     </ul>
     </div>
@@ -106,15 +106,15 @@
         <h6>Selecciona el tipo de envío:</h6>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="tipoEnvio" id="premium" value="0.15">
-          <label class="form-check-label" for="premium">Premium (2 a 5 días) - 15%</label>
+          <label class="form-check-label" for="premium">Premium (2 a 5 días) - 15% <i class="bi bi-lightning-charge-fill text-warning"></i></label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="tipoEnvio" id="express" value="0.07">
-          <label class="form-check-label" for="express">Express (5 a 8 días) - 7%</label>
+          <label class="form-check-label" for="express">Express (5 a 8 días) - 7% <i class="bi bi-rocket-takeoff-fill text-info"></i></label>
         </div>
         <div class="form-check mb-3">
           <input class="form-check-input" type="radio" name="tipoEnvio" id="standard" value="0.05">
-          <label class="form-check-label" for="standard">Standard (12 a 15 días) - 5%</label>
+          <label class="form-check-label" for="standard">Standard (12 a 15 días) - 5% <i class="bi bi-calendar-week text-muted"></i></label>
         </div>
       </div>
 
@@ -135,11 +135,11 @@
         <h6>Forma de pago</h6>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="pago" id="tarjeta" data-bs-toggle="modal" data-bs-target="#modalTarjeta">
-          <label class="form-check-label" for="tarjeta">Tarjeta de crédito</label>
+          <label class="form-check-label" for="tarjeta">Tarjeta de crédito <i class="bi bi-credit-card text-primary me-1"></i></label>
         </div>
         <div class="form-check mb-3">
           <input class="form-check-input" type="radio" name="pago" id="transferencia" data-bs-toggle="modal" data-bs-target="#modalTransferencia">
-          <label class="form-check-label" for="transferencia">Transferencia bancaria</label>
+          <label class="form-check-label" for="transferencia">Transferencia bancaria <i class="bi bi-bank text-success me-1"></i></label>
         </div>
       </div>
 
