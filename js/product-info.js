@@ -332,6 +332,7 @@ fetch(pagina)
     }, 100);
   });
 
+  
 // Función para agregar al carrito
 function agregarAlCarrito(producto) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];

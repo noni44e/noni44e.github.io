@@ -80,12 +80,6 @@ h6, h5{
 .bi-box{
   padding-left: 0.5em;
 }
-
-/*caja de la derecha*/
-.summary-box{
-
-}
-
 #datos{
   margin-left:0;
 
@@ -197,15 +191,25 @@ h6, h5{
 
 .nav-item {
   padding: 0 !important;  
-grid-template-columns: column;  grid;
+  grid-template-columns: column;
 }
-.tarjeta-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem; 
-  display: none; /* Oculto por defecto */
-  color: #000; /* Cambia color si quieres */
+.position-relative {
+  position: relative;
 }
 
+.tarjeta-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* distancia del borde derecho */
+  transform: translateY(-50%);
+  height: 24px;
+  width: auto;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tarjeta-icon.active {
+  opacity: 1;
+}
+ 

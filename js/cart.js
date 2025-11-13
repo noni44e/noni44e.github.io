@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==== validacion y alerta
 
 document.addEventListener("DOMContentLoaded", function () {
-  const btnComprar = document.querySelector(".btn-buy");
+  const btnComprar = document.querySelector("#btnFinalizar");
   const inputs = document.querySelectorAll(".form-control");
 
   btnComprar.addEventListener("click", (e) => {
@@ -508,20 +508,26 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => alerta.remove(), 4000);
   }
 });
-const numeroTarjeta = document.getElementById('numeroTarjeta');
-const iconVisa = document.getElementById('iconVisa');
-const iconMastercard = document.getElementById('iconMastercard');
 
-numeroTarjeta.addEventListener('input', () => {
-  const valor = numeroTarjeta.value;
-  if (/^4/.test(valor)) {
-    iconVisa.style.display = 'block';
-    iconMastercard.style.display = 'none';
-  } else if (/^5[1-5]/.test(valor)) {
-    iconVisa.style.display = 'none';
-    iconMastercard.style.display = 'block';
-  } else {
-    iconVisa.style.display = 'none';
-    iconMastercard.style.display = 'none';
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const numeroTarjeta = document.getElementById('numeroTarjeta');
+  const iconVisa = document.getElementById('iconVisa');
+  const iconMastercard = document.getElementById('iconMastercard');
+
+  if (!numeroTarjeta || !iconVisa || !iconMastercard) return; // <-- evita errores si no existen
+
+  numeroTarjeta.addEventListener('input', () => {
+    const value = numeroTarjeta.value;
+    if (value.startsWith('4')) { // Visa
+      iconVisa.classList.add('active');
+      iconMastercard.classList.remove('active');
+    } else if (value.startsWith('5')) { // MasterCard
+      iconMastercard.classList.add('active');
+      iconVisa.classList.remove('active');
+    } else {
+      iconVisa.classList.remove('active');
+      iconMastercard.classList.remove('active');
+    }
+  });
 });
+

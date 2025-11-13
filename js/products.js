@@ -48,6 +48,7 @@ fetch(pagina)
   .then(data => {
     productosGlobal = data.products;
     renderizarProductos(productosGlobal);
+    btn(productosGlobal);
   })
   .catch(error => console.error("Hubo un problema con el fetch:", error));
 
@@ -136,20 +137,51 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
 });
 
 //BTN COMPRAR:
-function btn(){
-  let btncompra = document.querySelectorAll('izq');
+function btn(lista){
+  
+  let btncompra = document.querySelectorAll('.izq');
   btncompra.forEach(btn =>{
-  btn.addEventListener('click', ()=> {
-    agregarAlCarrito({
-      id: data.id,
-      nombre: data.name,
-      costo: data.cost,
-      moneda: data.currency,
-      imagen: data.images[0],
-      cantidad: 1
-    });
-    window.location.href = "cart.html";
-   })
-});
+    btn.addEventListener('click', ()=> {
+      
+      let ide = btn.id;
+      fetch(`https://japceibal.github.io/emercado-api/products/${ide}.json`)
+        .then(response=> response.json())
+        .then(data => {
+          agregarAlCarrito({
+            id: data.id,
+            nombre: data.name,
+            costo: data.cost,
+            moneda: data.currency,
+            imagen: data.images[0],
+            cantidad: 1
+          });
+          alert("Producto agregado al carrito 🛒");
+          
+        })
+    })
+  });
 }
 
+// Función para agregar al carrito
+function agregarAlCarrito(producto) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const index = carrito.findIndex(p => p.id === producto.id);
+  if (index !== -1) {
+    carrito[index].cantidad += producto.cantidad;
+  } else {
+    carrito.push(producto);
+  }
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+/*agregarAlCarrito({
+        id: data.id,
+        nombre: data.name,
+        costo: data.cost,
+        moneda: data.currency,
+        imagen: data.images[0],
+        cantidad: 1
+      });
+
+      https://japceibal.github.io/emercado-api/products/id.json
+      */
