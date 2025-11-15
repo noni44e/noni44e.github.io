@@ -1,173 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  const productos = document.querySelectorAll(".product-card");
-  const inputSubtotal = document.querySelector(".summary-box input[readonly]");
-  const btnsQty = document.querySelectorAll(".btn-qty");
-
+  // actualizar contador del carrito en el navbar (si existe)
   const btncar = document.getElementById('carritocantidad');
   const btncar3 = document.getElementById('car');
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   let conta = 0;
-  for(let i=0; i<carrito.length; i++){
-    conta += carrito[i].cantidad;
-  };
-  btncar.innerText = conta;
-  btncar3.innerText = conta;
+  for (let i = 0; i < carrito.length; i++) conta += carrito[i].cantidad;
+  if (btncar) btncar.innerText = conta;
+  if (btncar3) btncar3.innerText = conta;
 
-  // ====== Función: calcular el subtotal de todos los productos ======
-  function actualizarSubtotal() {
-    let subtotal = 0;
-
-    productos.forEach(producto => {
-      const totalTexto = producto.querySelector("p.mt-2 strong").textContent; // Ej: "15000 USD"
-      const total = parseFloat(totalTexto.split(" ")[0]); // Extrae solo el número
-      subtotal += total;
-    });
-
-    inputSubtotal.value = subtotal.toFixed(2) + " USD";
-  }
-
-  // ====== Función: actualizar total de un producto según cantidad ======
-  function actualizarProducto(producto) {
-    const precioTexto = producto.querySelector(".product-info p strong").textContent; // Ej: "15000 USD"
-    const precioUnitario = parseFloat(precioTexto.split(" ")[0]);
-
-    const inputCantidad = producto.querySelector("input");
-    let cantidad = parseInt(inputCantidad.value);
-
-    if (isNaN(cantidad) || cantidad < 1) {
-      cantidad = 1;
-      inputCantidad.value = 1;
-    }
-
-    const total = precioUnitario * cantidad;
-    const totalElemento = producto.querySelector(".product-info p.mt-2 strong");
-    totalElemento.textContent = total.toFixed(2) + " USD";
-
-    actualizarSubtotal();
-  }
-
-  // ====== Eventos para los botones + y - ======
-  btnsQty.forEach(boton => {
-    boton.addEventListener("click", e => {
-      const producto = e.target.closest(".product-card");
-      const inputCantidad = producto.querySelector("input");
-      let cantidad = parseInt(inputCantidad.value);
-
-      if (e.target.textContent.trim() === "+") {
-        cantidad++;
-
-      } else if (e.target.textContent.trim() === "-") {
-        cantidad = Math.max(1, cantidad - 1); // Evita valores menores que 1
-      }
-
-      inputCantidad.value = cantidad;
-      actualizarProducto(producto);
-      let contador = 0;
-      for(let i=0; i<cantcar; i++){
-        contador += carrito[i].cantidad;
-      };
-      btncar.innerText = contador;
-      btncar3.innerText = contador;
-    });
-  });
-
-  // ====== Evento al modificar cantidad manualmente ======
-  productos.forEach(producto => {
-    const inputCantidad = producto.querySelector("input");
-    inputCantidad.addEventListener("change", () => actualizarProducto(producto));
-  });
-
-  // ====== Calcular el subtotal inicial ======
-  actualizarSubtotal();
-});
-
-
-// ==== validacion y alerta
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btnComprar = document.querySelector("#btnFinalizar");
-  const inputs = document.querySelectorAll(".form-control");
-
-  btnComprar.addEventListener("click", (e) => {
-    e.preventDefault();
-    let valido = true;
-
-    // Validar los campos
-    inputs.forEach(input => {
-      if (input.value.trim() === "") {
-        input.classList.add("is-invalid");
-        valido = false;
-      } else {
-        input.classList.remove("is-invalid");
-        input.classList.add("is-valid");
-      }
-    });
-
-    // Eliminar alerta anterior si existe
-    const alertaExistente = document.querySelector(".alerta");
-    if (alertaExistente) alertaExistente.remove();
-
-    // Crear contenedor de alerta
-    const alerta = document.createElement("div");
-    alerta.classList.add("alerta");
-    alerta.style.textAlign = "center";
-    alerta.style.marginTop = "10px";
-    alerta.style.padding = "10px";
-    alerta.style.borderRadius = "5px";
-
-    // Spinner (círculo de carga)
-    const spinner = document.createElement("div");
-    spinner.classList.add("spinner-border");
-    spinner.style.width = "1.5rem";
-    spinner.style.height = "1.5rem";
-    spinner.style.borderWidth = "3px";
-    spinner.style.color = "#0d6efd";
-
-    // Desactivar botón y mostrar spinner
-    btnComprar.disabled = true;
-    const textoOriginal = btnComprar.textContent;
-    btnComprar.innerHTML = ""; 
-    btnComprar.appendChild(spinner);
-
-    // Simular proceso (ej: validación / pago)
-    setTimeout(() => {
-      btnComprar.disabled = false;
-      btnComprar.textContent = textoOriginal;
-
-      if (valido) {
-        alerta.textContent = "✅ ¡Compra realizada con éxito! Tu pedido será enviado pronto.";
-        alerta.style.backgroundColor = "#d4edda";
-        alerta.style.color = "#155724";
-        inputs.forEach(input => {
-          input.value = "";
-          input.classList.remove("is-valid");
-        });
-      } else {
-        alerta.textContent = "⚠️ Por favor, completa todos los campos correctamente.";
-        alerta.style.backgroundColor = "#f8d7da";
-        alerta.style.color = "#721c24";
-      }
-
-      // Insertar alerta
-      btnComprar.insertAdjacentElement("afterend", alerta);
-
-      // Quitar alerta después de unos segundos
-      setTimeout(() => alerta.remove(), 4000);
-    }, 2000); // ← 2 segundos de "procesamiento"
-  });
-});
-
-/* === CARRITO DESDE LOCALSTORAGE === */
-
-document.addEventListener("DOMContentLoaded", () => {
+  // elementos del DOM para el carrito / resumen
   const contenedor = document.querySelector(".col-md-7");
   const inputSubtotal = document.querySelector(".summary-box input[readonly]");
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const envioInput = document.getElementById('envioCosto');
+  const totalInput = document.getElementById('total');
 
-  // ====== Mostrar productos en el carrito ======
+  // Mostrar productos en el carrito
   function mostrarCarrito() {
+    carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     contenedor.innerHTML = "";
+
+    if (!contenedor) return;
 
     // Si no hay productos, mostrar mensaje
     if (carrito.length === 0) {
@@ -178,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <a href="categories.html" class="btn btn-primary mt-2">Volver a comprar</a>
         </div>
       `;
-      inputSubtotal.value = "0 USD";
+      if (inputSubtotal) inputSubtotal.value = "0 USD";
+      if (envioInput) envioInput.value = "0 USD";
+      if (totalInput) totalInput.value = "0 USD";
+      actualizarContadoresNavbar();
       return;
     }
 
@@ -214,136 +69,137 @@ document.addEventListener("DOMContentLoaded", () => {
     asignarEventos();
     asignarEventosCantidad();
     asignarBotonesEliminar();
-    actualizarSubtotal();
+    actualizarSubtotal(); // recalcula subtotal/envío/total
+    actualizarContadoresNavbar();
   }
 
-  // ====== Actualizar subtotal general (maneja USD y UYU) ======
-function actualizarSubtotal() {
-  let subtotalUSD = 0;
-  let subtotalUYU = 0;
+  // recalcula y muestra subtotal (USD + UYU si aplica)
+  function actualizarSubtotal() {
+    let subtotalUSD = 0;
+    let subtotalUYU = 0;
 
-  carrito.forEach(p => {
-    const total = p.costo * p.cantidad;
-    if (p.moneda === "USD") subtotalUSD += total;
-    else if (p.moneda === "UYU") subtotalUYU += total;
-  });
+    carrito.forEach(p => {
+      const total = p.costo * p.cantidad;
+      if (p.moneda === "USD") subtotalUSD += total;
+      else if (p.moneda === "UYU") subtotalUYU += total;
+    });
 
-  // Mostrar resultado
-  if (subtotalUSD > 0 && subtotalUYU > 0) {
-    inputSubtotal.value = `${subtotalUSD.toFixed(2)} USD + ${subtotalUYU.toFixed(2)} UYU`;
-  } else if (subtotalUSD > 0) {
-    inputSubtotal.value = `${subtotalUSD.toFixed(2)} USD`;
-  } else if (subtotalUYU > 0) {
-    inputSubtotal.value = `${subtotalUYU.toFixed(2)} UYU`;
-  } else {
-    inputSubtotal.value = "0";
+    if (inputSubtotal) {
+      if (subtotalUSD > 0 && subtotalUYU > 0) inputSubtotal.value = `${subtotalUSD.toFixed(2)} USD + ${subtotalUYU.toFixed(2)} UYU`;
+      else if (subtotalUSD > 0) inputSubtotal.value = `${subtotalUSD.toFixed(2)} USD`;
+      else if (subtotalUYU > 0) inputSubtotal.value = `${subtotalUYU.toFixed(2)} UYU`;
+      else inputSubtotal.value = "0";
+    }
+
+    calcularTotal(subtotalUSD, subtotalUYU);
   }
-}
 
+  // calcula envío y total según subtotal recibido (separado por moneda)
+  function calcularTotal(subtotalUSD = 0, subtotalUYU = 0) {
+    const radio = document.querySelector('input[name="tipoEnvio"]:checked');
+    const porcentaje = radio ? parseFloat(radio.value) : 0;
 
-  // ====== Botones + y - ======
+    const envioUSD = subtotalUSD * porcentaje;
+    const envioUYU = subtotalUYU * porcentaje;
+
+    if (envioInput) {
+      if (envioUSD > 0 && envioUYU > 0) envioInput.value = `${envioUSD.toFixed(2)} USD + ${envioUYU.toFixed(2)} UYU`;
+      else if (envioUSD > 0) envioInput.value = `${envioUSD.toFixed(2)} USD`;
+      else if (envioUYU > 0) envioInput.value = `${envioUYU.toFixed(2)} UYU`;
+      else envioInput.value = "0";
+    }
+
+    if (totalInput) {
+      const totalUSDtoShow = subtotalUSD + envioUSD;
+      const totalUYUtoShow = subtotalUYU + envioUYU;
+
+      if (totalUSDtoShow > 0 && totalUYUtoShow > 0) totalInput.value = `${totalUSDtoShow.toFixed(2)} USD + ${totalUYUtoShow.toFixed(2)} UYU`;
+      else if (totalUSDtoShow > 0) totalInput.value = `${totalUSDtoShow.toFixed(2)} USD`;
+      else if (totalUYUtoShow > 0) totalInput.value = `${totalUYUtoShow.toFixed(2)} UYU`;
+      else totalInput.value = "0";
+    }
+  }
+
+  // asigna listeners a botones + / -
   function asignarEventos() {
     document.querySelectorAll(".btn-qty").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const index = e.target.getAttribute("data-index");
-        const action = e.target.getAttribute("data-action");
+        const index = parseInt(e.currentTarget.getAttribute("data-index"));
+        const action = e.currentTarget.getAttribute("data-action");
 
         if (action === "sumar") {
           carrito[index].cantidad++;
-          let cant = localStorage.getItem('cancar');
-          cant++;
-          localStorage.setItem('cancar', cant);
-          
         }
         if (action === "restar" && carrito[index].cantidad > 1) {
           carrito[index].cantidad--;
-          let cant = localStorage.getItem('cancar');
-          cant--;
-          localStorage.setItem('cancar', cant);
-          
         }
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
         mostrarCarrito();
-        let contador = 0;
-        let cantcar = carrito.length;
-        for(let i=0; i<cantcar; i++){
-          contador += carrito[i].cantidad;
-        };
-        document.getElementById('carritocantidad').innerText = contador;
-        document.getElementById('car').innerText = contador;
       });
     });
   }
 
-  // ====== Input change manual ======
+  // input cantidad manual
   function asignarEventosCantidad() {
     document.querySelectorAll(".cantidad-input").forEach((input) => {
       input.addEventListener("change", (e) => {
-        const index = e.target.getAttribute("data-index");
+        const index = parseInt(e.target.getAttribute("data-index"));
         let nuevaCantidad = parseInt(e.target.value);
-
         if (isNaN(nuevaCantidad) || nuevaCantidad < 1) nuevaCantidad = 1;
         carrito[index].cantidad = nuevaCantidad;
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
         mostrarCarrito();
-        let contador = 0;
-        let cantcar = carrito.length;
-        for(let i=0; i<cantcar; i++){
-          contador += carrito[i].cantidad;
-        };
-        document.getElementById('carritocantidad').innerText = contador;
-        document.getElementById('car').innerText = contador;
       });
     });
   }
 
-  // ====== Eliminar producto individual ======
+  // botones eliminar
   function asignarBotonesEliminar() {
     document.querySelectorAll(".btn-eliminar").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const index = e.target.closest("button").getAttribute("data-index");
+        const index = parseInt(e.currentTarget.getAttribute("data-index"));
         carrito.splice(index, 1);
         localStorage.setItem("carrito", JSON.stringify(carrito));
         mostrarCarrito();
-        let contador = 0;
-        let cantcar = carrito.length;
-        for(let i=0; i<cantcar; i++){
-          contador += carrito[i].cantidad;
-        };
-        document.getElementById('carritocantidad').innerText = contador;
-        document.getElementById('car').innerText = contador;
       });
     });
   }
 
+  // actualizar contador en navbar (después de cambios)
+  function actualizarContadoresNavbar() {
+    let contador = 0;
+    for (let i = 0; i < carrito.length; i++) contador += carrito[i].cantidad;
+    const btncarEl = document.getElementById('carritocantidad');
+    const btncarEl2 = document.getElementById('car');
+    if (btncarEl) btncarEl.innerText = contador;
+    if (btncarEl2) btncarEl2.innerText = contador;
+  }
+
+  // recalcular envío/total cuando cambie tipo de envío
+  document.querySelectorAll('input[name="tipoEnvio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      // forzar recalculo leyendo el subtotal actual mostrado
+      let subtotalUSD = 0;
+      let subtotalUYU = 0;
+      carrito.forEach(p => {
+        const total = p.costo * p.cantidad;
+        if (p.moneda === "USD") subtotalUSD += total;
+        else if (p.moneda === "UYU") subtotalUYU += total;
+      });
+      calcularTotal(subtotalUSD, subtotalUYU);
+    });
+  });
+
   // Mostrar carrito inicial
   mostrarCarrito();
-
-
 });
 
-// Datos requeridos
-const radiosEnvio = document.querySelectorAll('input[name="tipoEnvio"]');
-const subtotalInput = document.getElementById('subtotal');
-const envioInput = document.getElementById('envioCosto');
-const totalInput = document.getElementById('total');
-
-let subtotal = 120; // ejemplo, deberías reemplazar con el total real del carrito
-subtotalInput.value = subtotal + ' USD';
-
-radiosEnvio.forEach(radio => {
-  radio.addEventListener('change', () => {
-    const porcentaje = parseFloat(radio.value);
-    const costoEnvio = subtotal * porcentaje;
-    envioInput.value = costoEnvio.toFixed(2) + ' USD';
-    totalInput.value = (subtotal + costoEnvio).toFixed(2) + ' USD';
-  });
-});
 // ====== VALIDACIÓN Y FINALIZAR COMPRA ======
 document.addEventListener("DOMContentLoaded", function () {
   const btnFinalizar = document.querySelector("#costos button.btn-success"); // tu botón verde
+  if (!btnFinalizar) return;
   const inputsDireccion = document.querySelectorAll("#direccion .form-control");
   const radiosEnvio = document.querySelectorAll('input[name="tipoEnvio"]');
   const radiosPago = document.querySelectorAll('input[name="pago"]');
@@ -376,39 +232,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Si pasa la validación → simular carga con spinner
-const textoOriginal = btnFinalizar.textContent;
-btnFinalizar.disabled = true;
-btnFinalizar.innerHTML = `
-  <div class="spinner-border spinner-border-sm text-light" role="status"></div> Procesando...
-`;
+    const textoOriginal = btnFinalizar.textContent;
+    btnFinalizar.disabled = true;
+    btnFinalizar.innerHTML = `
+      <div class="spinner-border spinner-border-sm text-light" role="status"></div> Procesando...
+    `;
 
-setTimeout(() => {
-  btnFinalizar.disabled = false;
-  btnFinalizar.textContent = textoOriginal;
+    setTimeout(() => {
+      btnFinalizar.disabled = false;
+      btnFinalizar.textContent = textoOriginal;
 
-  // Mostrar modal de confirmación
-  const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
-  modal.show();
+      // Mostrar modal de confirmación
+      const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
+      modal.show();
 
-  // Limpiar formularios
-  inputsDireccion.forEach(i => i.value = "");
-  radiosEnvio.forEach(r => r.checked = false);
-  radiosPago.forEach(r => r.checked = false);
-  document.getElementById("subtotal").value = "0 USD";
-  document.getElementById("envioCosto").value = "0 USD";
-  document.getElementById("total").value = "0 USD";
+      // Limpiar formularios
+      inputsDireccion.forEach(i => i.value = "");
+      radiosEnvio.forEach(r => r.checked = false);
+      radiosPago.forEach(r => r.checked = false);
+      const subtotalEl = document.getElementById("subtotal");
+      const envioEl = document.getElementById("envioCosto");
+      const totalEl = document.getElementById("total");
+      if (subtotalEl) subtotalEl.value = "0 USD";
+      if (envioEl) envioEl.value = "0 USD";
+      if (totalEl) totalEl.value = "0 USD";
 
-  // 🟢 SOLO cuando se cierra el modal, vacía el carrito
-  const modalResumen = document.getElementById("modalResumen");
-  modalResumen.addEventListener("hidden.bs.modal", () => {
-    localStorage.removeItem("carrito"); // borra el carrito SOLO después de la compra
-    document.body.classList.remove("modal-open");
-    document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
-    document.getElementById("carrito").innerHTML = "<p class='text-center mt-3'>Tu carrito está vacío 🛒</p>";
+      // 🟢 SOLO cuando se cierra el modal, vacía el carrito
+      const modalResumen = document.getElementById("modalResumen");
+      modalResumen.addEventListener("hidden.bs.modal", () => {
+        localStorage.removeItem("carrito"); // borra el carrito SOLO después de la compra
+        document.body.classList.remove("modal-open");
+        document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
+        const carritoContainer = document.getElementById("productos-container") || document.getElementById("carrito");
+        if (carritoContainer) carritoContainer.innerHTML = "<p class='text-center mt-3'>Tu carrito está vacío 🛒</p>";
+        // actualizar badges
+        const btncarEl = document.getElementById('carritocantidad');
+        const btncarEl2 = document.getElementById('car');
+        if (btncarEl) btncarEl.innerText = "0";
+        if (btncarEl2) btncarEl2.innerText = "0";
+      });
+    }, 2000);
   });
-}, 2000);
-});
-
 
   // ==== Función para mostrar alerta temporal ====
   function mostrarAlerta(mensaje, exito) {
@@ -435,19 +299,20 @@ setTimeout(() => {
   }
 });
 
+// tarjeta icons (solo si existen)
 document.addEventListener("DOMContentLoaded", () => {
   const numeroTarjeta = document.getElementById('numeroTarjeta');
   const iconVisa = document.getElementById('iconVisa');
   const iconMastercard = document.getElementById('iconMastercard');
 
-  if (!numeroTarjeta || !iconVisa || !iconMastercard) return; // <-- evita errores si no existen
+  if (!numeroTarjeta || !iconVisa || !iconMastercard) return;
 
   numeroTarjeta.addEventListener('input', () => {
     const value = numeroTarjeta.value;
-    if (value.startsWith('4')) { // Visa
+    if (value.startsWith('4')) {
       iconVisa.classList.add('active');
       iconMastercard.classList.remove('active');
-    } else if (value.startsWith('5')) { // MasterCard
+    } else if (value.startsWith('5')) {
       iconMastercard.classList.add('active');
       iconVisa.classList.remove('active');
     } else {
@@ -456,3 +321,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+

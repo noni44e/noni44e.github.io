@@ -196,7 +196,7 @@ h5 {
   padding: 0.5rem 0.75rem;
 }
 
-.nav-item {
+.nav-itemdatareq {
   padding: 0 !important;  
   grid-template-columns: column;
 }
@@ -219,4 +219,7 @@ h5 {
 .tarjeta-icon.active {
   opacity: 1;
 }
- 
+.is-invalid {
+    border: 2px solid red !important;
+}
+
