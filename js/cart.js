@@ -206,7 +206,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   btnFinalizar.addEventListener("click", (e) => {
     e.preventDefault();
-
+  
+    // ✅ Validar que haya productos en el carrito
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    if (carrito.length === 0) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Carrito vacío',
+        text: 'Tu carrito está vacío. Agrega productos antes de finalizar la compra.'
+      });
+      return; // salir de la función
+    }
     // Verificar tipo de envío seleccionado
     const envioSeleccionado = Array.from(radiosEnvio).some(radio => radio.checked);
 
@@ -214,16 +224,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const pagoSeleccionado = Array.from(radiosPago).some(radio => radio.checked);
 
     // Verificar dirección completa
-    let direccionValida = true;
-    inputsDireccion.forEach(input => {
-      if (input.value.trim() === "") {
-        input.classList.add("is-invalid");
-        direccionValida = false;
-      } else {
-        input.classList.remove("is-invalid");
-        input.classList.add("is-valid");
-      }
+    // Verificar dirección completa y tipo de datos
+let direccionValida = true;
+
+inputsDireccion.forEach(input => {
+  const valor = input.value.trim();
+  const tipo = input.dataset.tipo; // "texto" o "numero"
+
+  // Campo vacío
+  if (valor === "") {
+    direccionValida = false;
+    input.classList.add("is-invalid");
+    return;
+  } else {
+    input.classList.remove("is-invalid");
+    input.classList.add("is-valid");
+  }
+
+  // Validación de tipo
+  if (tipo === "texto" && /\d/.test(valor)) {
+    direccionValida = false;
+    input.classList.add("is-invalid");
+    Swal.fire({
+      icon: 'error',
+      title: 'Campo inválido',
+      text: `El campo "${input.placeholder}" solo puede contener letras.`
     });
+  }
+
+  if (tipo === "numero" && !/^\d+$/.test(valor)) {
+    direccionValida = false;
+    input.classList.add("is-invalid");
+    Swal.fire({
+      icon: 'error',
+      title: 'Campo inválido',
+      text: `El campo "${input.placeholder}" solo puede contener números.`
+    });
+  }
+});
+
 
     // Validación final
     if (!envioSeleccionado || !pagoSeleccionado || !direccionValida) {
@@ -242,9 +281,30 @@ document.addEventListener("DOMContentLoaded", function () {
       btnFinalizar.disabled = false;
       btnFinalizar.textContent = textoOriginal;
 
-      // Mostrar modal de confirmación
-      const modal = new bootstrap.Modal(document.getElementById("modalResumen"));
-      modal.show();
+      // ✅ Se reemplaza por SweetAlert
+  Swal.fire({
+    icon: 'success',
+    title: 'Compra realizada',
+    html: '<p>¡Tu compra fue realizada con éxito!</p>',
+    confirmButtonText: 'Aceptar',
+    allowOutsideClick: false
+  }).then(() => {
+    // Limpiar formularios y carrito después de cerrar SweetAlert
+    inputsDireccion.forEach(i => i.value = "");
+    radiosEnvio.forEach(r => r.checked = false);
+    radiosPago.forEach(r => r.checked = false);
+    const subtotalEl = document.getElementById("subtotal");
+    const envioEl = document.getElementById("envioCosto");
+    const totalEl = document.getElementById("total");
+    if (subtotalEl) subtotalEl.value = "0 USD";
+    if (envioEl) envioEl.value = "0 USD";
+    if (totalEl) totalEl.value = "0 USD";
+
+    localStorage.removeItem("carrito");
+    mostrarCarrito(); // actualizar pantalla y badges
+  });
+
+}, 2000);
 
       // Limpiar formularios
       inputsDireccion.forEach(i => i.value = "");
@@ -283,7 +343,6 @@ modalResumen.addEventListener("hidden.bs.modal", () => {
   if (btncarEl2) btncarEl2.innerText = "0";
 });
     }, 2000);
-  });
 
   // ==== Función para mostrar alerta temporal ====
   function mostrarAlerta(mensaje, exito) {

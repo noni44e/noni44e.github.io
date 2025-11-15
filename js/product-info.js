@@ -325,11 +325,17 @@ fetch(pagina)
             imagen: data.images[0],
             cantidad: 1
           });
-          alert("Producto agregado al carrito 🛒");
-          window.location.href = "cart.html";
+          Swal.fire({  //Alerta con SweetAlert
+            title: "Producto agregado al carrito 🛒",  
+            icon: "success",
+            draggable: true
+          });
         });
       }
-    }, 100);
+    });
+    })
+  .catch(error => {
+    console.error("Error al obtener el producto:", error);
   });
 
   

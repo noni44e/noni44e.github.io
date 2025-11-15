@@ -33,7 +33,7 @@
             <a class="nav-link" href="categories.html">Categorías<i class="bi bi-box"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender<i class="bi bi-coin"></i></a>
+            <a class="nav-link" href="sell.html">Vender <i class="bi bi-cash-stack ms-1"></i></a>
           </li>
           <li class="nav-item d-flex align-items-center">
             <button onclick="temaOscuro()" class="btn btn-sm text-light me-2" id="btnTema" title="Cambiar tema">
@@ -46,7 +46,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="my-profile.html"><i class="bi bi-person me-2"></i> Mi perfil</a></li>
-                <li><a class="dropdown-item" href="cart.html" id="carritobtn carritoBtn"><i class="bi bi-cart-fill me-2"></i> Mi carrito<span id="carritocantidad" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                <li><a class="dropdown-item" href="cart.html" id="carritobtn"><i class="bi bi-cart-fill me-2"></i> Mi carrito<span id="carritocantidad" class="position-absolute translate-middle badge rounded-pill bg-danger">
                     0
                   <span class="visually-hidden">unread messages</span>
                   </span></a>
@@ -121,12 +121,12 @@
       <!-- TAB: Dirección -->
       <div class="tab-pane fade" id="direccion" role="tabpanel">
         <h6>Dirección de envío</h6>
-        <input type="text" class="form-control mb-2" placeholder="Departamento" id="departamento">
-        <input type="text" class="form-control mb-2" placeholder="Localidad" id="localidad">
-        <input type="text" class="form-control mb-2" placeholder="Calle" id="calle">
+        <input type="text" class="form-control mb-2" placeholder="Departamento" id="departamento" data-tipo="texto">
+        <input type="text" class="form-control mb-2" placeholder="Localidad" id="localidad" data-tipo="texto">
+        <input type="text" class="form-control mb-2" placeholder="Calle" id="calle" data-tipo="texto">
         <div class="d-flex gap-2">
-          <input type="text" class="form-control" placeholder="Número" id="numero">
-          <input type="text" class="form-control" placeholder="Esquina" id="esquina">
+          <input type="text" class="form-control" placeholder="Número" id="numero" data-tipo="numero">
+          <input type="text" class="form-control" placeholder="Esquina" id="esquina" data-tipo="texto">
         </div>
       </div>
 
@@ -248,6 +248,7 @@
   <script defer src="js/cart.js"></script>
   <script defer src="js/agregarnombre.js"></script>
   <script defer src="js/claro-oscuro.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
