@@ -258,19 +258,30 @@ document.addEventListener("DOMContentLoaded", function () {
       if (totalEl) totalEl.value = "0 USD";
 
       // 🟢 SOLO cuando se cierra el modal, vacía el carrito
-      const modalResumen = document.getElementById("modalResumen");
-      modalResumen.addEventListener("hidden.bs.modal", () => {
-        localStorage.removeItem("carrito"); // borra el carrito SOLO después de la compra
-        document.body.classList.remove("modal-open");
-        document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
-        const carritoContainer = document.getElementById("productos-container") || document.getElementById("carrito");
-        if (carritoContainer) carritoContainer.innerHTML = "<p class='text-center mt-3'>Tu carrito está vacío 🛒</p>";
-        // actualizar badges
-        const btncarEl = document.getElementById('carritocantidad');
-        const btncarEl2 = document.getElementById('car');
-        if (btncarEl) btncarEl.innerText = "0";
-        if (btncarEl2) btncarEl2.innerText = "0";
-      });
+const modalResumen = document.getElementById("modalResumen");
+modalResumen.addEventListener("hidden.bs.modal", () => {
+  localStorage.removeItem("carrito");
+
+  mostrarCarrito(); // 🔥 ACTUALIZA LA PANTALLA SIN REFRESCAR
+
+  document.body.classList.remove("modal-open");
+  document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
+  const contenedor = document.querySelector(".col-md-7");
+  if (contenedor) {
+    contenedor.innerHTML = `
+      <div class="text-center py-5">
+        <i class="bi bi-cart-x fs-1 text-muted"></i>
+        <p class="mt-3 text-muted">Tu carrito está vacío 🛒</p>
+        <a href="categories.html" class="btn btn-primary mt-2">Volver a comprar</a>
+      </div>
+    `;
+  }
+  // actualizar badges
+  const btncarEl = document.getElementById('carritocantidad');
+  const btncarEl2 = document.getElementById('car');
+  if (btncarEl) btncarEl.innerText = "0";
+  if (btncarEl2) btncarEl2.innerText = "0";
+});
     }, 2000);
   });
 

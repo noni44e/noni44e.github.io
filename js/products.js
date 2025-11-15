@@ -155,7 +155,11 @@ function btn(lista){
             imagen: data.images[0],
             cantidad: 1
           });
-          alert("Producto agregado al carrito 🛒");
+          Swal.fire({title: "Producto agregado al carrito 🛒",
+          icon: "success",
+          theme: 'bootstrap-5',
+          draggable: true
+});
           
         })
     })
