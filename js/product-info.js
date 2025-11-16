@@ -330,6 +330,14 @@ fetch(pagina)
             icon: "success",
             draggable: true
           });
+          //actualizar contador
+          let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+          let contador = 0;
+          cantcar = carrito.length;
+          for(let i=0; i<cantcar; i++){
+            contador += carrito[i].cantidad;
+          };
+          document.getElementById('carritocantidad').innerText = contador;
         });
       }
     });

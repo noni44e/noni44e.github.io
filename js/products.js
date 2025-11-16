@@ -1,6 +1,7 @@
 let contenedor = document.getElementById("contenedor");
 let productosGlobal = []; // Guardará los productos del fetch
   const btncar = document.getElementById('carritocantidad');
+  const btncar3 = document.getElementById('car');
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   let cantcar = carrito.length;
   console.log(cantcar);
@@ -142,7 +143,7 @@ function btn(lista){
   let btncompra = document.querySelectorAll('.izq');
   btncompra.forEach(btn =>{
     btn.addEventListener('click', ()=> {
-      
+
       let ide = btn.id;
       fetch(`https://japceibal.github.io/emercado-api/products/${ide}.json`)
         .then(response=> response.json())
@@ -158,12 +159,20 @@ function btn(lista){
           Swal.fire({title: "Producto agregado al carrito 🛒", //Alerta con SweetAlert
           icon: "success",
           draggable: true
-});
-          
+          });
+
+          //actualizar contador
+          let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+          let contador = 0;
+          for(let i=0; i<cantcar; i++){
+            contador += carrito[i].cantidad;
+          };
+          document.getElementById('carritocantidad').innerText = contador;
         })
-    })
+      })
   });
 }
+
 
 // Función para agregar al carrito
 function agregarAlCarrito(producto) {
