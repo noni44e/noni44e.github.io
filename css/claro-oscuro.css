@@ -1,0 +1,251 @@
+nav .dropdown-menu {
+  background-color: #000 !important;
+}
+
+nav .dropdown-menu .dropdown-item {
+  color: #fff !important;
+}
+
+[data-bs-theme="dark"] body,
+[data-bs-theme="dark"] section,
+[data-bs-theme="dark"] header,
+[data-bs-theme="dark"] footer,
+[data-bs-theme="dark"] main, 
+[data-bs-theme="dark"] #inputtext,
+[data-bs-theme="dark"] #calificacion,
+[data-bs-theme="dark"] #comentar,
+[data-bs-theme="dark"] #info,
+[data-bs-theme="dark"] #contenedor,
+[data-bs-theme="dark"] #principal,
+[data-bs-theme="dark"] #filtros,
+[data-bs-theme="dark"] #navbar,
+[data-bs-theme="dark"] #controles,
+[data-bs-theme="dark"] #autos,
+[data-bs-theme="dark"] #juguetes,
+[data-bs-theme="dark"] #muebles,
+[data-bs-theme="dark"] .album,
+[data-bs-theme="dark"] .btn-light,
+[data-bs-theme="dark"] .col,
+[data-bs-theme="dark"] div.list-group-item,
+[data-bs-theme="dark"] .comentario,
+[data-bs-theme="dark"] .col-md-7,
+[data-bs-theme="dark"] .relacionado {
+  background-color: #232323 !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+[data-bs-theme="dark"] .contder,
+[data-bs-theme="dark"] .tarjeta,
+[data-bs-theme="dark"] .infoper,
+[data-bs-theme="dark"] #sector3,
+[data-bs-theme="dark"] #sec,
+[data-bs-theme="dark"] .cajadiv {
+  background-color: #232323 !important;
+  color: #fff !important;
+}
+
+
+
+[data-bs-theme="dark"] p,
+[data-bs-theme="dark"] h1,
+[data-bs-theme="dark"] h2,
+[data-bs-theme="dark"] h3,
+[data-bs-theme="dark"] h4,
+[data-bs-theme="dark"] h5,
+[data-bs-theme="dark"] h6,
+[data-bs-theme="dark"] span,
+[data-bs-theme="dark"] label,
+[data-bs-theme="dark"] a {
+  color: #ffffff !important;
+}
+
+/*CAMBIOS PARA MY PROFILE*/
+[data-bs-theme="dark"] #sector3,
+[data-bs-theme="dark"] #sec,
+[data-bs-theme="dark"] .infoper,
+[data-bs-theme="dark"] .cajadiv,
+[data-bs-theme="dark"] #eliminar.gestion,
+[data-bs-theme="dark"] #cerrar.gestion,
+[data-bs-theme="dark"] .dropdown-item{
+
+background-color: rgb(35, 35, 35) !important
+}
+[data-bs-theme="dark"] .imgld  {
+    background-color: rgb(35, 35, 35) !important;
+    color: rgb(35, 35, 35) !important;
+}
+[data-bs-theme="dark"] .contizq,
+[data-bs-theme="dark"] .informacion,
+[data-bs-theme="dark"] #cambiar.cambiar.letra,
+[data-bs-theme="dark"] #borrar.borrar.letra,
+[data-bs-theme="dark"] #imgperfil.imagen,
+[data-bs-theme="dark"] .azul,
+[data-bs-theme="dark"] .container2 {
+    background-color: rgb(35, 35, 35) !important;
+    color: rgb(35, 35, 35) ;
+}
+[data-bs-theme="dark"] {
+  .contder {
+    background-image: url('/img/rayos.jpg');
+    background-size: cover;
+    height: 100vw;
+  }
+
+  .botones:hover {
+    background-color: #2d3335;
+    color: #fff;
+  }
+
+  .informacion {
+    color: #fff !important;
+  }
+
+  .informacion:hover {
+    color: #e99f16 !important;
+  }
+}
+
+/* ===== Modo Claro para mantenes la estetica y no aplique la imagen===== */
+[data-bs-theme="light"] {
+  .contder {
+    background-image: none;
+    background-color: rgb(223, 223, 223);
+  }
+
+  .botones:hover {
+    background-color: #ffffffc5;
+    color: #000;
+  }
+}
+/* Modo oscuro solo para el botón #cambiar con clase .letra */
+[data-bs-theme="dark"] #cambiar.letra {
+    background-color: #1a3233 !important; /* Fondo oscuro */
+    color: #8baaac !important;           /* Texto claro */
+    border-radius: 3px;                  /* Mantener forma */
+    font-weight: bold;                   /* Mantener peso */
+    display: grid;
+    justify-content: center;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover opcional */
+[data-bs-theme="dark"] #cambiar.letra:hover {
+    background-color: #2d4445 !important;
+    color: #c1d6d7 !important;
+}
+
+/* Modo oscuro específico para botones .letra */
+[data-bs-theme="dark"] .letra {
+    background-color: #1a3233 !important;
+    color: #8baaac !important;
+    border: 2px solid #8baaac !important;
+    border-radius: 3px;
+    font-weight: bold;
+    display: grid;
+    justify-content: center;
+    transition: color 0.3s ease, background-color 0.3s ease, border 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover: cambia color y sube un poquito */
+[data-bs-theme="dark"] .letra:hover {
+    background-color: #2d4445 !important;
+    color: #c1d6d7 !important;
+    border-color: #c1d6d7 !important;
+}
+.navbar-brand {
+  margin-left: 1000 !important;
+  padding-left: 0 !important;
+}
+
+.navbar .container-fluid {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+
+
+/* === Modo oscuro sell=== */
+
+/* 🌞 Modo claro (por defecto) */
+[data-bs-theme="light"] {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* 🌙 Modo oscuro */
+[data-bs-theme="dark"] {
+  background-color: #232323;
+  color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .navbar {
+  background-color: #2323 !important;
+}
+
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .modal-content,
+[data-bs-theme="dark"] .list-group-item {
+  background-color: #1f1f1f !important;
+  color: #ddd !important;
+  border-color: #333 !important;
+}
+[data-bs-theme="light"] .card,
+[data-bs-theme="light"] .form-control,
+[data-bs-theme="light"] .modal-content,
+[data-bs-theme="light"] .list-group-item {
+  background-color: #f8f9fa !important;
+  color: #000000 !important;
+  border-color: #333 !important;
+}
+
+[data-bs-theme="dark"] select,
+[data-bs-theme="dark"] textarea,
+[data-bs-theme="dark"] .text,
+[data-bs-theme="dark"] .nombre,
+[data-bs-theme="dark"] .description,
+[data-bs-theme="dark"] .vendidos,
+[data-bs-theme="dark"] strong,
+[data-bs-theme="dark"] input {
+  color: #fff !important;
+  border-color: #444 !important;
+}
+
+[data-bs-theme="dark"] .btn-primary {
+  background-color: #0069d9 !important;
+  border-color: #005cbf !important;
+}
+
+[data-bs-theme="dark"] footer {
+  background-color: #181818;
+  color: #bbb;
+}
+
+[data-bs-theme="dark"] a {
+  color: #9ecbff;
+}
+[data-bs-theme="light"] h1,
+[data-bs-theme="light"] h2,
+[data-bs-theme="light"] h3,
+[data-bs-theme="light"] h4,
+[data-bs-theme="light"] h5,
+[data-bs-theme="light"] h6,
+[data-bs-theme="light"] #cartTabs,
+[data-bs-theme="light"] #costos,
+[data-bs-theme="light"] label {
+  color: #212529 !important; /* letras oscuras */
+}
+
+[data-bs-theme="dark"] .summary-box {
+  background-color: #333333 !important;
+}
+[data-bs-theme="dark"] .product-card {
+  background-color: #333333 !important;
+  border: none !important;
+}
+
+/* SweetAlert2 Para que funcione en MODO OSCURO */
+[data-bs-theme="dark"] .swal2-popup {
+  background: #232323 !important;
+  color: #fff !important;
+}

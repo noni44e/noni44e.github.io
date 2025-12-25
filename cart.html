@@ -4,63 +4,251 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <title>eMercado - Carrito de compras</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,900" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/claro-oscuro.css">
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
+<body data-bs-theme="light">
+
+  <!-- NAVBAR -->
+  <nav class="azul navbar navbar-expand-lg navbar-dark p-1">
+    <div class="container-fluid azul px-0">
+      <a id="emercado" class="navbar-brand me-5" href="index.html">
+        <img src="img/emercado.png" alt="Logo" width="200" height="60" class="d-inline-block align-text-to">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav w-100 justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="categories.html">Categorías<i class="bi bi-box"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a class="nav-link" href="sell.html">Vender <i class="bi bi-cash-stack ms-1"></i></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li id="nombre" class="nav-item">
+          <li class="nav-item d-flex align-items-center">
+            <button onclick="temaOscuro()" class="btn btn-sm text-light me-2" id="btnTema" title="Cambiar tema">
+              <i class="bi bi-sun dl-icon" id="iconoTema"></i>
+            </button>
+            <div class="dropdown">
+              <a id="nombre" class="nav-link dropdown-toggle hamburguesa" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle me-1"></i> Usuario
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="my-profile.html"><i class="bi bi-person me-2"></i> Mi perfil</a></li>
+                <li><a class="dropdown-item" href="cart.html" id="carritobtn"><i class="bi bi-cart-fill me-2"></i> Mi carrito<span id="carritocantidad" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                    0
+                  <span class="visually-hidden">unread messages</span>
+                  </span></a>
+                </li>
+                <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+  <!-- MAIN -->
+
+  <button id="btncarrito" type="button" class="bi bi-cart4 btn btn-primary position-relative">
+    <span id="car" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    0
+    <span class="visually-hidden">unread messages</span>
+    </span>
+  </button>
+
+  <main class="container py-4">
+    <a href="categories.html" class="back-link mb-3 d-block">← Seguir comprando</a>
+
+    <div class="row">
+      <!-- Columna izquierda: contenedor de productos dinámicos -->
+      <div class="col-md-7">
+        <div id="productos-container"></div>
+      </div>
+
+      <!-- Columna derecha -->
+<div class="col-md-5">
+  <div class="summary-box">
+    <h5 class="text-center mb-3">Datos requeridos</h5>
+    <div id="datos">
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-3 justify-content-center flex-column d-flex align-items-center justify-content-center" id="cartTabs" role="tablist">
+      <li class="nav-itemdatareq" role="presentation">
+        <button class="nav-link active" id="envio-tab" data-bs-toggle="tab" data-bs-target="#envio" type="button" role="tab">Tipo de envío  <i class="bi bi-truck"></i></button>
+      </li>
+      <li class="nav-itemdatareq" role="presentation">
+        <button class="nav-link" id="direccion-tab" data-bs-toggle="tab" data-bs-target="#direccion" type="button" role="tab">Dirección  <i class="bi bi-geo-alt"></i></button>
+      </li>
+      <li class="nav-itemdatareq" role="presentation">
+        <button class="nav-link" id="pago-tab" data-bs-toggle="tab" data-bs-target="#pago" type="button" role="tab">Pago  <i class="bi bi-credit-card"></i></button>
+      </li>
+      <li class="nav-itemdatareq" role="presentation">
+        <button class="nav-link" id="costos-tab" data-bs-toggle="tab" data-bs-target="#costos" type="button" role="tab">Costos  <i class="bi bi-cash-stack"></i></button>
+      </li>
+    </ul>
+    </div>
+    <div class="tab-content" id="cartTabsContent">
+
+      <!-- TAB: Tipo de envío -->
+      <div class="tab-pane fade show active" id="envio" role="tabpanel">
+        <h6>Selecciona el tipo de envío:</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="premium" value="0.15">
+          <label class="form-check-label" for="premium">Premium (2 a 5 días) - 15% <i class="bi bi-lightning-charge-fill text-warning"></i></label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="express" value="0.07">
+          <label class="form-check-label" for="express">Express (5 a 8 días) - 7% <i class="bi bi-rocket-takeoff-fill text-info"></i></label>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="radio" name="tipoEnvio" id="standard" value="0.05">
+          <label class="form-check-label" for="standard">Standard (12 a 15 días) - 5% <i class="bi bi-calendar-week text-muted"></i></label>
+        </div>
+      </div>
+
+      <!-- TAB: Dirección -->
+      <div class="tab-pane fade" id="direccion" role="tabpanel">
+        <h6>Dirección de envío</h6>
+        <input type="text" class="form-control mb-2" placeholder="Departamento" id="departamento" data-tipo="texto">
+        <input type="text" class="form-control mb-2" placeholder="Localidad" id="localidad" data-tipo="texto">
+        <input type="text" class="form-control mb-2" placeholder="Calle" id="calle" data-tipo="texto">
+        <div class="d-flex gap-2">
+          <input type="text" class="form-control" placeholder="Número" id="numero" data-tipo="numero">
+          <input type="text" class="form-control" placeholder="Esquina" id="esquina" data-tipo="texto">
+        </div>
+      </div>
+
+      <!-- TAB: Forma de pago -->
+      <div class="tab-pane fade" id="pago" role="tabpanel">
+        <h6>Forma de pago</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="pago" id="tarjeta" data-bs-toggle="modal" data-bs-target="#modalTarjeta">
+          <label class="form-check-label" for="tarjeta">Tarjeta de crédito <i class="bi bi-credit-card text-primary me-1"></i></label>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="radio" name="pago" id="transferencia" data-bs-toggle="modal" data-bs-target="#modalTransferencia">
+          <label class="form-check-label" for="transferencia">Transferencia bancaria <i class="bi bi-bank text-success me-1"></i></label>
+        </div>
+      </div>
+
+      <!-- TAB: Costos -->
+      <div class="tab-pane fade" id="costos" role="tabpanel">
+        <h6>Resumen de costos</h6>
+        <div class="mb-2">
+          <label>Subtotal</label>
+          <input type="text" class="form-control" id="subtotal" readonly value="0 USD">
+        </div>
+        <div class="mb-2">
+          <label>Costo de envío</label>
+          <input type="text" class="form-control" id="envioCosto" readonly value="0 USD">
+        </div>
+        <div class="mb-3">
+          <label>Total</label>
+          <input type="text" class="form-control" id="total" readonly value="0 USD">
+        </div>
+        <button id="btnFinalizar" class="btn btn-success w-100">Finalizar compra</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal Tarjeta -->
+<div class="modal fade" id="modalTarjeta" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pago con tarjeta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+      <div class="position-relative mb-2">
+  <input type="text" class="form-control" placeholder="Número de tarjeta" id="numeroTarjeta">
+  <img src="img/visa_icon.png" alt="Visa" class="tarjeta-icon" id="iconVisa">
+  <img src="img/mastercard_icon.png" alt="MasterCard" class="tarjeta-icon" id="iconMastercard">
+</div>
+        <input type="text" class="form-control mb-2" placeholder="Titular">
+        <div class="d-flex gap-2">
+          <input type="text" class="form-control" placeholder="MM/AA">
+          <input type="text" class="form-control" placeholder="CVV">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Modal Transferencia -->
+<div class="modal fade" id="modalTransferencia" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pago por transferencia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control mb-2" placeholder="Banco">
+        <input type="text" class="form-control mb-2" placeholder="Número de cuenta">
+        <input type="text" class="form-control mb-2" placeholder="Titular">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirmación -->
+<div class="modal fade" id="modalResumen" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">Compra finalizada</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+        <p class="mt-3">¡Tu compra fue realizada con éxito!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   </main>
+  
+  <!-- FOOTER -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
     </div>
   </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+
+  <!-- JS -->
+  <script defer src="js/bootstrap.bundle.min.js"></script>
+  <script defer src="js/init.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/agregarnombre.js"></script>
+  <script defer src="js/claro-oscuro.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

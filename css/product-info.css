@@ -1,4 +1,3 @@
-/* ====== ESTILOS BASE (Desktop First) ====== */
 body {
     color: black;
     background-color: #d9dedf;
@@ -107,7 +106,7 @@ p {
     height: 100%;
     font-size: 1.5em;
     font-family: 'Trebuchet MS';
-    background-color: #e99f16;
+    background-color: #e99f16 !important;
     cursor: default;
     border: solid 3px rgb(238, 238, 238);
     opacity: 1;
@@ -120,7 +119,7 @@ p {
 }
 
 #comprar {
-    background-color: #83a6a8;
+    background-color: #83a6a8 !important;
     font-size: 1.5em;
     font-family: 'Trebuchet MS';
     border: solid 3px #83a6a8;
@@ -129,7 +128,7 @@ p {
 }
 
 #comprar:hover {
-    background: rgb(238, 238, 238);
+    background: rgb(255, 255, 255);
     border-color: #83a6a8;
     color: black;
 }
@@ -137,6 +136,7 @@ p {
 #vendidos {
     font-size: 1rem;
     margin: 0;
+    color: #000000;
 }
 
 .estrella-vendidos {
@@ -151,13 +151,13 @@ p {
     margin: 0;
 }
 
-.btn.category {
+.category {
     text-align: center;
     font-size: 0.9em;
     cursor: default;
     width: 10em;
     height: 1em;
-    color: rgb(0, 0, 0)
+    color: rgb(216, 3, 3)
 }
 
 .btn.masvendido {
@@ -192,6 +192,7 @@ p {
     display: block;
     max-width: 18rem;
     margin: 1rem;
+    border: 1px solid rgb(204, 204, 204);
 }
 
 .relacionado:hover {
@@ -504,3 +505,10 @@ input:focus {
         font-size: 1.5em;
     }
 }
+.bi-coin{
+  padding-left: 0.5em;
+}
+.bi-box{
+  padding-left: 0.5em;
+}
+

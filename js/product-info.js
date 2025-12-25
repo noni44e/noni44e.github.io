@@ -2,11 +2,22 @@ let info = localStorage.getItem("dato-ide");
 let contenedor = document.getElementById("principal");
 let pagina = "https://japceibal.github.io/emercado-api/products/" + info + ".json";
 let nombredeusuario = localStorage.getItem('usuario');
+//cargar la cantidad de productos que tiene el carrito//
+const btncar = document.getElementById('carritocantidad');
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let cantcar = carrito.length;
+console.log(cantcar);
+let contador = 0;
+for(let i=0; i<cantcar; i++){
+  contador += carrito[i].cantidad;
+};
+btncar.innerText = contador;
+//=================================================================
 // ================== Mostrar producto principal ==================
 function mostrar(dato, producto) {
   dato.innerHTML = `
     <div class='arriba'>
-      <div class='btn category'>Categoria:${producto.category}</div>
+      <div class='category'>Categoria:${producto.category}</div>
       <div class='btn masvendido hidden'>Mas vendido</div>
     </div>
     <div id='bloque'>
@@ -24,7 +35,7 @@ function mostrar(dato, producto) {
               <div class='btn' id='comprar'>Comprar</div>
             </div>
             <div id='vendidos'>
-              <div class='btn vendidos'>${producto.soldCount} vendidos.</div>
+              <div class='vendidos'>${producto.soldCount} vendidos.</div>
               
             </div>
             </div>
@@ -188,31 +199,27 @@ function estrellas(cantidad){
 function hacercomentario(data){
   //hacer comentario
   document.getElementById('formulario').addEventListener('submit',function(e){
-    
+    e.preventDefault();
     let tiempo = new Date();
     let fecha = tiempo.toLocaleDateString();
     let hora = tiempo.toLocaleTimeString();
     let idfecha = data.id+'fecha';
     let idhora = data.id+'hora';
     let lista = document.getElementById("comentarios-container");
-    e.preventDefault();
+    
     let text = document.getElementById('inputtext').value.trim();
     console.log(text);
     let cal = document.getElementById('calificacion').value;
     let estrellastexto = estrellas(parseInt(cal));
     let ide = "texto"+ data.id;
     let cali = "cal"+data.id;
-    localStorage.setItem(idfecha, fecha);
-    localStorage.setItem(idhora, hora);
-    localStorage.setItem(ide, text);
-    localStorage.setItem(cali, cal);
-      
+    
     if (localStorage.getItem(ide) === null){
     
       let div = document.createElement("div");
       div.classList.add("comentario");
       div.classList.add("clase");
-      div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;";
+      /* div.style = "padding:1em; border:1px solid #ccc; border-radius:0.5em; background:#f9f9f9;"; */
       div.id = "comentario_"+ data.id;
       div.innerHTML = `
         <p><strong>${nombredeusuario}</strong> - <small>${fecha}</small> <small>${hora}</small></p>
@@ -233,6 +240,11 @@ function hacercomentario(data){
     `;
 
     }
+    localStorage.setItem(idfecha, fecha);
+    localStorage.setItem(idhora, hora);
+    localStorage.setItem(ide, text);
+    localStorage.setItem(cali, cal);
+      
     document.getElementById('inputtext').value = '';
 });
 }
@@ -295,3 +307,54 @@ fetch(pagina)
       .catch(err => console.error("Error cargando comentarios:", err));
   })
   .catch(err => console.error("Hubo un problema con el fetch:", err));
+
+  // Espera a que el DOM y el producto estén listos
+  fetch(pagina)
+  .then(res => res.json())
+  .then(data => {
+    // Agregar evento al botón "Comprar"
+    setTimeout(() => { // Espera a que el botón exista en el DOM
+      const btnComprar = document.getElementById("comprar");
+      if (btnComprar) {
+        btnComprar.addEventListener("click", () => {
+          agregarAlCarrito({
+            id: data.id,
+            nombre: data.name,
+            costo: data.cost,
+            moneda: data.currency,
+            imagen: data.images[0],
+            cantidad: 1
+          });
+          Swal.fire({  //Alerta con SweetAlert
+            title: "Producto agregado al carrito 🛒",  
+            icon: "success",
+            draggable: true
+          });
+          //actualizar contador
+          let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+          let contador = 0;
+          cantcar = carrito.length;
+          for(let i=0; i<cantcar; i++){
+            contador += carrito[i].cantidad;
+          };
+          document.getElementById('carritocantidad').innerText = contador;
+        });
+      }
+    });
+    })
+  .catch(error => {
+    console.error("Error al obtener el producto:", error);
+  });
+
+  
+// Función para agregar al carrito
+function agregarAlCarrito(producto) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const index = carrito.findIndex(p => p.id === producto.id);
+  if (index !== -1) {
+    carrito[index].cantidad += producto.cantidad;
+  } else {
+    carrito.push(producto);
+  }
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}

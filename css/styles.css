@@ -9,15 +9,6 @@
 .jumbotron .display-4 {
   font-weight: bold;
 }
-
-.azul{
-  background-color: #282c2c;
-}
-
-nav a {
-  text-decoration: none;
-}
-
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -37,7 +28,7 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
+  background-color: #f8f9fa;
   background: url('../img/cover_back.png');
   background-size: cover;
   background-position: center;
@@ -80,7 +71,12 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
-
+p{
+  color: black;
+}
+h1, h2, h3{
+  color: black;
+}
 .site-header a {
   color: white;
   transition: ease-in-out color .15s;
@@ -192,4 +188,10 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+.bi-coin{
+  padding-left: 0.5em;
+}
+.bi-box{
+  padding-left: 0.5em;
 }

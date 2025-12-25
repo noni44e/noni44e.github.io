@@ -1,3 +1,14 @@
+const categoryIcons = {
+  "Autos": "bi bi-car-front",
+  "Juguetes": "bi bi-controller",
+  "Muebles": "bi bi-lamp",
+  "Herramientas": "bi bi-hammer",
+  "Computadoras": "bi bi-laptop",
+  "Vestimenta": "bi bi-bag",
+  "Electrodomésticos": "bi bi-plug",
+  "Deporte": "bi bi-bicycle",
+  "Celulares": "bi bi-phone"
+};
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
@@ -5,7 +16,17 @@ let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
-
+//cargar la cantidad de productos que tiene el carrito//
+const btncar = document.getElementById('carritocantidad');
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let cantcar = carrito.length;
+console.log(cantcar);
+let contador = 0;
+for(let i=0; i<cantcar; i++){
+  contador += carrito[i].cantidad;
+};
+btncar.innerText = contador;
+//=================================================================
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
@@ -59,7 +80,10 @@ function showCategoriesList(){
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${category.name}</h4>
+                            <h4 class="mb-1">
+                            <i class="${categoryIcons[category.name]} me-2"></i>
+                            ${category.name}
+                            </h4>
                             <small class="text-muted">${category.productCount} artículos</small>
                         </div>
                         <p class="mb-1">${category.description}</p>
